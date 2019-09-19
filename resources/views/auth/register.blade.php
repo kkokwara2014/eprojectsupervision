@@ -174,6 +174,10 @@
                             </div>
                         </div>
 
+                        <div>
+                            <input type="hidden" name="role_id" value="4">
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
