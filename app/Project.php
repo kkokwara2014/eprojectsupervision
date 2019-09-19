@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Classlevel;
 use App\User;
+use App\Chapter;
 
 class Project extends Model
 {
@@ -16,5 +17,8 @@ class Project extends Model
     }
     public function classlevel(){
         return $this->belongsTo(Classlevel::class);
+    }
+    public function chapters(){
+        return $this->hasMany(Chapter::class);
     }
 }

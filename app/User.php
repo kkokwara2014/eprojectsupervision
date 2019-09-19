@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Department;
 use App\Role;
 use App\Project;
+use App\Comment;
+use App\Score;
 
 class User extends Authenticatable
 {
@@ -50,5 +52,11 @@ class User extends Authenticatable
 
     public function projects(){
         return $this->hasMany(Project::class);
+    }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+    public function scores(){
+        return $this->hasMany(Score::class);
     }
 }
