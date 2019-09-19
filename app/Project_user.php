@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\User;
+use App\Project;
+
 class Project_user extends Model
 {
     public function project(){
