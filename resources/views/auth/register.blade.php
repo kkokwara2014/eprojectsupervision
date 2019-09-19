@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container">
+    <br>
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -18,7 +19,7 @@
                             <div class="col-md-8">
                                 <input id="lastname" type="text"
                                     class="form-control @error('lastname') is-invalid @enderror" name="lastname"
-                                    value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+                                    value="{{ old('lastname') }}" required autocomplete="lastname" autofocus placeholder="Last Name">
 
                                 @error('lastname')
                                 <span class="invalid-feedback" role="alert">
@@ -34,7 +35,7 @@
                             <div class="col-md-8">
                                 <input id="firstname" type="text"
                                     class="form-control @error('firstname') is-invalid @enderror" name="firstname"
-                                    value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+                                    value="{{ old('firstname') }}" required autocomplete="firstname" placeholder="First Name">
 
                                 @error('firstname')
                                 <span class="invalid-feedback" role="alert">
@@ -50,7 +51,7 @@
                             <div class="col-md-8">
                                 <input id="othername" type="text"
                                     class="form-control @error('othername') is-invalid @enderror" name="othername"
-                                    value="{{ old('othername') }}" required autocomplete="othername" autofocus>
+                                    value="{{ old('othername') }}" required autocomplete="othername" placeholder="Other Name(s)">
 
                                 @error('othername')
                                 <span class="invalid-feedback" role="alert">
@@ -79,6 +80,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+
+                            <div class="col-md-8">
+                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
+                                    name="phone" value="{{ old('phone') }}" required placeholder="Phone Number" maxlength="14">
+
+                                @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-8">
@@ -89,20 +104,6 @@
                                 </select>
 
                                 @error('gender')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
-                            <div class="col-md-8">
-                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
-                                    name="phone" value="{{ old('phone') }}" required autocomplete="phone">
-
-                                @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -137,7 +138,7 @@
 
                             <div class="col-md-8">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -154,7 +155,7 @@
                             <div class="col-md-8">
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
-                                    required autocomplete="new-password">
+                                    required autocomplete="new-password" placeholder="Password">
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -170,7 +171,7 @@
 
                             <div class="col-md-8">
                                 <input id="password-confirm" type="password" class="form-control"
-                                    name="password_confirmation" required autocomplete="new-password">
+                                    name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
                             </div>
                         </div>
 
@@ -186,9 +187,12 @@
                             </div>
                         </div>
                     </form>
+                <p style="text-align: right">Already registered? <a href="{{route('login')}}">Login</a></p>
+                    
                 </div>
             </div>
         </div>
     </div>
+    <br><br>
 </div>
 @endsection
