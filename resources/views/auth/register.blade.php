@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="othername"
-                                class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
+                                class="col-md-4 col-form-label text-md-right">{{ __('Other Names') }}</label>
 
                             <div class="col-md-8">
                                 <input id="othername" type="text"
@@ -62,13 +62,13 @@
 
                         <div class="form-group row">
                             <label for="identitynumber"
-                                class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                class="col-md-4 col-form-label text-md-right">{{ __('Reg. Number') }}</label>
 
                             <div class="col-md-8">
                                 <input id="identitynumber" type="identitynumber"
                                     class="form-control @error('identitynumber') is-invalid @enderror"
                                     name="identitynumber" value="{{ old('identitynumber') }}" required
-                                    autocomplete="identitynumber">
+                                    autocomplete="identitynumber" placeholder="Reg. Number e.g 2017-HND-24516-CS">
 
                                 @error('identitynumber')
                                 <span class="invalid-feedback" role="alert">
@@ -82,10 +82,11 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-8">
-                                <input type="radio" class="form-control @error('gender') is-invalid @enderror"
-                                    name="gender" value="{{ old('gender') }}" id="gender" value="Male"> Male
-                                <input type="radio" class="form-control @error('gender') is-invalid @enderror"
-                                    name="gender" value="{{ old('gender') }}" id="gender" value="Female"> Female
+                                <select name="gender" class="form-control @error('gender') is-invalid @enderror">
+                                    <option selected="disabled">Select Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
 
                                 @error('gender')
                                 <span class="invalid-feedback" role="alert">
@@ -95,8 +96,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone"
-                                class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                             <div class="col-md-8">
                                 <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
