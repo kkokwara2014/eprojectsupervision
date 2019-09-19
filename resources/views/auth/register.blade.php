@@ -69,7 +69,7 @@
                                 <input id="identitynumber" type="identitynumber"
                                     class="form-control @error('identitynumber') is-invalid @enderror"
                                     name="identitynumber" value="{{ old('identitynumber') }}" required
-                                    autocomplete="identitynumber" placeholder="Reg. Number e.g 2017-HND-24516-CS">
+                                    autocomplete="identitynumber" placeholder="Reg. Number e.g 2017-HND-24516-CS" maxlength="17">
 
                                 @error('identitynumber')
                                 <span class="invalid-feedback" role="alert">
