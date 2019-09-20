@@ -7,7 +7,7 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
           <div class="inner">
-          <h3>{{$allContacts}}</h3>
+          <h3>17</h3>
 
             <p>Contacts</p>
           </div>
@@ -22,7 +22,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
           <div class="inner">
-          <h3>{{$allShops}}</h3>
+          <h3>13</h3>
 
             <p>Shops</p>
           </div>
@@ -37,8 +37,7 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
           <div class="inner">
-          <h3>{{$allSubscriptions}}</h3>
-
+          <h3>15</h3>
             <p>Subscriptions</p>
           </div>
           <div class="icon">
@@ -52,7 +51,7 @@
         <!-- small box -->
         <div class="small-box bg-blue-active">
           <div class="inner">
-            <h3>{{$allShopOwners}}</h3>
+            <h3>10</h3>
 
             <p>Shop Owners</p>
           </div>
@@ -67,7 +66,7 @@
         <!-- small box -->
         <div class="small-box bg-fuchsia-active">
           <div class="inner">
-            <h3>{{$allProducts}}</h3>
+            <h3>19</h3>
 
             <p>Products</p>
           </div>
@@ -82,7 +81,7 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
           <div class="inner">
-            <h3>{{$allAdmins}}</h3>
+            <h3>2</h3>
 
             <p>Admins</p>
           </div>

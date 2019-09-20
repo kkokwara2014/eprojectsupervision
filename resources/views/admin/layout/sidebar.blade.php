@@ -16,7 +16,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
 
-    <li>
+      <li>
         <a href="{{route('dashboard.index')}}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           <span class="pull-right-container">
@@ -26,24 +26,9 @@
 
       </li>
 
-      @if (Auth::user()->role->id==1)
-      <li><a href="{{ route('category.index') }}"><i class="fa fa-th"></i> Category</a></li>
-      @endif
-      @if (Auth::user()->role->id==1)
-      <li><a href="{{ route('contact.index') }}"><i class="fa fa-envelope"></i> Contacts</a></li>
-      @endif
+      <li><a href="#"><i class="fa fa-picture-o"></i> My Profile Photo</a></li>
 
-      <li><a href="{{route('user.profile')}}"><i class="fa fa-picture-o"></i> My Profile Photo</a></li>
-
-      <li><a href="{{ route('shop.index') }}"><i class="fa fa-university"></i> Shop</a></li>
-      <li><a href="{{ route('product.index') }}"><i class="fa fa-lemon-o"></i> Product</a></li>
-
-      <li><a href="{{ route('subscription.index') }}"><i class="fa fa-money"></i> Subscription</a></li>
-
-      @if (Auth::user()->role->id==1)
-      <li><a href="{{ route('shopowner.all')}}"><i class="fa fa-users"></i> Shop Owners</a></li>
-      <li><a href="{{ route('admins.all')}}"><i class="fa fa-user-plus"></i> Admins</a></li>
-      @endif
+      <li><a href="#"><i class="fa fa-user-plus"></i> Admins</a></li>
     </ul>
   </section>
   <!-- /.sidebar -->

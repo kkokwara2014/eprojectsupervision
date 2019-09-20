@@ -8,12 +8,12 @@
   <!-- Left col -->
   <section class="col-lg-12 connectedSortable">
 
-    <div class="box">
+    {{-- <div class="box">
       <!-- /.box-header -->
       <div class="box-body">
         
       </div>
-    </div>
+    </div> --}}
 
 
   </section>

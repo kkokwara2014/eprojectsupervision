@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ekemarketonline | Dashboard</title>
+    <title>eaprojsupervision | Dashboard</title>
 
     <link rel="shortcut icon" type="image/png" href="{{url('admin_assets/dist/img/','ekm_logo.png')}}"/>
 
@@ -55,9 +55,9 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>EMkt</b>Online</span>
+          <span class="logo-mini"><b>eaproj</b>Supervision</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Ekemarketonline</b></span>
+          <span class="logo-lg"><b>eaprojsupervision</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -91,7 +91,7 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="{{route('user.profile')}}" class="btn btn-default btn-flat">Profile</a>
+                      <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
                       <a href="{{ route('user.logout') }}" class="btn btn-default btn-flat">Sign out</a>

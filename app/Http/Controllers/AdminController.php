@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Auth;
+use App\User;
+
 class AdminController extends Controller
 {
     /**
@@ -14,7 +17,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $user = Auth::user();
+
+        return view('admin.index',compact('user'));
     }
 
     /**
