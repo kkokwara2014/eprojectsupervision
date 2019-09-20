@@ -24,10 +24,10 @@
           <div class="inner">
           <h3>13</h3>
 
-            <p>Shops</p>
+            <p>Comments</p>
           </div>
           <div class="icon">
-            <i class="fa fa-university"></i>
+            <i class="fa fa-comment-o"></i>
           </div>
          
         </div>
@@ -38,10 +38,10 @@
         <div class="small-box bg-yellow">
           <div class="inner">
           <h3>15</h3>
-            <p>Subscriptions</p>
+            <p>Projects</p>
           </div>
           <div class="icon">
-            <i class="fa fa-money"></i>
+            <i class="fa fa-file-text-o"></i>
           </div>
          
         </div>
@@ -53,7 +53,7 @@
           <div class="inner">
             <h3>10</h3>
 
-            <p>Shop Owners</p>
+            <p>Students</p>
           </div>
           <div class="icon">
             <i class="fa fa-users"></i>
@@ -68,10 +68,10 @@
           <div class="inner">
             <h3>19</h3>
 
-            <p>Products</p>
+            <p>Supervisors</p>
           </div>
           <div class="icon">
-            <i class="fa fa-lemon-o"></i>
+            <i class="fa fa-graduation-cap"></i>
           </div>
          
         </div>
