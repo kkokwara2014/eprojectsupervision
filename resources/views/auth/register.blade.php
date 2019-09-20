@@ -178,6 +178,9 @@
                         <div>
                             <input type="hidden" name="role_id" value="4">
                         </div>
+                        <div>
+                            <input type="hidden" name="isactive" value="0">
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

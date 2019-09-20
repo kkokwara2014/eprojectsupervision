@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone');
             $table->integer('department_id');
+            $table->integer('role_id');
             $table->string('userimage')->default('defaultimage.jpg');
             $table->tinyInteger('isactive')->default('1');
             $table->rememberToken();

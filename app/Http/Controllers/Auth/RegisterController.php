@@ -83,17 +83,26 @@ class RegisterController extends Controller
         $this->validate($request, [
             'lastname' => 'required|string',
             'firstname' => 'required|string',
+            'identitynumber' => 'required|string|unique:users',
+            'gender' => 'required|string',
+            'phone' => 'required|integer',
+            'department_id' => 'required',
             'email' => 'required|email|unique:users',
             'phone' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
         $user = new User;
+        
         $user->lastname = $request->lastname;
         $user->firstname = $request->firstname;
+        $user->othername = $request->othername;
+        $user->identitynumber = $request->identitynumber;
+        $user->gender = $request->gender;
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = bcrypt($request->password);
+        $user->department_id = $request->department_id;
         $user->role_id = $request->role_id;
         $user->isactive = $request->isactive;
 
