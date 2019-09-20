@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>eaprojsupervision | Dashboard</title>
 
-    <link rel="shortcut icon" type="image/png" href="{{url('admin_assets/dist/img/','ekm_logo.png')}}"/>
+    <link rel="shortcut icon" type="image/png" href="{{url('admin_assets/dist/img/','projlogo.png')}}"/>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
