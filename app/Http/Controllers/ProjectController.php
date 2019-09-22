@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Classlevel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Project;
+use Auth;
+use App\User;
 
 class ProjectController extends Controller
 {
@@ -14,7 +18,11 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $projects=Project::orderBy('created_at','desc')->get();
+        $classlevels=Classlevel::orderBy('created_at','asc')->get();
+
+        return view('admin.project.index',compact('projects','user','classlevels'));
     }
 
     /**
@@ -35,7 +43,16 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required|string',
+            'user_id'=>'required',
+            'projyear'=>'required',
+            'classlevel_id'=>'required',
+        ]);
+
+        Project::create($request->all());
+
+        return redirect(route('project.index'));
     }
 
     /**

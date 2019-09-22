@@ -36,6 +36,10 @@ Route::get('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', 'AdminController@index')->name('dashboard.index');
 
+    Route::resource('/project', 'ProjectController');
+    Route::resource('/classlevel', 'ClasslevelController');
+    Route::resource('/chapter', 'ChapterController');
+
 });
 
 

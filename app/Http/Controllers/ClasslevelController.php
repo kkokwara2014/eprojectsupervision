@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Classlevel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+use Auth;
+use App\User;
 
 class ClasslevelController extends Controller
 {
@@ -14,7 +18,9 @@ class ClasslevelController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $classlevels = Classlevel::orderBy('created_at', 'asc')->get();
+        return view('admin.classlevel.index', compact('classlevels', 'user'));
     }
 
     /**
@@ -35,7 +41,13 @@ class ClasslevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'levelname' => 'required|string',
+        ]);
+
+        Classlevel::create($request->all());
+
+        return redirect()->route('classlevel.index');
     }
 
     /**
@@ -57,7 +69,10 @@ class ClasslevelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=Auth::user();
+        $classlevels = Classlevel::where('id', $id)->first();
+
+        return view('admin.classlevel.edit', compact('classlevels','user'));
     }
 
     /**
@@ -80,6 +95,7 @@ class ClasslevelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $classlevels = Classlevel::where('id', $id)->delete();
+        return back();
     }
 }

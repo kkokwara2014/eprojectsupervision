@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Chapter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Project;
+use Auth;
 
 class ChapterController extends Controller
 {
@@ -14,7 +17,10 @@ class ChapterController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $chapters = Chapter::orderBy('created_at', 'asc')->get();
+        $projects = Project::orderBy('created_at', 'asc')->get();
+        return view('admin.chapter.index', compact('chapters','projects', 'user'));
     }
 
     /**
@@ -35,7 +41,11 @@ class ChapterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formInput=$request->except('filename');
+        $this->validate($request,[
+            'title'=>'required|string',
+            'filename'=>'required|mimes:doc,docx|max:10000',
+        ]);
     }
 
     /**

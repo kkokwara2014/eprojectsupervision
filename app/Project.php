@@ -10,7 +10,7 @@ use App\Chapter;
 
 class Project extends Model
 {
-    protected $fillable=['title','casestudy','user_id','classlevel_id'];
+    protected $fillable=['title','casestudy','user_id','projyear','classlevel_id'];
 
     public function user(){
         return $this->belongsTo(User::class);
