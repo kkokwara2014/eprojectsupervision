@@ -18,9 +18,9 @@ class DepartmentController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $departments=Department::orderBy('name','asc')->get();
-        
-        return view('admin.supervisor.index', compact('user','departments'));
+        $departments = Department::orderBy('name', 'asc')->get();
+
+        return view('admin.department.index', compact('user', 'departments'));
     }
 
     /**
@@ -41,7 +41,14 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string',
+            'code' => 'required|string',
+        ]);
+
+        Department::create($request->all());
+
+        return redirect(route('department.index'));
     }
 
     /**
@@ -63,7 +70,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $departments = Department::where('id', $id)->first();;
+        return view('admin.department.edit', array('user' => Auth::user()), compact('departments'));
     }
 
     /**
@@ -75,7 +83,18 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string',
+            'code' => 'required|string',
+        ]);
+
+        $department = Department::find($id);
+        $department->name = $request->name;
+        $department->code = $request->code;
+
+        $department->save();
+
+        return redirect(route('department.index'));
     }
 
     /**
@@ -86,6 +105,7 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $departments = Department::where('id', $id)->delete();
+        return redirect()->back();
     }
 }

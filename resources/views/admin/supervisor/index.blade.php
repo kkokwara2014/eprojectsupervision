@@ -181,7 +181,7 @@
                                 <input id="identitynumber" type="text"
                                     class="form-control{{ $errors->has('identitynumber') ? ' is-invalid' : '' }}"
                                     name="identitynumber" value="{{ old('identitynumber') }}" required autofocus
-                                    placeholder="Staff Number e.g SS-755">
+                                    placeholder="Staff Number e.g SS-755" maxlength="8">
 
                                 @if ($errors->has('identitynumber'))
                                 <span class="invalid-feedback" role="alert">
@@ -190,37 +190,7 @@
                                 @endif
 
                             </div>
-                            <div class="form-group">
-                                <select name="gender" class="form-control @error('gender') is-invalid @enderror">
-                                    <option selected="disabled">Select Gender</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
 
-                                @if ($errors->has('gender'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('gender') }}</strong>
-                                </span>
-                                @endif
-
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control @error('department_id') is-invalid @enderror"
-                                    name="department_id" value="{{ old('department_id') }}" id="department_id">
-
-                                    <option selected="disabled">Select Department</option>
-                                    <option>Accountancy</option>
-                                    <option>Business Administration</option>
-                                    <option>Computer Science</option>
-                                </select>
-
-                                @if ($errors->has('department_id'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('department_id') }}</strong>
-                                </span>
-                                @endif
-
-                            </div>
 
                             <div class="form-group">
                                 <input id="email" type="email"
@@ -243,6 +213,38 @@
                                     <strong>{{ $errors->first('phone') }}</strong>
                                 </span>
                                 @endif
+                            </div>
+                            <div class="form-group">
+                                <select name="gender" class="form-control @error('gender') is-invalid @enderror">
+                                    <option selected="disabled">Select Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+
+                                @if ($errors->has('gender'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('gender') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control @error('department_id') is-invalid @enderror"
+                                    name="department_id" value="{{ old('department_id') }}" id="department_id">
+
+                                    <option selected="disabled">Select Department</option>
+                                    @foreach ($departments as $department)
+                                    <option value="{{$department->id}}">{{$department->name.' - '.$department->code}}
+                                    </option>
+                                    @endforeach
+
+                                </select>
+
+                                @if ($errors->has('department_id'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('department_id') }}</strong>
+                                </span>
+                                @endif
+
                             </div>
 
 

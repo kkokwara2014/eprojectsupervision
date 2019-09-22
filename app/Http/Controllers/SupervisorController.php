@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,9 @@ class SupervisorController extends Controller
     {
         $user = Auth::user();
         $supervisors=User::where('role_id','3')->get();
+        $departments=Department::orderBy('name','asc')->get();
         
-        return view('admin.supervisor.index', compact('user','supervisors'));
+        return view('admin.supervisor.index', compact('user','supervisors','departments'));
     }
 
     /**
@@ -40,7 +42,9 @@ class SupervisorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            
+        ]);
     }
 
     /**
