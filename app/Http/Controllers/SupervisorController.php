@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+
+use Auth;
 
 class SupervisorController extends Controller
 {
@@ -13,7 +16,10 @@ class SupervisorController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        $supervisors=User::where('role_id','3')->get();
         
+        return view('admin.supervisor.index', compact('user','supervisors'));
     }
 
     /**

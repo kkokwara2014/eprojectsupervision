@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+use Auth;
 
 class DepartmentController extends Controller
 {
@@ -14,7 +17,10 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $departments=Department::orderBy('name','asc')->get();
+        
+        return view('admin.supervisor.index', compact('user','departments'));
     }
 
     /**
