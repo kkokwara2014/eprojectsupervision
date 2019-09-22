@@ -44,8 +44,23 @@ class ChapterController extends Controller
         $formInput=$request->except('filename');
         $this->validate($request,[
             'title'=>'required|string',
-            'filename'=>'required|mimes:doc,docx|max:10000',
+            'filename'=>'required|mimes:doc,docx|max:5000',
         ]);
+
+        if ($request->hasFile('filename')) {
+            $filename=$request->file('filename');
+            $filenameName=time().'.'.$filename->getClientOriginalExtension();
+            // filename::make($filename)->resize(300,300)->save(public_path('product_filenames/'.$filenameName));
+
+            $formInput['filename']=$filenameName;
+        }
+
+        $chapter=new Chapter;
+        $chapter->name=$request->name;
+        $chapter->filename=$formInput['filename'];
+
+        $chapter->save();
+
     }
 
     /**
