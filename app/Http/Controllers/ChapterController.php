@@ -49,8 +49,8 @@ class ChapterController extends Controller
         ]);
 
         if ($request->hasFile('filename')) {
-            $filenameWithTime = time() .'_'.$request->title. '.' . $request->filename->getClientOriginalExtension();
-            $filenameToStore = $request->filename->saveAs('public/project_files', $filenameWithTime);
+            $filenameWithTime = time() .'.' . $request->filename->getClientOriginalExtension();
+            $filenameToStore = $request->filename->storeAs('public/project_files', $filenameWithTime);
             
         }
 
