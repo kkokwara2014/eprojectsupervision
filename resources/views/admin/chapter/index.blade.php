@@ -78,7 +78,7 @@
         <div class="modal fade" id="modal-default">
             <div class="modal-dialog">
 
-                <form action="{{ route('classlevel.store') }}" method="post">
+                <form action="{{ route('chapter.store') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="modal-content">
                         <div class="modal-header">
