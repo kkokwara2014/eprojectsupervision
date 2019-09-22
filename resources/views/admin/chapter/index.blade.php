@@ -22,7 +22,8 @@
                         <table id="example1" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
-                                    <th>title</th>
+                                    <th>Title</th>
+                                    <th>Created</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
 
@@ -32,6 +33,7 @@
                                 @foreach ($chapters as $chapter)
                                 <tr>
                                     <td>{{$chapter->title}}</td>
+                                    <td>{{$chapter->created_at->diffForHumans()}}</td>
 
                                     <td><a href="{{ route('chapter.edit',$chapter->id) }}"><span
                                                 class="fa fa-edit fa-2x text-primary"></span></a></td>
@@ -58,6 +60,7 @@
                             <tfoot>
                                 <tr>
                                     <th>Title</th>
+                                    <th>Created</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>

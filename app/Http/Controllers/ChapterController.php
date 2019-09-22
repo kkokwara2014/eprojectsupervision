@@ -41,25 +41,27 @@ class ChapterController extends Controller
      */
     public function store(Request $request)
     {
-        $formInput=$request->except('filename');
+        
         $this->validate($request,[
             'title'=>'required|string',
-            'filename'=>'required|mimes:doc,docx|max:5000',
+            'project_id'=>'required',
+            'filename'=>'required|file|mimes:doc,docx|max:5000',
         ]);
 
         if ($request->hasFile('filename')) {
-            $filename=$request->file('filename');
-            $filenameName=time().'.'.$filename->getClientOriginalExtension();
-            // filename::make($filename)->resize(300,300)->save(public_path('product_filenames/'.$filenameName));
-
-            $formInput['filename']=$filenameName;
+            $filenameWithTime = time() . '_' .$request->title.'.'. $request->filename->getClientOriginalExtension();
+            $filenameToStore = $request->filename->storeAs('public/project_files', $filenameWithTime);
+           
         }
 
         $chapter=new Chapter;
-        $chapter->name=$request->name;
-        $chapter->filename=$formInput['filename'];
+        $chapter->title=$request->title;
+        $chapter->project_id=$request->project_id;
+        $chapter->filename=$filenameToStore;
 
         $chapter->save();
+
+        return redirect(route('chapter.index'));
 
     }
 
