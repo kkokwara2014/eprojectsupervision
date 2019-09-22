@@ -9,7 +9,7 @@
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
         <div>
-            <a href="{{ route('product.index') }}" class="btn btn-success btn-sm">
+            <a href="{{ route('supervisor.index') }}" class="btn btn-success btn-sm">
                 Back</a>
         </div>
         <br>
@@ -20,26 +20,24 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-5">
-                                <img src="{{url('product_images',$product->image)}}" alt=""
+                                <img src="{{url('user_images',$supervisor->userimage)}}" alt=""
                                     class="img-responsive img-rounded" width="250" height="250">
 
                             </div>
                             <div class="col-md-7">
                                 <p>
-                                    <h2>{{$product->name}}</h2>
+                                    <h2>{{$supervisor->lastname.' '.$supervisor->firstname}}</h2>
                                 </p>
                                 <hr>
-                                <div>Unit Price : &#8358;{{$product->price}} </div>
-                                <div>Category : {{$product->category->name}} </div>
-                                <div>Description : {{$product->description}} </div>
-                                <div>Found In : {{$product->shop->businessname.' - '.$product->shop->shopnumber}} </div>
-
-                                <br>
-                                <div>
-                                    Shop Owner :
-                                    <strong>{{strtoupper($product->shop->user->lastname).', '.$product->shop->user->firstname}}</strong>
+                                <div>Staff Number : {{$supervisor->identitynumber}} </div>
+                                <div>Email : {{$supervisor->email}} </div>
+                                <div>Phone : {{$supervisor->phone}}</div>
+                                <div>Department : {{$supervisor->department->name.' - '.$supervisor->department->code}}</div>
+                               
                                 </div>
-                                <div>Phone : {{$product->shop->user->phone}}</div>
+
+                                
+
                             </div>
 
                         </div>

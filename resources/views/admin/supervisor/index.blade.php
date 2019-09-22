@@ -33,15 +33,14 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>View Details</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
 
 
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($supervisors as $supervisor)
-
 
                                 <tr>
 
@@ -51,52 +50,29 @@
 
                                     <td>{{$supervisor->email}}</td>
                                     <td>{{$supervisor->phone}}</td>
-                                    <td><a href="{{ route('supervisor.show',$supervisor->id) }}"><span
-                                                class="fa fa-eye fa-2x text-primary"></span></a></td>
                                     <td>
-                                        @if ($supervisor->isactive==1)
-                                        <span class="fa fa-check-circle fa-2x text-success"></span>
-                                        @else
-                                        <span class="fa fa-close fa-2x text-danger"></span>
-                                        @endif
-
+                                        <a href="{{ route('supervisor.show',$supervisor->id) }}"><span
+                                                class="fa fa-eye fa-2x text-primary"></span></a>
                                     </td>
+                                    <td><a href="{{ route('supervisor.edit',$supervisor->id) }}"><span
+                                        class="fa fa-edit fa-2x text-primary"></span></a></td>
 
                                     <td>
-                                        @if ($supervisor->isactive==1)
-
                                         <form id="delete-form-{{$supervisor->id}}" style="display: none"
-                                            action="{{ route('supervisor.deactivate',$supervisor->id) }}" method="post">
+                                            action="{{ route('supervisor.destroy',$supervisor->id) }}" method="post">
                                             {{ csrf_field() }}
-
+                                            {{method_field('DELETE')}}
                                         </form>
                                         <a href="" onclick="
-                                                                if (confirm('Are you sure you want to Deactivate this?')) {
+                                                                if (confirm('Are you sure you want to delete this?')) {
                                                                     event.preventDefault();
                                                                 document.getElementById('delete-form-{{$supervisor->id}}').submit();
                                                                 } else {
                                                                     event.preventDefault();
                                                                 }
-                                                            " class="btn btn-danger btn-sm btn-block">Deactivate
-                                        </a>
-                                        @else
-
-                                        <form id="delete-form-{{$supervisor->id}}" style="display: none"
-                                            action="{{ route('supervisor.activate',$supervisor->id) }}" method="post">
-                                            {{ csrf_field() }}
-
-                                        </form>
-                                        <a href="" onclick="
-                                                                if (confirm('Are you sure you want to Activate this?')) {
-                                                                    event.preventDefault();
-                                                                document.getElementById('delete-form-{{$supervisor->id}}').submit();
-                                                                } else {
-                                                                    event.preventDefault();
-                                                                }
-                                                            " class="btn btn-success btn-sm btn-block"> Activate
+                                                            "><span class="fa fa-trash fa-2x text-danger"></span>
                                         </a>
 
-                                        @endif
                                     </td>
                                 </tr>
 
@@ -111,8 +87,8 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>View Details</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </tfoot>
                         </table>
