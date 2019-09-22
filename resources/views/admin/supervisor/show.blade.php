@@ -9,7 +9,7 @@
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
         <div>
-            <a href="{{ route('supervisor.index') }}" class="btn btn-success btn-sm">
+            <a href="{{ route('supervisor.index') }}" class="btn btn-primary btn-sm">
                 Back</a>
         </div>
         <br>
@@ -26,10 +26,11 @@
                             </div>
                             <div class="col-md-7">
                                 <p>
-                                    <h2>{{$supervisor->lastname.' '.$supervisor->firstname}}</h2>
+                                    <h2>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</h2>
                                 </p>
                                 <hr>
                                 <div>Staff Number : {{$supervisor->identitynumber}} </div>
+                                <div>Gender : {{$supervisor->gender}} </div>
                                 <div>Email : {{$supervisor->email}} </div>
                                 <div>Phone : {{$supervisor->phone}}</div>
                                 <div>Department : {{$supervisor->department->name.' - '.$supervisor->department->code}}</div>

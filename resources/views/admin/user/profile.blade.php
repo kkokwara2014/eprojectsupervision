@@ -19,17 +19,25 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
                                 <img src="{{url('user_images',$user->userimage)}}" alt=""
-                                    class="img-responsive img-circle" style="width: 250px; height: 200px; border-radius: 50%;">
+                                    class="img-responsive img-circle" style="width: 350px; height: 200px; border-radius: 50%;">
                                 <form action="{{ route('user.profile.update') }}" method="post"
                                     enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <br>
+                                    <div class="form-group">
+                                        <select name="title" class="form-control">
+                                            <option selected="disabled">Select Title</option>
+                                            <option>Mr.</option>
+                                            <option>Mrs.</option>
+                                            <option>Engr.</option>
+                                            <option>Dr.</option>
+                                        </select>
+                                    </div>
                                     <input type="file" name="userimage">
                                     <p></p>
                                     <button type="submit" class="btn btn-success text-center"><span
                                             class="fa fa-upload"></span>
-                                        Upload your
-                                        Photo</button>
+                                        Update Profile</button>
                                 </form>
                             </div>
                             <div class="col-md-3"></div>
