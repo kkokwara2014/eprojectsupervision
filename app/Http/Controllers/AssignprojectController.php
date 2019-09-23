@@ -6,6 +6,7 @@ use App\Project;
 use Illuminate\Http\Request;
 
 use Auth;
+use App\User;
 
 class AssignprojectController extends Controller
 {

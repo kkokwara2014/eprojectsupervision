@@ -7,14 +7,14 @@
 <!-- Main row -->
 <div class="row">
     <!-- Left col -->
-    <section class="col-lg-9 connectedSortable">
+    <section class="col-lg-8 connectedSortable">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
             <span class="fa fa-exchange"></span> Assign Project
         </button>
         <br><br>
 
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
 
                 <div class="box">
                     <!-- /.box-header -->
@@ -22,44 +22,26 @@
                         <table id="example1" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
-                                    <th>Level</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-
+                                    <th>Supervisor</th>
+                                    <th>Assigned Projects</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($classlevels as $classlevel)
+                                @foreach ($supervisors as $supervisor)
                                 <tr>
-                                    <td>{{$classlevel->levelname}}</td>
-                                    
-                                    <td><a href="{{ route('classlevel.edit',$classlevel->id) }}"><span
-                                                class="fa fa-edit fa-2x text-primary"></span></a></td>
+                                    <td>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</td>
                                     <td>
-                                        <form id="delete-form-{{$classlevel->id}}" style="display: none"
-                                            action="{{ route('classlevel.destroy',$classlevel->id) }}" method="post">
-                                            {{ csrf_field() }}
-                                            {{method_field('DELETE')}}
-                                        </form>
-                                        <a href="" onclick="
-                                                            if (confirm('Are you sure you want to delete this?')) {
-                                                                event.preventDefault();
-                                                            document.getElementById('delete-form-{{$classlevel->id}}').submit();
-                                                            } else {
-                                                                event.preventDefault();
-                                                            }
-                                                        "><span class="fa fa-trash fa-2x text-danger"></span>
-                                        </a>
-
+                                        <a href="{{ route('assignproject.show',$supervisor->id) }}"><span
+                                                class="fa fa-eye fa-2x text-primary"></span></a>
                                     </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
-                                        <th>Level</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>    
+                                    <th>Supervisor</th>
+                                    <th>Assigned Projects</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -89,7 +71,7 @@
                                 <input type="text" class="form-control" name="levelname" placeholder="Class Level"
                                     autofocus>
                             </div>
-                           
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

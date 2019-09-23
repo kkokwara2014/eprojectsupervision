@@ -13,7 +13,7 @@
         </button>
 
     <a href="{{route('chapter.index')}}" class="btn btn-success"><span class="fa fa-eye"></span> Chapters</a>
-    <a href="#" class="btn btn-success"><span class="fa fa-exchange"></span> Assign Projects</a>
+    <a href="{{route('assignproject.index')}}" class="btn btn-success"><span class="fa fa-exchange"></span> Assign Projects</a>
         <br><br>
 
         <div class="row">
