@@ -42,6 +42,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/supervisor', 'SupervisorController');
     Route::resource('/department', 'DepartmentController');
     Route::resource('/assignproject', 'AssignprojectController');
+    Route::resource('/student', 'StudentController');
 
     Route::get('user/profile','UserController@profileimage')->name('user.profile');
     Route::post('user/profile','UserController@updateprofileimage')->name('user.profile.update');
