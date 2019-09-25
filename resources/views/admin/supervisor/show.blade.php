@@ -37,9 +37,8 @@
                                 </div>
 
                                 <hr>
-                                <br>
                                 <div>
-                                    <a href="#" class="btn btn-success">Assigned Projects</a>
+                                    <a href="#" class="btn btn-success btn-sm">Assigned Projects</a>
                                 </div>
                             </div>
 
