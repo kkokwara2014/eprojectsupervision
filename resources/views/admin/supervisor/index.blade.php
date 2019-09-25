@@ -33,6 +33,7 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>View Details</th>
+                                    <th>Assigned Project</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
 
@@ -50,14 +51,19 @@
 
                                     <td>{{$supervisor->email}}</td>
                                     <td>{{$supervisor->phone}}</td>
-                                    <td>
+                                    <td style="text-align: center">
                                         <a href="{{ route('supervisor.show',$supervisor->id) }}"><span
                                                 class="fa fa-eye fa-2x text-primary"></span></a>
                                     </td>
-                                    <td><a href="{{ route('supervisor.edit',$supervisor->id) }}"><span
-                                        class="fa fa-edit fa-2x text-primary"></span></a></td>
+                                    <td style="text-align: center">
+                                        <a href="#">
+                                            <span class="fa fa-file-pdf-o fa-2x text-danger"></span>
+                                        </a>
+                                    </td>
+                                    <td style="text-align: center"><a href="{{ route('supervisor.edit',$supervisor->id) }}"><span
+                                                class="fa fa-edit fa-2x text-primary"></span></a></td>
 
-                                    <td>
+                                    <td style="text-align: center">
                                         <form id="delete-form-{{$supervisor->id}}" style="display: none"
                                             action="{{ route('supervisor.destroy',$supervisor->id) }}" method="post">
                                             {{ csrf_field() }}
@@ -87,6 +93,7 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>View Details</th>
+                                    <th>Assigned Project</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>

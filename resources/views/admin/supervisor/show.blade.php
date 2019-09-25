@@ -37,9 +37,7 @@
                                 </div>
 
                                 <hr>
-                                <div>
-                                    <a href="#" class="btn btn-success btn-sm">Assigned Projects</a>
-                                </div>
+                                
                             </div>
 
 
