@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+use App\User;
+use App\Department;
+
 class StudentController extends Controller
 {
     /**
@@ -13,7 +17,11 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $students = User::where('role_id', '4')->get();
+        $departments = Department::orderBy('name', 'asc')->get();
+
+        return view('admin.student.index', compact('user', 'students', 'departments'));
     }
 
     /**
@@ -45,7 +53,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student=User::find($id);
+        return view('admin.student.show',array('user'=>Auth::user()),compact('student'));
     }
 
     /**

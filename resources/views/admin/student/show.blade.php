@@ -9,7 +9,7 @@
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
         <div>
-            <a href="{{ route('supervisor.index') }}" class="btn btn-primary btn-sm">
+            <a href="{{ route('student.index') }}" class="btn btn-primary btn-sm">
                 Back</a>
         </div>
         <br>
@@ -20,33 +20,26 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-5">
-                                <img src="{{url('user_images',$supervisor->userimage)}}" alt=""
+                                <img src="{{url('user_images',$student->userimage)}}" alt=""
                                     class="img-responsive img-rounded" width="250" height="250">
 
                             </div>
                             <div class="col-md-7">
                                 <p>
-                                    <h2>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</h2>
+                                    <h2>{{$student->title.' '.$student->lastname.' '.$student->firstname}}</h2>
                                 </p>
                                 <hr>
-                                <div>Staff Number : {{$supervisor->identitynumber}} </div>
-                                <div>Gender : {{$supervisor->gender}} </div>
-                                <div>Email : {{$supervisor->email}} </div>
-                                <div>Phone : {{$supervisor->phone}}</div>
-                                <div>Department : {{$supervisor->department->name.' - '.$supervisor->department->code}}
-                                </div>
+                                <div>Staff Number : {{$student->identitynumber}} </div>
+                                <div>Gender : {{$student->gender}} </div>
+                                <div>Email : {{$student->email}} </div>
+                                <div>Phone : {{$student->phone}}</div>
+                                <div>Department : {{$student->department->name.' - '.$student->department->code}}</div>
 
-                                <hr>
-                                <br>
-                                <div>
-                                    <a href="#" class="btn btn-success">Assigned Projects</a>
-                                </div>
                             </div>
-
-
                         </div>
 
                     </div>
+
                 </div>
                 <!-- /.box-body -->
             </div>
