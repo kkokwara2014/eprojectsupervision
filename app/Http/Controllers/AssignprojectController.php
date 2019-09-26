@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Project_user;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -47,7 +48,12 @@ class AssignprojectController extends Controller
             'user_id'=>'required',
         ]);
 
-        
+        $proj_sup=new Project_user;
+        $proj_sup->projects()->sync($request->project_id);
+        $proj_sup->users()->sync($request->supervisor_id);
+        $proj_sup->save();
+
+        return view('admin.project.index');
     }
 
     /**

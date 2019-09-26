@@ -145,7 +145,7 @@
         <div class="modal fade" id="modal-default-assign">
             <div class="modal-dialog">
 
-                <form action="{{ route('classlevel.store') }}" method="post">
+                <form action="{{ route('assignproject.store') }}" method="post">
                     {{ csrf_field() }}
                     <div class="modal-content">
                         <div class="modal-header">
@@ -170,7 +170,7 @@
                                 <div class="form-group">
                                     <label>Project <b style="color: red;">*</b> </label>
                                     <select class="form-control select2" multiple="multiple"
-                                        data-placeholder="Select a Project" style="width: 100%;" name="projects[]">
+                                        data-placeholder="Select a Project" style="width: 100%;" name="project_id[]">
                                         @foreach ($projforassign as $pfa)
                                         <option value="{{$pfa->id}}">{{$pfa->title}}</option>
                                         @endforeach

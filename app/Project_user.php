@@ -9,10 +9,10 @@ use App\Project;
 
 class Project_user extends Model
 {
-    public function project(){
+    public function projects(){
         return $this->belongsToMany(Project::class,'project_users')->withTimestamps();
     }
-    public function user(){
+    public function users(){
         return $this->belongsToMany(User::class,'project_users')->withTimestamps();
     }
 }
