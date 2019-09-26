@@ -48,10 +48,12 @@ class AssignprojectController extends Controller
             'user_id'=>'required',
         ]);
 
-        $proj_sup=new Project_user;
-        $proj_sup->projects()->sync($request->project_id);
-        $proj_sup->users()->sync($request->supervisor_id);
-        $proj_sup->save();
+        // $proj_sup=new Project_user;
+        // $proj_sup->project_id=$request->project_id;
+        // $proj_sup->user_id=$request->supervisor_id;
+        // $proj_sup->save();
+
+        Project_user::create($request->all());
 
         return view('admin.project.index');
     }

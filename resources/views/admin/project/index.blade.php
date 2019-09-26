@@ -172,7 +172,7 @@
                                     <select class="form-control select2" multiple="multiple"
                                         data-placeholder="Select a Project" style="width: 100%;" name="project_id[]">
                                         @foreach ($projforassign as $pfa)
-                                        <option value="{{$pfa->id}}">{{$pfa->title}}</option>
+                                        <option value="{{$pfa->id}}">{{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}</option>
                                         @endforeach
                                     </select>
                                 </div>

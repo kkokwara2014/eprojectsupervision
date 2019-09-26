@@ -9,10 +9,14 @@ use App\Project;
 
 class Project_user extends Model
 {
-    public function projects(){
-        return $this->belongsToMany(Project::class,'project_users')->withTimestamps();
+    protected $fillable = ['project_id', 'user_id'];
+    
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
     }
-    public function users(){
-        return $this->belongsToMany(User::class,'project_users')->withTimestamps();
+    public function users()
+    {
+        return $this->belongsTo(User::class);
     }
 }
