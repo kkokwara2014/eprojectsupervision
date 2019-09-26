@@ -72,6 +72,22 @@
                                     autofocus>
                             </div>
 
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Project</label>
+                                    <select class="form-control select2" multiple="multiple"
+                                        data-placeholder="Select a Project" style="width: 100%;" name="projects[]">
+                                        <option>Alabama</option>
+                                        <option>Alaska</option>
+                                        <option>California</option>
+                                        <option>Delaware</option>
+                                        <option>Tennessee</option>
+                                        <option>Texas</option>
+                                        <option>Washington</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

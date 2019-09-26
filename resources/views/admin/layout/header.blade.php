@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>eaprojsupervision | Dashboard</title>
 
-    <link rel="shortcut icon" type="image/png" href="{{url('admin_assets/dist/img/','projlogo.png')}}"/>
+    <link rel="shortcut icon" type="image/png" href="{{url('admin_assets/dist/img/','projlogo.png')}}" />
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -27,14 +28,17 @@
     <!-- Date Picker -->
     <link rel="stylesheet"
       href="{{asset('admin_assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('admin_assets/bower_components/select2/dist/css/select2.min.css')}}">
     <!-- Daterange picker -->
     <link rel="stylesheet"
       href="{{asset('admin_assets/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
     <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="{{asset('admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+    <!-- DataTables -->
     <link rel="stylesheet"
-      href="{{asset('admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
-        <!-- DataTables -->
-  <link rel="stylesheet" href="{{asset('admin_assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+      href="{{asset('admin_assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,15 +76,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="{{url('user_images',$user->userimage)}}" class="user-image"
-                    alt="User Image">
+                  <img src="{{url('user_images',$user->userimage)}}" class="user-image" alt="User Image">
                   <span class="hidden-xs">{{Auth::user()->lastname.' '.Auth::user()->firstname}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="{{url('user_images',$user->userimage)}}" class="img-circle"
-                      alt="User Image">
+                    <img src="{{url('user_images',$user->userimage)}}" class="img-circle" alt="User Image">
 
                     <p>
                       {{Auth::user()->lastname.' '.Auth::user()->firstname}} - {{Auth::user()->role->name}}

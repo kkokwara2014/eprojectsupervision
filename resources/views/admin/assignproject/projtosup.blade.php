@@ -19,7 +19,7 @@
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
-                        
+
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -46,6 +46,8 @@
                                 <input type="text" class="form-control" name="levelname" placeholder="Class Level"
                                     autofocus>
                             </div>
+
+                            
 
                         </div>
                         <div class="modal-footer">
