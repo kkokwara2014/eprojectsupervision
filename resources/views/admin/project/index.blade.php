@@ -12,8 +12,12 @@
             <span class="fa fa-plus"></span> Add Project
         </button>
 
-    <a href="{{route('chapter.index')}}" class="btn btn-success"><span class="fa fa-eye"></span> Chapters</a>
-    <a href="{{route('assignproject.index')}}" class="btn btn-success"><span class="fa fa-exchange"></span> Assign Projects</a>
+        <a href="{{route('chapter.index')}}" class="btn btn-success"><span class="fa fa-eye"></span> Chapters</a>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default-assign">
+            <span class="fa fa-exchange"></span> Assign Project
+        </button>
+        {{-- <a href="{{route('assignproject.index')}}" class="btn btn-success"><span class="fa fa-exchange"></span>
+        Assign Projects</a> --}}
         <br><br>
 
         <div class="row">
@@ -137,7 +141,56 @@
 
         <!-- /.modal -->
 
+        {{-- Data input modal area --}}
+        <div class="modal fade" id="modal-default-assign">
+            <div class="modal-dialog">
 
+                <form action="{{ route('classlevel.store') }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Assign Projects To Supervisor</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="">Supervisor <b style="color: red;">*</b> </label>
+
+                                <select name="supervisor_id" id="" class="form-control">
+                                    <option selected="disabled">Select Supervisor</option>
+                                    @foreach ($supervisors as $supervisor)
+                                    <option value="{{$supervisor->id}}">
+                                        {{$supervisor->title.' '.$supervisor->lastname.', '.$supervisor->firstname}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Project <b style="color: red;">*</b> </label>
+                                    <select class="form-control select2" multiple="multiple"
+                                        data-placeholder="Select a Project" style="width: 100%;" name="projects[]">
+                                        @foreach ($projforassign as $pfa)
+                                        <option value="{{$pfa->id}}">{{$pfa->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+
+                </form>
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
 
     </section>
     <!-- /.Left col -->

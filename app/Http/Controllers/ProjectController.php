@@ -21,8 +21,10 @@ class ProjectController extends Controller
         $user = Auth::user();
         $projects=Project::orderBy('created_at','desc')->get();
         $classlevels=Classlevel::orderBy('created_at','asc')->get();
+        $supervisors = User::where('role_id', '3')->get();
+        $projforassign = Project::orderBy('title', 'asc')->get();
 
-        return view('admin.project.index',compact('projects','user','classlevels'));
+        return view('admin.project.index',compact('projects','supervisors','projforassign','user','classlevels'));
     }
 
     /**

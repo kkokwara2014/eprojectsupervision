@@ -42,7 +42,12 @@ class AssignprojectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'project_id'=>'required',
+            'user_id'=>'required',
+        ]);
+
+        
     }
 
     /**
