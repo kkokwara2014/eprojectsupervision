@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Allocation;
 use App\Chapter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -73,7 +74,8 @@ class ChapterController extends Controller
      */
     public function show($id)
     {
-        $chapters=Project::find($id)->chapters;
+        // $chapters=Project::find($id)->chapters;
+        $chapters=Allocation::find($id)->project()->chapters;
 
         return view('admin.chapter.show',array('user'=>Auth::user()),compact('chapters'));
     }

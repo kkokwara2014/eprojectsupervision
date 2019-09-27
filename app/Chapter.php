@@ -12,7 +12,7 @@ class Chapter extends Model
     protected $fillable=['title','project_id','filename'];
 
     public function project(){
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class,'project_id');
     }
 
     public function comments(){
