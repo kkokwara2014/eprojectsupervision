@@ -41,17 +41,18 @@ class AllocationController extends Controller
             'project_id' => 'required',
         ]);
 
-        
+        $inputs = $request->all();
+        $project_ids = $inputs['project_id'];
 
-
-        foreach( $request->input('category_id') AS $category_id ){
-            $movie = Movie::create($request->all());
-            $movie->categories()->attach($category_id);
-            ...
+        //Multiple insert queries
+        foreach ($project_ids as $project_id) {
+            Allocation::create([
+                'user_id'    => $inputs['supervisor_id'],
+                'project_id' => $project_id
+            ]);
         }
-        
+
         return redirect()->back();
-        
     }
 
     /**
