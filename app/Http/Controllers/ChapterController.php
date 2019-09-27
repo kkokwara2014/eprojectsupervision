@@ -75,7 +75,7 @@ class ChapterController extends Controller
     public function show($id)
     {
         // $chapters=Project::find($id)->chapters;
-        $chapters=Allocation::find($id)->project()->chapters;
+        $chapters=Allocation::find($id)->project->chapters;
 
         return view('admin.chapter.show',array('user'=>Auth::user()),compact('chapters'));
     }

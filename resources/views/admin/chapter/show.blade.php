@@ -14,26 +14,29 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            
-                            <div class="col-md-8">
-                                <h2>Chapters</h2>
+
+                            <div class="col-md-12">
+                                <h2>{{$chapters->project->title}}</h2>
                                 <ul class="list-group">
                                     @forelse ($chapters as $chapt)
                                     <a href="#">
-                                        
-                                    <li class="list-group-item">{{$chapt['title']}}</li>
-                                    <span class="badge badge-info">
-                                        @if ($chapt['isapproved'] ==1)
-                                            Approved
-                                        @else
-                                            Not Approved
-                                        @endif
-                                    </span>
+
+                                        <li class="list-group-item">
+                                            {{$chapt->title}}
+                                            <span class="badge badge-pill badge-primary">
+                                                @if ($chapt['isapproved'] ==1)
+                                                Approved
+                                                @else
+                                                Not Approved
+                                                @endif
+                                            </span>
+                                        </li>
+
                                     </a>
                                     @empty
                                     <li class="list-group-item alert alert-warning"><strong>No Chapter has been
