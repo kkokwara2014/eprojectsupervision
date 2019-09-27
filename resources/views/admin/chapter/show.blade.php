@@ -21,11 +21,10 @@
                         <div class="row">
 
                             <div class="col-md-12">
-                                <h2>{{$chapters->project->title}}</h2>
+                                <h2>Chapters</h2>
                                 <ul class="list-group">
                                     @forelse ($chapters as $chapt)
                                     <a href="#">
-
                                         <li class="list-group-item">
                                             {{$chapt->title}}
                                             <span class="badge badge-pill badge-primary">
