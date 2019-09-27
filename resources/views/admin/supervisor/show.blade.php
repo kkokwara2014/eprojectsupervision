@@ -23,8 +23,6 @@
                                 <img src="{{url('user_images',$supervisor->userimage)}}" alt=""
                                     class="img-responsive img-rounded" width="250" height="250">
 
-                            </div>
-                            <div class="col-md-7">
                                 <p>
                                     <h2>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</h2>
                                 </p>
@@ -37,7 +35,14 @@
                                 </div>
 
                                 <hr>
-                                
+                            </div>
+                            <div class="col-md-7">
+                                <h2>Allocated Projects</h2>
+                                @foreach ($supervisor_projects as $sup_proj)
+                                    
+                                @endforeach
+
+
                             </div>
 
 

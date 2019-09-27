@@ -83,7 +83,8 @@ class SupervisorController extends Controller
     public function show($id)
     {
         $supervisor=User::find($id);
-        return view('admin.supervisor.show',array('user'=>Auth::user()),compact('supervisor'));
+        $supervisor_projects=User::find($id)->allocations;
+        return view('admin.supervisor.show',array('user'=>Auth::user()),compact('supervisor','supervisor_projects'));
     }
 
     /**

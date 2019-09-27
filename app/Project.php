@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Classlevel;
 use App\User;
 use App\Chapter;
+use App\Allocation;
 
 class Project extends Model
 {
@@ -15,10 +16,16 @@ class Project extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
     public function classlevel(){
         return $this->belongsTo(Classlevel::class);
     }
+
     public function chapters(){
         return $this->hasMany(Chapter::class);
+    }
+
+    public function allocations(){
+        return $this->hasMany(Allocation::class);
     }
 }

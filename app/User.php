@@ -63,7 +63,5 @@ class User extends Authenticatable
         return $this->hasMany(Allocation::class);
     }
 
-    // public function projects(){
-    //     return $this->belongsToMany(Project::class);
-    // }
+    
 }
