@@ -25,7 +25,7 @@
                             <tbody>
                                 @foreach ($supervisors as $supervisor)
                                 <tr>
-                                    <td>{{$supervisor->user->title.' '.$supervisor->user->lastname.' '.$supervisor->user->firstname}}</td>
+                                    <td>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</td>
                                     <td>
                                         <a href="{{ route('allocation.show',$supervisor->id) }}"><span
                                                 class="fa fa-eye fa-2x text-primary"></span></a>
