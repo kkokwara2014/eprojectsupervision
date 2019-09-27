@@ -9,7 +9,7 @@
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
         <div>
-            <a href="{{ route('supervisor.index') }}" class="btn btn-primary btn-sm">
+            <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">
                 Back</a>
         </div>
         <br>
@@ -27,12 +27,20 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <div class="row">
-                                                <div class="col-md-2"></div>
+                                                <div class="col-md-2">
+                                                    <img src="{{url('user_images',$comt->user->userimage)}}"
+                                                        class="img-circle" width="40" height="40">
+                                                </div>
                                                 <div class="col-md-10">
                                                     <div></div>
-                                                <div>{{$comt->comments->comment}}</div>
+                                                    <div>{!! htmlspecialchars_decode($comt->comment) !!}</div>
                                                     <div style="text-align: right">
-                                                    <small><span class="fa fa-clock-o"></span> {{$comt->comments->commenttime}}</small>
+                                                        <small>Sent : {{$comt->created_at->diffForHumans()}}
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                                class="fa fa-calendar"></span>
+                                                            {{$comt->commentdate}} &nbsp; <span
+                                                                class="fa fa-clock-o"></span>
+                                                            {{$comt->commenttime}}</small>
                                                     </div>
                                                 </div>
                                             </div>

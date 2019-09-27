@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="col-md-10">
                                             <div style="font-weight: bold">{{$comt->user->lastname.', '.$comt->user->firstname}} says:</div>
-                                        <div>{{$comt->comment}}</div>
+                                        <div>{!! htmlspecialchars_decode($comt->comment) !!}</div>
                                         <div style="text-align: right">
                                             <small>Sent : {{$comt->created_at->diffForHumans()}}
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-calendar"></span>

@@ -9,7 +9,7 @@
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
         <div>
-            <a href="{{ route('supervisor.index') }}" class="btn btn-primary btn-sm">
+            <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">
                 Back</a>
         </div>
         <br>
