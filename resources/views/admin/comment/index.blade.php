@@ -23,13 +23,16 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="{{url('user_images',$comt->user->userimage)}}" class="img-circle" width="40" height="40">
+                                        <img src="{{url('user_images',$comt->user->userimage)}}" class="img-circle"
+                                            width="40" height="40">
                                     </div>
                                     <div class="col-md-10">
-                                        <div></div>
+                                            <div style="font-weight: bold">{{$comt->user->lastname.', '.$comt->user->firstname}} says:</div>
                                         <div>{{$comt->comment}}</div>
                                         <div style="text-align: right">
-                                            <small><span class="fa fa-clock-o"></span>
+                                            <small>Sent : {{$comt->created_at->diffForHumans()}}
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-calendar"></span>
+                                                {{$comt->commentdate}} &nbsp; <span class="fa fa-clock-o"></span>
                                                 {{$comt->commenttime}}</small>
                                         </div>
                                     </div>

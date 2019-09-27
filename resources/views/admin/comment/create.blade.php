@@ -22,31 +22,7 @@
                         <div class="row">
 
                             <div class="col-md-12">
-                                @forelse ($discussions as $comt)
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <img src="{{url('user_images',$comt->user->userimage)}}"
-                                                    class="img-circle" width="40" height="40">
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div></div>
-                                                <div>{{$comt->comment}}</div>
-                                                <div style="text-align: right">
-                                                <small><span class="fa fa-calendar"></span> {{$comt->commentdate}} &nbsp; <span class="fa fa-clock-o"></span>
-                                                        {{$comt->commenttime}}</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @empty
-                                <li class="list-group-item alert alert-warning"><strong>No Comments yet!</strong>
-                                </li>
-                                @endforelse
                                 <br>
-
                                 <form action="{{route('comment.store')}}" method="post">
                                     {{ csrf_field() }}
 
@@ -59,11 +35,38 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <textarea class="form-control" rows="2" name="comment"></textarea>
+                                        <textarea id="editor1" class="form-control" rows="1" name="comment"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-sm">Send</button>
+                                    <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-send"></span> Send</button>
                                 </form>
+                                <br>
 
+                                @forelse ($discussions as $comt)
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <img src="{{url('user_images',$comt->user->userimage)}}"
+                                                    class="img-circle" width="40" height="40">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div style="font-weight: bold">{{$comt->user->lastname.', '.$comt->user->firstname}} says:</div>
+                                                <div>{{$comt->comment}}</div>
+                                                <div style="text-align: right">
+                                                    <small>Sent : {{$comt->created_at->diffForHumans()}}
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                            class="fa fa-calendar"></span> {{$comt->commentdate}} &nbsp;
+                                                        <span class="fa fa-clock-o"></span>
+                                                        {{$comt->commenttime}}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @empty
+                                <li class="list-group-item alert alert-warning"><strong>No Comments yet!</strong>
+                                </li>
+                                @endforelse
                             </div>
                         </div>
 
