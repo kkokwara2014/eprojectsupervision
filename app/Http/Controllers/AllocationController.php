@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Allocation;
+use Auth;
 use Illuminate\Http\Request;
 
 class AllocationController extends Controller
@@ -14,7 +15,10 @@ class AllocationController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $supervisors=Allocation::all();
+        
+        return view('admin.assignproject.index',compact('supervisors','user'));
     }
 
     /**
