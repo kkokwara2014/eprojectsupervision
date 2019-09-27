@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChaptersTable extends Migration
+class CreateAllocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateChaptersTable extends Migration
      */
     public function up()
     {
-        Schema::create('chapters', function (Blueprint $table) {
+        Schema::create('allocations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('title');
+            $table->integer('user_id');
             $table->integer('project_id');
-            $table->string('filename');
-            $table->tinyInteger('isapproved')->default('0');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateChaptersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chapters');
+        Schema::dropIfExists('allocations');
     }
 }

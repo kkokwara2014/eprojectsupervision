@@ -15,6 +15,12 @@ class CreateChapterUserTable extends Migration
     {
         Schema::create('chapter_user', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('chapter_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade');
+            $table->foreign('chapter_id')->references('id')->on('chapters')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

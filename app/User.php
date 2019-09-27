@@ -55,15 +55,15 @@ class User extends Authenticatable
     }
 
     public function comments(){
-        return $this->belongsToMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
     
 
-    // public function allocations(){
-    //     return $this->belongsToMany(Allocation::class);
-    // }
-
-    public function projects(){
-        return $this->belongsToMany(Project::class);
+    public function allocations(){
+        return $this->hasMany(Allocation::class);
     }
+
+    // public function projects(){
+    //     return $this->belongsToMany(Project::class);
+    // }
 }
