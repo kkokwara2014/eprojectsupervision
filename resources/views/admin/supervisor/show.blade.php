@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <img src="{{url('user_images',$supervisor->userimage)}}" alt=""
-                                    class="img-responsive img-rounded" width="250" height="250">
+                                    class="img-responsive img-rounded" width="180" height="180">
 
                                 <p>
                                     <h2>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</h2>
@@ -42,21 +42,13 @@
                                     <a href="#">
                                         <li class="list-group-item">{{$sup_proj->project->title}}</li>
                                     </a>
-
                                     @empty
                                     <li class="list-group-item alert alert-warning"><strong>No Project has been
                                             allocated yet!</strong>
                                     </li>
-
                                     @endforelse
-
-
                                 </ul>
-
-
                             </div>
-
-
                         </div>
 
                     </div>

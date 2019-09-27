@@ -18,7 +18,7 @@ class SupervisorController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $supervisors = User::where('role_id', '3')->get();
+        $supervisors = User::where('role_id', '3')->orderBy('created_at','desc')->get();
         $departments = Department::orderBy('name', 'asc')->get();
 
         return view('admin.supervisor.index', compact('user', 'supervisors', 'departments'));
