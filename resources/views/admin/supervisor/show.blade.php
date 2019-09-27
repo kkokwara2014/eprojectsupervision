@@ -14,7 +14,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -33,14 +33,23 @@
                                 <div>Phone : {{$supervisor->phone}}</div>
                                 <div>Department : {{$supervisor->department->name.' - '.$supervisor->department->code}}
                                 </div>
-
                                 <hr>
                             </div>
                             <div class="col-md-7">
                                 <h2>Allocated Projects</h2>
-                                @foreach ($supervisor_projects as $sup_proj)
-                                    
-                                @endforeach
+                                <ul class="list-group">
+                                    @forelse ($supervisor_projects as $sup_proj)
+                                    <li class="list-group-item">{{$sup_proj->project->title}}</li>
+
+                                    @empty
+                                    <li class="list-group-item alert alert-warning"><strong>No Project has been
+                                            allocated yet!</strong>
+                                    </li>
+
+                                    @endforelse
+
+
+                                </ul>
 
 
                             </div>
