@@ -21,25 +21,25 @@
                         <div class="row">
 
                             <div class="col-md-12">
-                                <h2>Chapters</h2>
+                                <h2>Comments</h2>
                                 <ul class="list-group">
-                                    @forelse ($chapters as $chapt)
-                                    <a href="{{route('comment.show',$chapt->id)}}">
-                                        <li class="list-group-item">
-                                            {{$chapt->title}}
-                                            <span class="badge badge-pill badge-primary">
-                                                @if ($chapt['isapproved'] ==1)
-                                                Approved
-                                                @else
-                                                Not Approved
-                                                @endif
-                                            </span>
-                                        </li>
-
-                                    </a>
+                                    @forelse ($discussions as $comt)
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-10">
+                                                    <div></div>
+                                                <div>{{$comt->comments->comment}}</div>
+                                                    <div style="text-align: right">
+                                                    <small><span class="fa fa-clock-o"></span> {{$comt->comments->commenttime}}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @empty
-                                    <li class="list-group-item alert alert-warning"><strong>No Chapter has been
-                                            attached yet!</strong>
+                                    <li class="list-group-item alert alert-warning"><strong>No Comments yet!</strong>
                                     </li>
                                     @endforelse
                                 </ul>

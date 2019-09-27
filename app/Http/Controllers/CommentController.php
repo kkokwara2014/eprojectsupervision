@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Chapter;
+use App\Comment;
 use Auth;
 
 class CommentController extends Controller
@@ -29,7 +30,8 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('admin.comment.create', array('user' => Auth::user()));
+        $chapters = Chapter::orderBy('created_at', 'asc')->get();
+        return view('admin.comment.create', array('user' => Auth::user()),compact('chapters'));
     }
 
     /**
@@ -40,7 +42,20 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'comment'=>'required|string',
+        ]);
+
+        $comment=new Comment;
+        $comment->comment=$request->comment;
+        $comment->user_id=auth::user()->id;
+        $comment->chapter_id=$request->chapter_id;
+        $comment->commenttime=date('H:i:s');
+        $comment->commentdate=date('d-m-Y');
+
+        $comment->save();
+
+        return redirect()->back();
     }
 
     /**
