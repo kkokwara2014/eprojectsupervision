@@ -39,6 +39,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/project', 'ProjectController');
     Route::resource('/classlevel', 'ClasslevelController');
     Route::resource('/chapter', 'ChapterController');
+    Route::resource('/comment', 'CommentController');
     Route::resource('/supervisor', 'SupervisorController');
     Route::resource('/department', 'DepartmentController');
     Route::resource('/allocation', 'AllocationController');
