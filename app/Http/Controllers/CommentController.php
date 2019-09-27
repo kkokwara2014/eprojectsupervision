@@ -19,8 +19,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        
-        return view('admin.comment.index', array('user' => Auth::user()));
+        $discussions = Comment::orderBy('created_at','desc')->get();
+        return view('admin.comment.index', array('user' => Auth::user()),compact('discussions'));
     }
 
     /**
@@ -30,8 +30,9 @@ class CommentController extends Controller
      */
     public function create()
     {
+        $discussions = Comment::orderBy('created_at','desc')->get();
         $chapters = Chapter::orderBy('created_at', 'asc')->get();
-        return view('admin.comment.create', array('user' => Auth::user()),compact('chapters'));
+        return view('admin.comment.create', array('user' => Auth::user()),compact('chapters','discussions'));
     }
 
     /**

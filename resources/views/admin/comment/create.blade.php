@@ -9,8 +9,9 @@
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
         <div>
-            <a href="{{ route('supervisor.index') }}" class="btn btn-primary btn-sm">
-                Back</a>
+            <a href="{{ route('comment.index') }}" class="btn btn-primary">
+                <span class="fa fa-comments"></span> All Comments
+            </a>
         </div>
         <br>
         <div class="row">
@@ -25,13 +26,16 @@
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-md-2"></div>
+                                            <div class="col-md-2">
+                                                <img src="{{url('user_images',$comt->user->userimage)}}"
+                                                    class="img-circle" width="40" height="40">
+                                            </div>
                                             <div class="col-md-10">
                                                 <div></div>
-                                                <div>{{$comt->comments->comment}}</div>
+                                                <div>{{$comt->comment}}</div>
                                                 <div style="text-align: right">
-                                                    <small><span class="fa fa-clock-o"></span>
-                                                        {{$comt->comments->commenttime}}</small>
+                                                <small><span class="fa fa-calendar"></span> {{$comt->commentdate}} &nbsp; <span class="fa fa-clock-o"></span>
+                                                        {{$comt->commenttime}}</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -41,6 +45,7 @@
                                 <li class="list-group-item alert alert-warning"><strong>No Comments yet!</strong>
                                 </li>
                                 @endforelse
+                                <br>
 
                                 <form action="{{route('comment.store')}}" method="post">
                                     {{ csrf_field() }}
