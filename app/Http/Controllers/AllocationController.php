@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Allocation;
 use Illuminate\Http\Request;
 
 class AllocationController extends Controller
@@ -34,11 +35,23 @@ class AllocationController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
-        $this->validate($request,[
-            'supervisor_id'=>'required',
-            'project_id'=>'required',
+
+        $this->validate($request, [
+            'supervisor_id' => 'required',
+            'project_id' => 'required',
         ]);
+
+        
+
+
+        foreach( $request->input('category_id') AS $category_id ){
+            $movie = Movie::create($request->all());
+            $movie->categories()->attach($category_id);
+            ...
+        }
+        
+        return redirect()->back();
+        
     }
 
     /**

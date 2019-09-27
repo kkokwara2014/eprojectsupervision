@@ -41,7 +41,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/chapter', 'ChapterController');
     Route::resource('/supervisor', 'SupervisorController');
     Route::resource('/department', 'DepartmentController');
-    Route::resource('/assignproject', 'AssignprojectController');
+    Route::resource('/allocation', 'AllocationController');
     Route::resource('/student', 'StudentController');
 
     Route::get('user/profile','UserController@profileimage')->name('user.profile');

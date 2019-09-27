@@ -24,7 +24,7 @@ class ProjectController extends Controller
         $supervisors = User::where('role_id', '3')->get();
         $projforassign = Project::orderBy('title', 'asc')->get();
 
-        return view('admin.project.index',compact('projects','supervisors','projforassign','user','classlevels'));
+        return view('admin.project.index',compact('projects','projforassign','supervisors','user','classlevels'));
     }
 
     /**

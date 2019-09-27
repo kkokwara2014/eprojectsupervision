@@ -145,7 +145,7 @@
         <div class="modal fade" id="modal-default-assign">
             <div class="modal-dialog">
 
-                <form action="{{ route('assignproject.store') }}" method="post">
+                <form action="{{ route('allocation.store') }}" method="post">
                     {{ csrf_field() }}
                     <div class="modal-content">
                         <div class="modal-header">
