@@ -19,7 +19,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <img src="{{url('user_images',$supervisor->userimage)}}" alt=""
                                     class="img-responsive img-rounded" width="250" height="250">
 
@@ -35,11 +35,13 @@
                                 </div>
                                 <hr>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-8">
                                 <h2>Allocated Projects</h2>
                                 <ul class="list-group">
                                     @forelse ($supervisor_projects as $sup_proj)
-                                    <li class="list-group-item">{{$sup_proj->project->title}}</li>
+                                    <a href="#">
+                                        <li class="list-group-item">{{$sup_proj->project->title}}</li>
+                                    </a>
 
                                     @empty
                                     <li class="list-group-item alert alert-warning"><strong>No Project has been
