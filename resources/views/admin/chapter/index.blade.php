@@ -14,7 +14,7 @@
         <br><br>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
 
                 <div class="box">
                     <!-- /.box-header -->
@@ -24,7 +24,6 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Created</th>
-                                    <th>Supervise</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
 
@@ -35,7 +34,6 @@
                                 <tr>
                                     <td>{{$chapter->title}}</td>
                                     <td>{{$chapter->created_at->diffForHumans()}}</td>
-                                    <td><a href="#"><span class="fa fa-filter fa-2x"></span></a></td>
 
                                     <td><a href="{{ route('chapter.edit',$chapter->id) }}"><span
                                                 class="fa fa-edit fa-2x text-primary"></span></a></td>
@@ -63,7 +61,6 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Created</th>
-                                    <th>Supervise</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -91,7 +88,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="">Title <b style="color: red;">*</b> </label>
+                                <label for="">Chapter Title <b style="color: red;">*</b> </label>
                                 <select name="title" class="form-control">
                                     <option selected="disabled">Select Title</option>
                                     <option>Chapter One</option>
