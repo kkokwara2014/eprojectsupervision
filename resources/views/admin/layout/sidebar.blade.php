@@ -27,7 +27,7 @@
       </li>
 
       <li><a href="{{route('user.profile')}}"><i class="fa fa-picture-o"></i> My Profile</a></li>
-      <li><a href="#"><i class="fa fa-comment-o"></i> Comments</a></li>
+      <li><a href="{{route('comment.index')}}"><i class="fa fa-comment-o"></i> Comments</a></li>
       <li><a href="{{route('department.index')}}"><i class="fa fa-university"></i> Department</a></li>
       <li><a href="{{route('classlevel.index')}}"><i class="fa fa-th"></i> Class Level</a></li>
       <li><a href="{{route('student.index')}}"><i class="fa fa-users"></i> Students</a></li>

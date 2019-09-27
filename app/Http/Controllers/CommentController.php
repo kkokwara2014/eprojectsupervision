@@ -18,7 +18,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('admin.comment.index', array('user' => Auth::user()));
     }
 
     /**
@@ -28,7 +29,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.comment.create', array('user' => Auth::user()));
     }
 
     /**
@@ -51,9 +52,9 @@ class CommentController extends Controller
     public function show($id)
     {
         // $comments=Chapter::find($id)->comments;
-        $comments = Allocation::find($id)->project->chapters->comments;
+        $discussions = Allocation::find($id)->project->chapters;
 
-        return view('admin.comment.show', array('user' => Auth::user()), compact('comments'));
+        return view('admin.comment.show', array('user' => Auth::user()), compact('discussions'));
     }
 
     /**
