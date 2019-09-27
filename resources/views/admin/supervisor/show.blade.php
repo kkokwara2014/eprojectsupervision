@@ -40,7 +40,7 @@
                                 <ul class="list-group">
                                     @forelse ($supervisor_projects as $sup_proj)
                                     <a href="#">
-                                        <li class="list-group-item">{{$sup_proj->project->title}}</li>
+                                    <li class="list-group-item">{{$sup_proj->project->title}}</li>
                                     </a>
                                     @empty
                                     <li class="list-group-item alert alert-warning"><strong>No Project has been
