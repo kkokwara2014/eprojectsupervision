@@ -400,6 +400,7 @@ class ComposerStaticInita34766bd4e05ebbc3995ee087fabeb57
     );
 
     public static $classMap = array (
+        'App\\Allocation' => __DIR__ . '/../..' . '/app/Allocation.php',
         'App\\Chapter' => __DIR__ . '/../..' . '/app/Chapter.php',
         'App\\Classlevel' => __DIR__ . '/../..' . '/app/Classlevel.php',
         'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
@@ -407,6 +408,7 @@ class ComposerStaticInita34766bd4e05ebbc3995ee087fabeb57
         'App\\Department' => __DIR__ . '/../..' . '/app/Department.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
+        'App\\Http\\Controllers\\AssignprojectController' => __DIR__ . '/../..' . '/app/Http/Controllers/AssignprojectController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -419,8 +421,12 @@ class ComposerStaticInita34766bd4e05ebbc3995ee087fabeb57
         'App\\Http\\Controllers\\DepartmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/DepartmentController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProjectController.php',
+        'App\\Http\\Controllers\\ProjectCoordinatorController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProjectCoordinatorController.php',
         'App\\Http\\Controllers\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoleController.php',
         'App\\Http\\Controllers\\ScoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScoreController.php',
+        'App\\Http\\Controllers\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentController.php',
+        'App\\Http\\Controllers\\SupervisorController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupervisorController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',

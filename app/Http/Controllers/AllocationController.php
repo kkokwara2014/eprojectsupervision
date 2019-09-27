@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
-use App\Project_user;
 use Illuminate\Http\Request;
 
-use Auth;
-use App\User;
-
-class AssignprojectController extends Controller
+class AllocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +13,7 @@ class AssignprojectController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $supervisors = User::where('role_id', '3')->get();
-        $projects = Project::orderBy('title', 'asc')->get();
-
-        return view('admin.assignproject.index', compact('user', 'supervisors', 'projects'));
+        //
     }
 
     /**
@@ -43,19 +34,11 @@ class AssignprojectController extends Controller
      */
     public function store(Request $request)
     {
+        return $request->all();
         $this->validate($request,[
+            'supervisor_id'=>'required',
             'project_id'=>'required',
-            'user_id'=>'required',
         ]);
-
-        // $proj_sup=new Project_user;
-        // $proj_sup->project_id=$request->project_id;
-        // $proj_sup->user_id=$request->supervisor_id;
-        // $proj_sup->save();
-
-        Project_user::create($request->all());
-
-        return view('admin.project.index');
     }
 
     /**

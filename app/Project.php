@@ -13,7 +13,7 @@ class Project extends Model
     protected $fillable=['title','casestudy','user_id','projyear','classlevel_id'];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
     public function classlevel(){
         return $this->belongsTo(Classlevel::class);
