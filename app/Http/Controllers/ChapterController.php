@@ -73,7 +73,9 @@ class ChapterController extends Controller
      */
     public function show($id)
     {
-        //
+        $chapters=Project::find($id)->chapters;
+
+        return view('admin.chapter.show',array('user'=>Auth::user()),compact('chapters'));
     }
 
     /**

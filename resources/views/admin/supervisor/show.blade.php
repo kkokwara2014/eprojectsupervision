@@ -39,8 +39,8 @@
                                 <h2>Allocated Projects</h2>
                                 <ul class="list-group">
                                     @forelse ($supervisor_projects as $sup_proj)
-                                    <a href="#">
-                                    <li class="list-group-item">{{$sup_proj->project->title}}</li>
+                                    <a href="{{route('chapter.show',$sup_proj->id)}}">
+                                        <li class="list-group-item">{{$sup_proj->project->title}}</li>
                                     </a>
                                     @empty
                                     <li class="list-group-item alert alert-warning"><strong>No Project has been
