@@ -32,6 +32,26 @@ class AdminController extends Controller
         return view('admin.admins.index', compact('user', 'admins', 'departments'));
     }
 
+    public function activate($id)
+    {
+            $admin = User::find($id);
+            $admin->isactive = '1';
+            $admin->save();
+    
+            return redirect(route('admin.admins'));
+        
+    }
+    public function deactivate($id)
+    {
+        
+            $admin = User::find($id);
+            $admin->isactive = '0';
+            $admin->save();
+    
+            return redirect(route('admin.admins'));
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *

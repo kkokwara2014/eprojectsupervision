@@ -45,7 +45,7 @@
                                     <td>{{$admin->firstname}}</td>
                                     <td>{{$admin->email}}</td>
                                     <td>{{$admin->phone}}</td>
-                                    <td><a href="{{ route('admins.show',$admin->id) }}"><span
+                                    <td><a href="{{ route('admin.show',$admin->id) }}"><span
                                                 class="fa fa-eye fa-2x text-primary"></span></a></td>
                                     <td>
                                         @if ($admin->isactive==1)
@@ -60,7 +60,7 @@
                                         @if ($admin->isactive==1)
 
                                         <form id="delete-form-{{$admin->id}}" style="display: none"
-                                            action="{{ route('admins.deactivate',$admin->id) }}" method="post">
+                                            action="{{ route('admin.deactivate',$admin->id) }}" method="post">
                                             {{ csrf_field() }}
 
                                         </form>
@@ -76,7 +76,7 @@
                                         @else
 
                                         <form id="delete-form-{{$admin->id}}" style="display: none"
-                                            action="{{ route('admins.activate',$admin->id) }}" method="post">
+                                            action="{{ route('admin.activate',$admin->id) }}" method="post">
                                             {{ csrf_field() }}
 
                                         </form>
@@ -128,7 +128,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title"><span class="fa fa-graduation-cap"></span> Add Supervisor</h4>
+                            <h4 class="modal-title"><span class="fa fa-user-plus"></span> Add Admin</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
