@@ -8,7 +8,10 @@
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
-        
+        {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
+            <span class="fa fa-plus"></span> Add Supervisor
+        </button> --}}
+        {{-- <br><br> --}}
 
         <div class="row">
             <div class="col-md-12">
@@ -30,6 +33,7 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>View Details</th>
+
                                     <th>Edit</th>
                                     <th>Delete</th>
 
@@ -47,14 +51,16 @@
 
                                     <td>{{$student->email}}</td>
                                     <td>{{$student->phone}}</td>
-                                    <td>
+                                    <td style="text-align: center">
                                         <a href="{{ route('student.show',$student->id) }}"><span
                                                 class="fa fa-eye fa-2x text-primary"></span></a>
                                     </td>
-                                    <td><a href="{{ route('student.edit',$student->id) }}"><span
-                                        class="fa fa-edit fa-2x text-primary"></span></a></td>
 
-                                    <td>
+                                    <td style="text-align: center"><a
+                                            href="{{ route('student.edit',$student->id) }}"><span
+                                                class="fa fa-edit fa-2x text-primary"></span></a></td>
+
+                                    <td style="text-align: center">
                                         <form id="delete-form-{{$student->id}}" style="display: none"
                                             action="{{ route('student.destroy',$student->id) }}" method="post">
                                             {{ csrf_field() }}

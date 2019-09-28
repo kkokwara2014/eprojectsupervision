@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Department;
+use App\Project;
 
 class StudentController extends Controller
 {
@@ -53,8 +54,10 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student=User::find($id);
-        return view('admin.student.show',array('user'=>Auth::user()),compact('student'));
+        $student = User::find($id);
+        $student_project = Project::find($id);
+        $project_chapters = Project::find($id)->chapters;
+        return view('admin.student.show', array('user' => Auth::user()), compact('student', 'student_project','project_chapters'));
     }
 
     /**

@@ -79,6 +79,7 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Created</th>
+                                    <th>Download</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
