@@ -3,7 +3,22 @@
 
 @section('content')
 {{-- @include('admin.layout.statboard') --}}
-@include('admin.layout.statboardcontainer')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Student Detail
+            <small>Student Information</small>
+          </h1>
+          {{-- <ol class="breadcrumb">
+              <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li class="active">Dashboard</li>
+            </ol> --}}
+        </section>
+      
+        <!-- Main content -->
+        <section class="content">
 <!-- Main row -->
 <div class="row">
     <!-- Left col -->
@@ -27,7 +42,7 @@
                                     <h2>{{$student->title.' '.$student->lastname.' '.$student->firstname}}</h2>
                                 </p>
                                 <hr>
-                                <div>Identity Number : {{$student->identitynumber}} </div>
+                                <div>Matric. Number : {{$student->identitynumber}} </div>
                                 <div>Gender : {{$student->gender}} </div>
                                 <div>Email : {{$student->email}} </div>
                                 <div>Phone : {{$student->phone}}</div>
@@ -49,7 +64,7 @@
                                 <h3>Chapters</h3>
                                 <ul class="list-group">
                                     @forelse ($project_chapters as $chapt)
-                                    <a href="{{route('comment.show',$chapt->id)}}">
+                                    <a href="{{route('comment.create')}}">
                                         <li class="list-group-item">
                                             @if ($chapt->isapproved==1)
                                             <span style="background-color: seagreen"
