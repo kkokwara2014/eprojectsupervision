@@ -1,98 +1,72 @@
-
 @include('admin.layout.statboardcontainer')
-    <!-- Small boxes (Stat box) -->
+<!-- Small boxes (Stat box) -->
+<section class="content">
+  <div class="row">
+    @if (Auth::user()->role->id==1)
     <div class="row">
-      @if (Auth::user()->role->id==1)
-      <div class="col-lg-2 col-md-2">
+      <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-aqua">
           <div class="inner">
-          <h3>17</h3>
-
-            <p>Contacts</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-envelope"></i>
-          </div>
-          
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-2 col-md-2">
-        <!-- small box -->
-        <div class="small-box bg-green">
-          <div class="inner">
-          <h3>13</h3>
-
-            <p>Comments</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-comment-o"></i>
-          </div>
-         
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-2 col-md-2">
-        <!-- small box -->
-        <div class="small-box bg-yellow">
-          <div class="inner">
-          <h3>15</h3>
+            <h3>150</h3>
+  
             <p>Projects</p>
           </div>
           <div class="icon">
-            <i class="fa fa-file-text-o"></i>
+            <i class="fa fa-paper-plane-o"></i>
           </div>
-         
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
-      <div class="col-lg-2 col-md-2">
+      <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-        <div class="small-box bg-blue-active">
+        <div class="small-box bg-green">
           <div class="inner">
-            <h3>10</h3>
-
+            <h3>53<sup style="font-size: 20px">%</sup></h3>
+  
             <p>Students</p>
           </div>
           <div class="icon">
             <i class="fa fa-users"></i>
           </div>
-         
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
-      <div class="col-lg-2 col-md-2">
+      <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-        <div class="small-box bg-fuchsia-active">
+        <div class="small-box bg-yellow">
           <div class="inner">
-            <h3>19</h3>
-
+            <h3>44</h3>
+  
             <p>Supervisors</p>
           </div>
           <div class="icon">
             <i class="fa fa-graduation-cap"></i>
           </div>
-         
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
-      <div class="col-lg-2 col-md-2">
+      <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-        <div class="small-box bg-aqua">
+        <div class="small-box bg-red">
           <div class="inner">
-            <h3>2</h3>
-
+            <h3>65</h3>
+  
             <p>Admins</p>
           </div>
           <div class="icon">
-            <i class="fa fa-user-plus"></i>
+            <i class="ion ion-pie-graph"></i>
           </div>
-         
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
-          
-      @endif
     </div>
-    <!-- /.row -->
+
+    @endif
+  </div>
+</section>
+<!-- /.row -->
