@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Project;
 use Auth;
 use App\User;
 
@@ -20,7 +20,12 @@ class AdminController extends Controller
     {
         $user = Auth::user();
 
-        return view('admin.index', compact('user'));
+        $allProjects=Project::count();
+        $allAdmins=User::where('role_id', '1')->count();
+        $allSupervisors=User::where('role_id', '3')->count();
+        $allStudents=User::where('role_id', '4')->count();
+
+        return view('admin.index', compact('user','allProjects','allAdmins','allSupervisors','allStudents'));
     }
 
     public function admins()
