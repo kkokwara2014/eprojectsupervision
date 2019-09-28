@@ -9,6 +9,7 @@
         <title>eAProj</title>
 
         <!-- Styles -->
+        <link href="{{ asset('bootstrap3/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Fonts -->
@@ -72,7 +73,27 @@
     </head>
 
     <body>
-        
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header"> <a class="navbar-brand" href="#">eAProj</a> </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">iOS</a></li>
+                    <li><a href="#">SVN</a></li>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Java <b
+                                class="caret"></b> </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">jmeter</a></li>
+                            <li><a href="#">EJB</a></li>
+                            <li><a href="#">Jasper Report</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
             <div class="top-right links">
@@ -97,5 +118,7 @@
 
         </div>
     </body>
+
+<script src="{{ asset('bootstrap3/js/bootstrap.min.js') }}"></script>
 
 </html>
