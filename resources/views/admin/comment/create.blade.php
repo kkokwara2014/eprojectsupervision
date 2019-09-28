@@ -3,7 +3,22 @@
 
 @section('content')
 {{-- @include('admin.layout.statboard') --}}
-@include('admin.layout.statboardcontainer')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Create Comment
+            <small>Start conversation</small>
+          </h1>
+          {{-- <ol class="breadcrumb">
+              <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li class="active">Dashboard</li>
+            </ol> --}}
+        </section>
+      
+        <!-- Main content -->
+        <section class="content">
 <!-- Main row -->
 <div class="row">
     <!-- Left col -->
@@ -15,17 +30,12 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-12">
-                <div class="box">
-                    <!-- /.box-header -->
-                    <div class="box-body"></div>
-                </div>
-
+            <div class="col-md-6">
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <br>
                                 <form action="{{route('comment.store')}}" method="post">
                                     {{ csrf_field() }}
@@ -46,40 +56,49 @@
                                 </form>
                                 <br>
                             </div>
-                            <div style="overflow: scroll" class="col-md-6">
-                                @forelse ($discussions as $comt)
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <img src="{{url('user_images',$comt->user->userimage)}}"
-                                                    class="img-circle" width="40" height="40">
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div style="font-weight: bold">
-                                                    {{$comt->user->lastname.', '.$comt->user->firstname}} says:</div>
-                                                <div>{!! htmlspecialchars_decode($comt->comment) !!}</div>
-                                                <div style="text-align: right">
-                                                    <small>Sent : {{$comt->created_at->diffForHumans()}}
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                                            class="fa fa-calendar"></span> {{$comt->commentdate}} &nbsp;
-                                                        <span class="fa fa-clock-o"></span>
-                                                        {{$comt->commenttime}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                    <div class="box">
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="row">
+                                    <div style="overflow: scroll; height: 500px;" class="col-md-12">
+                                        @forelse ($discussions as $comt)
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <img src="{{url('user_images',$comt->user->userimage)}}"
+                                                            class="img-circle" width="40" height="40">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <div style="font-weight: bold">
+                                                            {{$comt->user->lastname.', '.$comt->user->firstname}} says:</div>
+                                                        <div>{!! htmlspecialchars_decode($comt->comment) !!}</div>
+                                                        <div style="text-align: right">
+                                                            <small>Sent : {{$comt->created_at->diffForHumans()}}
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                                    class="fa fa-calendar"></span> {{$comt->commentdate}} &nbsp;
+                                                                <span class="fa fa-clock-o"></span>
+                                                                {{$comt->commenttime}}</small>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        @empty
+                                        <li class="list-group-item alert alert-warning"><strong>No Comments yet!</strong>
+                                        </li>
+                                        @endforelse
                                     </div>
                                 </div>
-                                @empty
-                                <li class="list-group-item alert alert-warning"><strong>No Comments yet!</strong>
-                                </li>
-                                @endforelse
                             </div>
                         </div>
-
-                    </div>
-                </div>
-                <!-- /.box-body -->
+                        <!-- /.box-body -->
             </div>
             <!-- /.box -->
         </div>
