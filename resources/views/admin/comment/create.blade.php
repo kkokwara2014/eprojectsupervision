@@ -15,13 +15,17 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
+                <div class="box">
+                    <!-- /.box-header -->
+                    <div class="box-body"></div>
+                </div>
+
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <br>
                                 <form action="{{route('comment.store')}}" method="post">
                                     {{ csrf_field() }}
@@ -37,10 +41,12 @@
                                     <div class="form-group">
                                         <textarea id="editor1" class="form-control" rows="1" name="comment"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-send"></span> Send</button>
+                                    <button type="submit" class="btn btn-success btn-sm"><span
+                                            class="fa fa-send"></span> Send</button>
                                 </form>
                                 <br>
-
+                            </div>
+                            <div style="overflow: scroll" class="col-md-6">
                                 @forelse ($discussions as $comt)
                                 <div class="panel panel-default">
                                     <div class="panel-body">
@@ -50,7 +56,8 @@
                                                     class="img-circle" width="40" height="40">
                                             </div>
                                             <div class="col-md-10">
-                                                <div style="font-weight: bold">{{$comt->user->lastname.', '.$comt->user->firstname}} says:</div>
+                                                <div style="font-weight: bold">
+                                                    {{$comt->user->lastname.', '.$comt->user->firstname}} says:</div>
                                                 <div>{!! htmlspecialchars_decode($comt->comment) !!}</div>
                                                 <div style="text-align: right">
                                                     <small>Sent : {{$comt->created_at->diffForHumans()}}
