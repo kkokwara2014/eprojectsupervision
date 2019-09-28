@@ -126,9 +126,11 @@
                                     name="department_id" value="{{ old('department_id') }}" id="department_id">
 
                                     <option selected="disabled">Select Department</option>
-                                    <option>Accountancy</option>
-                                    <option>Business Administration</option>
-                                    <option>Computer Science</option>
+                                    @foreach ($department as $dept)
+                                    <option value="{{$dept->id}}">{{$dept->name.' - '.$dept->code}}</option>
+
+                                    @endforeach
+
                                 </select>
 
 

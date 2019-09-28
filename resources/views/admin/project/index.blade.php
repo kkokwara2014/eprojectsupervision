@@ -47,7 +47,7 @@
                                     <thead>
                                         <tr>
                                             <th>Title</th>
-                                            <th>Case Study</th>
+
                                             <th>By</th>
                                             <th>Details</th>
                                             <th>Edit</th>
@@ -59,14 +59,15 @@
                                         @foreach ($projects as $project)
                                         <tr>
                                             <td>{{$project->title}}</td>
-                                            <td>{{$project->casestudy}}</td>
+
                                             <td>{{$project->user->lastname.', '.$project->user->firstname.' - '.$project->user->identitynumber}}
                                             </td>
                                             <td style="text-align: center">
                                                 <a href="{{ route('project.show',$project->id) }}"><span
                                                         class="fa fa-eye fa-2x text-primary"></span></a>
                                             </td>
-                                            <td style="text-align: center"><a href="{{ route('project.edit',$project->id) }}"><span
+                                            <td style="text-align: center"><a
+                                                    href="{{ route('project.edit',$project->id) }}"><span
                                                         class="fa fa-edit fa-2x text-primary"></span></a></td>
                                             <td style="text-align: center">
                                                 <form id="delete-form-{{$project->id}}" style="display: none"
@@ -91,7 +92,6 @@
                                     <tfoot>
                                         <tr>
                                             <th>Title</th>
-                                            <th>Case Study</th>
                                             <th>By</th>
                                             <th>Details</th>
                                             <th>Edit</th>

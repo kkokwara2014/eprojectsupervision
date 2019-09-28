@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Department;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -73,13 +74,14 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        
-        return view('auth.register');
+        $department = Department::orderBy('name', 'asc')->get();
+
+        return view('auth.register', compact('department'));
     }
 
     public function register(Request $request)
     {
-        
+
         $this->validate($request, [
             'lastname' => 'required|string',
             'firstname' => 'required|string',
@@ -93,7 +95,7 @@ class RegisterController extends Controller
         ]);
 
         $user = new User;
-        
+
         $user->lastname = $request->lastname;
         $user->firstname = $request->firstname;
         $user->othername = $request->othername;
@@ -109,6 +111,5 @@ class RegisterController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Your account has been created successfully!');
-
     }
 }

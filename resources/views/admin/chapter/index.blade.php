@@ -40,6 +40,7 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Created</th>
+                                    <th>Download</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
 
@@ -50,6 +51,7 @@
                                 <tr>
                                     <td>{{$chapter->title}}</td>
                                     <td>{{$chapter->created_at->diffForHumans()}}</td>
+                                    <td><a href="#" class="btn btn-success btn-sm"><span class="fa fa-download"></span> Download</a></td>
 
                                     <td><a href="{{ route('chapter.edit',$chapter->id) }}"><span
                                                 class="fa fa-edit fa-2x text-primary"></span></a></td>

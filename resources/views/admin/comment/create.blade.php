@@ -45,7 +45,7 @@
                                         <select name="chapter_id" class="form-control">
                                             <option selected="disabled">Select Chapter</option>
                                             @foreach ($chapters as $chapt)
-                                            <option value="{{$chapt->id}}">{{$chapt->title}}</option>
+                                            <option value="{{$chapt->id}}">{{$chapt->title.' - '.($chapt->project->user->lastname.', '.$chapt->project->user->firstname)}}</option>
                                             @endforeach
                                         </select>
                                     </div>
