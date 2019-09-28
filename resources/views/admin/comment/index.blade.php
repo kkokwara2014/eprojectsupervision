@@ -33,7 +33,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-12" style="overflow: scroll; height: 500px;">
+                            <div class="col-md-12" style="overflow-y: auto; height: 500px;">
                                 @forelse ($discussions as $comt)
                                 <div class="panel panel-default">
                                     <div class="panel-body">

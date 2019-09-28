@@ -41,6 +41,7 @@
                                     {{ csrf_field() }}
 
                                     <div class="form-group">
+                                        <label for="">Select Chapter <b style="color:red">*</b></label>
                                         <select name="chapter_id" class="form-control">
                                             <option selected="disabled">Select Chapter</option>
                                             @foreach ($chapters as $chapt)
@@ -66,7 +67,7 @@
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
-                                    <div style="overflow: scroll; height: 500px;" class="col-md-12">
+                                    <div style="overflow-y: auto; height: 500px;" class="col-md-12">
                                         @forelse ($discussions as $comt)
                                         <div class="panel panel-default">
                                             <div class="panel-body">

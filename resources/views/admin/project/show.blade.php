@@ -39,15 +39,17 @@
                                             <h4>{{$project_chapters->title}}</h4>
                                         </p>
                                         <hr>
-                                        <div>By: <strong>{{strtoupper($project_chapters->user->lastname).', '.$project_chapters->user->firstname}}</strong></div>
-                                        <div>Matric. Number: <strong>{{$project_chapters->user->identitynumber}}</strong></div>
+                                        <div>By:
+                                            <strong>{{strtoupper($project_chapters->user->lastname).', '.$project_chapters->user->firstname}}</strong>
+                                        </div>
+                                        <div>Matric. Number:
+                                            <strong>{{$project_chapters->user->identitynumber}}</strong></div>
                                         <div>Class Level: {{$project_chapters->classlevel->levelname}}</div>
                                         <div>Case Study: {{$project_chapters->casestudy}}</div>
                                         <div>Project Year: {{$project_chapters->projyear}}</div>
-                                        <br>
-                                        <div>Supervisor: {{$project_chapters->allocations->user->lastname}}</div>
+                                        
+                                        <div>Supervisor: </div>
 
-                                       
                                         <hr>
                                     </div>
                                     <div class="col-md-5">
@@ -56,14 +58,14 @@
                                             @forelse ($project_chapters->chapters as $proj_chapt)
                                             {{-- <a href="{{route('chapter.show',$proj_chapt->id)}}"> --}}
                                             <li class="list-group-item">
-                                                <span class="badge badge-primary pull-right">
-                                                    @if ($proj_chapt->isapproved==1)
-                                                    Approved
-                                                    @else
-                                                    Not Approved
-                                                    @endif
 
-                                                </span>
+                                                @if ($proj_chapt->isapproved==1)
+                                                <span style="background-color: seagreen"
+                                                    class="badge pull-right">Approved</span>
+                                                @else
+                                                <span style="background-color:crimson" class="badge pull-right">Not
+                                                    Approved</span>
+                                                @endif
                                                 {{$proj_chapt->title}}
 
                                             </li>
