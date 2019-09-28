@@ -16,11 +16,8 @@
         <div class="row">
             <div class="col-md-12">
 
-                {{-- for messages --}}
-                @if (session('success'))
-                <p class="alert alert-success">{{ session('success') }}</p>
-                @endif
-                
+
+
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -124,14 +121,14 @@
         <div class="modal fade" id="modal-default">
             <div class="modal-dialog">
 
-                <form action="{{ route('admins.store') }}" method="post">
+                <form action="{{ route('admin.store') }}" method="post">
                     {{ csrf_field() }}
 
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Add Admin</h4>
+                            <h4 class="modal-title"><span class="fa fa-graduation-cap"></span> Add Supervisor</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
@@ -160,6 +157,25 @@
                                 @endif
 
                             </div>
+                            <div class="form-group">
+                                <input id="othername" type="text" class="form-control" name="othername"
+                                    value="{{ old('othername') }}" placeholder="Othername(s)">
+
+                            </div>
+                            <div class="form-group">
+                                <input id="identitynumber" type="text"
+                                    class="form-control{{ $errors->has('identitynumber') ? ' is-invalid' : '' }}"
+                                    name="identitynumber" value="{{ old('identitynumber') }}" required autofocus
+                                    placeholder="Staff Number e.g SS-755" maxlength="8">
+
+                                @if ($errors->has('identitynumber'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('identitynumber') }}</strong>
+                                </span>
+                                @endif
+
+                            </div>
+
 
                             <div class="form-group">
                                 <input id="email" type="email"
@@ -183,6 +199,40 @@
                                 </span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <select name="gender" class="form-control @error('gender') is-invalid @enderror">
+                                    <option selected="disabled">Select Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+
+                                @if ($errors->has('gender'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('gender') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control @error('department_id') is-invalid @enderror"
+                                    name="department_id" value="{{ old('department_id') }}" id="department_id">
+
+                                    <option selected="disabled">Select Department</option>
+                                    @foreach ($departments as $department)
+                                    <option value="{{$department->id}}">{{$department->name.' - '.$department->code}}
+                                    </option>
+                                    @endforeach
+
+                                </select>
+
+                                @if ($errors->has('department_id'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('department_id') }}</strong>
+                                </span>
+                                @endif
+
+                            </div>
+
+
                             <div class="form-group">
                                 <input id="password" type="password"
                                     class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"

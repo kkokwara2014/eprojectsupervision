@@ -34,7 +34,7 @@
       <li><a href="{{route('project.index')}}"><i class="fa fa-file-text-o"></i> Projects</a></li>
       {{-- <li><a href="{{route('allocation.index')}}"><i class="fa fa-exchange"></i> Project Allocations</a></li> --}}
       <li><a href="{{route('supervisor.index')}}"><i class="fa fa-graduation-cap"></i> Supervisors</a></li>
-      <li><a href="#"><i class="fa fa-user-plus"></i> Admins</a></li>
+      <li><a href="{{route('admin.admins')}}"><i class="fa fa-user-plus"></i> Admins</a></li>
 
       <li><a href="{{ route('user.logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
 
