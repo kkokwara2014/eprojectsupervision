@@ -99,7 +99,19 @@
                       <a href="{{route('user.profile')}}" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="{{ route('user.logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                      <form id="logout-user" style="display: none" action="{{ route('user.logout') }}" method="post">
+                        {{ csrf_field() }}
+                       
+                      </form>
+
+                      <a href="" onclick="
+                      if (confirm('Are you sure you want to logout?')) {
+                          event.preventDefault();
+                      document.getElementById('logout-user').submit();
+                      } else {
+                          event.preventDefault();
+                      }
+                  " class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>

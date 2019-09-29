@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -10,8 +11,8 @@ use Image;
 class UserController extends Controller
 {
     public function profileimage(){
-       
-        return view('admin.user.profile', array('user'=>Auth::user()));
+       $department=Department::all();
+        return view('admin.user.profile', array('user'=>Auth::user()),compact('department'));
     }
 
     public function updateprofileimage(Request $request){

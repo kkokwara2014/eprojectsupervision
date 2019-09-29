@@ -50,11 +50,9 @@
                     <p class="lead">...academic project SUPERvision made easy!</p>
                 </div>
             </div>
-            <div class="jumbotron" >
-                    {{-- style="background-image: url(/bootstrap3/img/eaproj_image.jpg);
-                    background-size: cover;
-                    min-height: 200px;" --}}
-                    <img src="" alt="" srcset="">
+            <div class="jumbotron" style="background-image: url(/bootstrap3/img/eaproj_image.jpg);
+            background-size: cover; height: 50%;
+            min-height: 300px; background-repeat: no-repeat;">
             </div>
         </div>
 

@@ -36,7 +36,20 @@
       <li><a href="{{route('supervisor.index')}}"><i class="fa fa-graduation-cap"></i> Supervisors</a></li>
       <li><a href="{{route('admin.admins')}}"><i class="fa fa-user-plus"></i> Admins</a></li>
 
-      <li><a href="{{ route('user.logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+      <li>
+        <form id="logout-user" style="display: none" action="{{ route('user.logout') }}" method="post">
+          {{ csrf_field() }}
+        </form>
+        <a href="" onclick="
+        if (confirm('Are you sure you want to logout?')) {
+            event.preventDefault();
+        document.getElementById('logout-user').submit();
+        } else {
+            event.preventDefault();
+        }">
+          <i class="fa fa-sign-out"></i> Logout
+        </a>
+      </li>
 
     </ul>
   </section>

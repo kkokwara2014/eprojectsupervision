@@ -11,15 +11,15 @@
 
         <br>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <img src="{{url('user_images',$user->userimage)}}" alt=""
-                                    class="img-responsive img-circle" style="width: 350px; height: 200px; border-radius: 50%;">
+                                    class="img-responsive img-circle"
+                                    style="width: 250px; height: 200px; border-radius: 50%;">
                                 <form action="{{ route('user.profile.update') }}" method="post"
                                     enctype="multipart/form-data">
                                     {{ csrf_field() }}
@@ -40,7 +40,17 @@
                                         Update Profile</button>
                                 </form>
                             </div>
-                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div>
+                                    <h3>{{$user->title.' '.strtoupper($user->lastname).', '.$user->firstname}}</h3>
+                                </div>
+                                <div>Identity Number: {{$user->identitynumber}}</div>
+                                <div>Gender: {{$user->gender}}</div>
+                                <div>Email: {{$user->email}}</div>
+                                <div>Phone: {{$user->phone}}</div>
+                                <div>Department: {{$user->department->name.' - '.$user->department->code}}</div>
+                                <div>Created: {{$user->created_at->diffForHumans()}}</div>
+                            </div>
                         </div>
 
                     </div>
