@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h1 class="mt-5">eAProj - electronic Academic Project Supervision</h1>
-                    <p class="lead">...academic project SUPERvision made easy!</p>
+                    <p class="lead">...academic <span style="color:saddlebrown"><strong>Project Supervision</strong></span> made easy!</p>
                 </div>
             </div>
             <div class="jumbotron" style="background-image: url(/bootstrap3/img/eaproj_image.jpg);
