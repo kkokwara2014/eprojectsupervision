@@ -56,7 +56,7 @@
 
                                         @if (!empty($student_project))
                                         <h4>{{$student_project->title}}</h4>
-                                        
+                                    <div>Supervisor: {{$project_supervisor}}</div>
                                         @else
                                         <h4 class="alert alert-warning"><strong>No Project topic has been
                                                 registered yet!</strong></h4>

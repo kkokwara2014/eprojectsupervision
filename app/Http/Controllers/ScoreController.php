@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Score;
 
 class ScoreController extends Controller
 {
@@ -35,7 +36,14 @@ class ScoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'chapter_id'=>'required',
+            'score'=>'required',
+        ]);
+
+        Score::create($request->all());
+
+        return back();
     }
 
     /**
@@ -57,7 +65,7 @@ class ScoreController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -69,7 +77,17 @@ class ScoreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'chapter_id'=>'required',
+            'score'=>'required',
+        ]);
+
+        $score=Score::where('id',$id);
+        $score->chapter_id=$request->chapter_id;
+        $score->score=$request->score;
+        $score->save();
+
+        return back();
     }
 
     /**
