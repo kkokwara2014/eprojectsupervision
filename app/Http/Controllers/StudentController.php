@@ -20,7 +20,7 @@ class StudentController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $students = User::where('role_id', '4')->get();
+        $students = User::where('role_id', '4')->orderBy('created_at','desc')->get();
         $departments = Department::orderBy('name', 'asc')->get();
 
         return view('admin.student.index', compact('user', 'students', 'departments'));
@@ -57,7 +57,7 @@ class StudentController extends Controller
     {
         $student = User::find($id);
         $student_project = Project::find($id);
-        $project_chapters = Project::find($id)->chapters;
+        $project_chapters = Project::find($id);
         $project_supervisor=Allocation::find($id)->user;
         return view('admin.student.show', array('user' => Auth::user()), compact('student', 'student_project','project_chapters','project_supervisor'));
     }

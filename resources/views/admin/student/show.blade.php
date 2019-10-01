@@ -54,19 +54,19 @@
                                     <div class="col-md-8">
                                         <h3>Project Topic</h3>
 
-                                        @if ($student_project->user->id==auth::user()->id)
+                                        @if ($student_project!=null)
                                         <h4>{{$student_project->title}}</h4>
                                         @else
                                         <h4 class="alert alert-warning"><strong>No Project topic has been
                                                 registered yet!</strong></h4>
                                         @endif
                                         <h4>Supervisor:
-                                            @if (!empty($project_supervisor))
+                                            @if ($project_supervisor!=null)
                                             <span style="color:dodgerblue; font-weight: bolder;">
                                                 {{$project_supervisor->title.' '.$project_supervisor->lastname.', '.$project_supervisor->firstname}}
                                             </span>
                                             @else
-                                            <span class="alert alert-info">Supervisor not assigned yet!</span>
+                                            <p class="alert alert-warning">Supervisor not assigned yet!</p>
                                             @endif
                                         </h4>
 
@@ -74,8 +74,8 @@
                                         <hr>
                                         <h3>Chapters</h3>
                                         <ul class="list-group">
-                                            @if ($student_project->id==$project_chapters->project_id)
-                                            @forelse ($project_chapters as $chapt)
+                                            @if ($project_chapters!=null)
+                                            @foreach ($project_chapters as $chapt)
                                             <a href="{{route('comment.create')}}">
                                                 <li class="list-group-item">
                                                     @if ($chapt->isapproved==1)
@@ -88,15 +88,10 @@
                                                     {{$chapt->title}}
 
                                                 </li>
-
                                             </a>
-                                            @empty
-                                            <li class="list-group-item alert alert-warning"><strong>No Chapter has been
-                                                    uploaded yet!</strong>
-                                            </li>
-                                            @endforelse
+                                            @endforeach
                                             @else
-                                            <span class="alert alert-info">No Chapter yet!</span>
+                                            <p class="alert alert-info">No Chapter yet!</p>
                                             @endif
 
                                         </ul>
