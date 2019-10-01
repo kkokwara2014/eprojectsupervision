@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Allocation;
 use App\Classlevel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -68,7 +69,8 @@ class ProjectController extends Controller
         // $student_project = Project::find($id);
         $project_chapters = Project::find($id);
         $project_allocations = User::find($id)->allocations;
-        return view('admin.project.show', array('user' => Auth::user()), compact('project_chapters','project_allocations'));
+        $project_supervisor=Allocation::find($id)->user;
+        return view('admin.project.show', array('user' => Auth::user()), compact('project_chapters','project_allocations','project_supervisor'));
     }
 
     /**

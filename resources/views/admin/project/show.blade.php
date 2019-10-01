@@ -47,8 +47,12 @@
                                         <div>Class Level: {{$project_chapters->classlevel->levelname}}</div>
                                         <div>Case Study: {{$project_chapters->casestudy}}</div>
                                         <div>Project Year: {{$project_chapters->projyear}}</div>
-                                        
-                                        <div>Supervisor: </div>
+
+                                        <div>Supervisor: 
+                                            <span style="color:dodgerblue; font-weight: bolder;">
+                                                {{$project_supervisor->title.' '.$project_supervisor->lastname.', '.$project_supervisor->firstname}}
+                                            </span>
+                                        </div>
 
                                         <hr>
                                     </div>

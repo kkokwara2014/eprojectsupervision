@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Allocation;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -57,7 +58,7 @@ class StudentController extends Controller
         $student = User::find($id);
         $student_project = Project::find($id);
         $project_chapters = Project::find($id)->chapters;
-        $project_supervisor=Project::find($id)->allocations->where('user_id',$id)->first();
+        $project_supervisor=Allocation::find($id)->user;
         return view('admin.student.show', array('user' => Auth::user()), compact('student', 'student_project','project_chapters','project_supervisor'));
     }
 
