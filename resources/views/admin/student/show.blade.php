@@ -54,8 +54,12 @@
                                     <div class="col-md-8">
                                         <h3>Project Topic</h3>
 
-                                        @if (!empty($student_project))
+                                        @if ($student_project->user->id==auth::user()->id)
                                         <h4>{{$student_project->title}}</h4>
+                                        @else
+                                        <h4 class="alert alert-warning"><strong>No Project topic has been
+                                                registered yet!</strong></h4>
+                                        @endif
                                         <h4>Supervisor:
                                             @if (!empty($project_supervisor))
                                             <span style="color:dodgerblue; font-weight: bolder;">
@@ -65,14 +69,12 @@
                                             <span class="alert alert-info">Supervisor not assigned yet!</span>
                                             @endif
                                         </h4>
-                                        @else
-                                        <h4 class="alert alert-warning"><strong>No Project topic has been
-                                                registered yet!</strong></h4>
-                                        @endif
+
 
                                         <hr>
                                         <h3>Chapters</h3>
                                         <ul class="list-group">
+                                            @if ($student_project->id==$project_chapters->project_id)
                                             @forelse ($project_chapters as $chapt)
                                             <a href="{{route('comment.create')}}">
                                                 <li class="list-group-item">
@@ -93,6 +95,10 @@
                                                     uploaded yet!</strong>
                                             </li>
                                             @endforelse
+                                            @else
+                                            <span class="alert alert-info">No Chapter yet!</span>
+                                            @endif
+
                                         </ul>
                                     </div>
                                 </div>
