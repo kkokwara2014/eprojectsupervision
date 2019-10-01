@@ -61,12 +61,12 @@
                                                 registered yet!</strong></h4>
                                         @endif
                                         <h4>Supervisor:
-                                            @if ($project_supervisor!=null)
+                                            @if ($project_supervisor->count()>0)
                                             <span style="color:dodgerblue; font-weight: bolder;">
                                                 {{$project_supervisor->title.' '.$project_supervisor->lastname.', '.$project_supervisor->firstname}}
                                             </span>
                                             @else
-                                            <p class="alert alert-warning">Supervisor not assigned yet!</p>
+                                            <span class="badge badge-info">Supervisor not assigned yet!</span>
                                             @endif
                                         </h4>
 
@@ -75,23 +75,23 @@
                                         <h3>Chapters</h3>
                                         <ul class="list-group">
                                             @if ($project_chapters!=null)
-                                            @foreach ($project_chapters as $chapt)
+                                            @foreach ($project_chapters->chapters as $chapt)
                                             <a href="{{route('comment.create')}}">
                                                 <li class="list-group-item">
-                                                    @if ($chapt->isapproved==1)
+                                                    @if ($chapt['isapproved']==1)
                                                     <span style="background-color: seagreen"
                                                         class="badge pull-right">Approved</span>
                                                     @else
                                                     <span style="background-color:crimson" class="badge pull-right">Not
                                                         Approved</span>
                                                     @endif
-                                                    {{$chapt->title}}
+                                                    {{$chapt['title']}}
 
                                                 </li>
                                             </a>
                                             @endforeach
                                             @else
-                                            <p class="alert alert-info">No Chapter yet!</p>
+                                            <p class="alert alert-warning"><strong>No Chapter yet!</strong></p>
                                             @endif
 
                                         </ul>
