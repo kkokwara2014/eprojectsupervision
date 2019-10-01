@@ -57,7 +57,13 @@
                                         @if (!empty($student_project))
                                         <h4>{{$student_project->title}}</h4>
                                         <h4>Supervisor:
-                                            <span style="color:dodgerblue; font-weight: bolder;"> {{$project_supervisor->title.' '.$project_supervisor->lastname.', '.$project_supervisor->firstname}}</span>
+                                            @if (!empty($project_supervisor))
+                                            <span style="color:dodgerblue; font-weight: bolder;">
+                                                {{$project_supervisor->title.' '.$project_supervisor->lastname.', '.$project_supervisor->firstname}}
+                                            </span>
+                                            @else
+                                            <span class="alert alert-info">Supervisor not assigned yet!</span>
+                                            @endif
                                         </h4>
                                         @else
                                         <h4 class="alert alert-warning"><strong>No Project topic has been

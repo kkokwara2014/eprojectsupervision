@@ -29,63 +29,71 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-7">
                         <div class="box">
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <p>
-                                            <h4>{{$project_chapters->title}}</h4>
-                                        </p>
-                                        <hr>
-                                        <div>By:
-                                            <strong>{{strtoupper($project_chapters->user->lastname).', '.$project_chapters->user->firstname}}</strong>
-                                        </div>
-                                        <div>Matric. Number:
-                                            <strong>{{$project_chapters->user->identitynumber}}</strong></div>
-                                        <div>Class Level: {{$project_chapters->classlevel->levelname}}</div>
-                                        <div>Case Study: {{$project_chapters->casestudy}}</div>
-                                        <div>Project Year: {{$project_chapters->projyear}}</div>
 
-                                        <div>Supervisor: 
-                                            <span style="color:dodgerblue; font-weight: bolder;">
-                                                {{$project_supervisor->title.' '.$project_supervisor->lastname.', '.$project_supervisor->firstname}}
-                                            </span>
-                                        </div>
-
-                                        <hr>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <h4>Chapters</h4>
-                                        <ul class="list-group">
-                                            @forelse ($project_chapters->chapters as $proj_chapt)
-                                            {{-- <a href="{{route('chapter.show',$proj_chapt->id)}}"> --}}
-                                            <li class="list-group-item">
-
-                                                @if ($proj_chapt->isapproved==1)
-                                                <span style="background-color: seagreen"
-                                                    class="badge pull-right">Approved</span>
-                                                @else
-                                                <span style="background-color:crimson" class="badge pull-right">Not
-                                                    Approved</span>
-                                                @endif
-                                                {{$proj_chapt->title}}
-
-                                            </li>
-                                            {{-- </a> --}}
-                                            @empty
-                                            <li class="list-group-item alert alert-warning"><strong>No Chapter
-                                                    yet!</strong>
-                                            </li>
-                                            @endforelse
-                                        </ul>
-                                    </div>
+                                <p>
+                                    <h3>{{$project_chapters->title}}</h3>
+                                </p>
+                                <hr>
+                                <div>By:
+                                    <strong>{{strtoupper($project_chapters->user->lastname).', '.$project_chapters->user->firstname}}</strong>
                                 </div>
+                                <div>Matric. Number:
+                                    <strong>{{$project_chapters->user->identitynumber}}</strong></div>
+                                <div>Class Level: {{$project_chapters->classlevel->levelname}}</div>
+                                <div>Case Study: {{$project_chapters->casestudy}}</div>
+                                <div>Project Year: {{$project_chapters->projyear}}</div>
+
+                                <div>Supervisor:
+                                    @if (!empty($project_supervisor))
+                                    <span style="color:dodgerblue; font-weight: bolder;">
+                                        {{$project_supervisor->title.' '.$project_supervisor->lastname.', '.$project_supervisor->firstname}}
+                                    </span>
+                                    @else
+                                    <span class="alert alert-info">Supervisor not assigned yet!</span>
+                                    @endif
+                                </div>
+
+                                <hr>
 
                             </div>
                         </div>
                         <!-- /.box-body -->
+                    </div>
+
+                    <div class="col-md-5">
+
+                        <div class="box">
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <h3>Chapters</h3>
+                                <ul class="list-group">
+                                    @forelse ($project_chapters->chapters as $proj_chapt)
+                                    {{-- <a href="{{route('chapter.show',$proj_chapt->id)}}"> --}}
+                                    <li class="list-group-item">
+
+                                        @if ($proj_chapt->isapproved==1)
+                                        <span style="background-color: seagreen"
+                                            class="badge pull-right">Approved</span>
+                                        @else
+                                        <span style="background-color:crimson" class="badge pull-right">Not
+                                            Approved</span>
+                                        @endif
+                                        {{$proj_chapt->title}}
+
+                                    </li>
+                                    {{-- </a> --}}
+                                    @empty
+                                    <li class="list-group-item alert alert-warning"><strong>No Chapter
+                                            yet!</strong>
+                                    </li>
+                                    @endforelse
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.box -->
                 </div>
