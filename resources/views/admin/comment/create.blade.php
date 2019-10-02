@@ -5,67 +5,70 @@
 {{-- @include('admin.layout.statboard') --}}
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
             Create Comment
             <small>Start conversation</small>
-          </h1>
-          {{-- <ol class="breadcrumb">
+        </h1>
+        {{-- <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
               <li class="active">Dashboard</li>
             </ol> --}}
-        </section>
-      
-        <!-- Main content -->
-        <section class="content">
-<!-- Main row -->
-<div class="row">
-    <!-- Left col -->
-    <section class="col-lg-12 connectedSortable">
-        <div>
-            <a href="{{ route('comment.index') }}" class="btn btn-primary">
-                <span class="fa fa-comments"></span> All Comments
-            </a>
-        </div>
-        <br>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Main row -->
         <div class="row">
-            <div class="col-md-6">
-                <div class="box">
-                    <!-- /.box-header -->
-                    <div class="box-body">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable">
+                <div>
+                    <a href="{{ route('comment.index') }}" class="btn btn-primary">
+                        <span class="fa fa-comments"></span> All Comments
+                    </a>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box">
+                            <!-- /.box-header -->
+                            <div class="box-body">
 
-                      
-                        <div class="row">
-                            <div class="col-md-12">
-                                <br>
-                                <form action="{{route('comment.store')}}" method="post">
-                                    {{ csrf_field() }}
 
-                                    <div class="form-group">
-                                        <label for="">Select Chapter <b style="color:red">*</b></label>
-                                        <select name="chapter_id" class="form-control">
-                                            <option selected="disabled">Select Chapter</option>
-                                            @foreach ($chapters as $chapt)
-                                            <option value="{{$chapt->id}}">{{$chapt->title.' - '.($chapt->project->user->lastname.', '.$chapt->project->user->firstname)}}</option>
-                                            @endforeach
-                                        </select>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br>
+                                        <form action="{{route('comment.store')}}" method="post">
+                                            {{ csrf_field() }}
+
+                                            <div class="form-group">
+                                                <label for="">Select Chapter <b style="color:red">*</b></label>
+                                                <select name="chapter_id" class="form-control">
+                                                    <option selected="disabled">Select Chapter</option>
+                                                    @foreach ($chapters as $chapt)
+                                                    <option value="{{$chapt->id}}">
+                                                        {{$chapt->title.' - '.($chapt->project->user->lastname.', '.$chapt->project->user->firstname)}}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea id="editor1" class="form-control" rows="1"
+                                                    name="comment"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-success btn-sm"><span
+                                                    class="fa fa-send"></span> Send</button>
+                                        </form>
+                                        <br>
                                     </div>
-                                    <div class="form-group">
-                                        <textarea id="editor1" class="form-control" rows="1" name="comment"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-success btn-sm"><span
-                                            class="fa fa-send"></span> Send</button>
-                                </form>
-                                <br>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="col-md-6">
-                    <div class="box">
+                    <div class="col-md-6">
+                        <div class="box">
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
@@ -80,12 +83,16 @@
                                                     </div>
                                                     <div class="col-md-10">
                                                         <div style="font-weight: bold">
-                                                            {{$comt->user->lastname.', '.$comt->user->firstname}} says:</div>
-                                                        <div>{!! htmlspecialchars_decode($comt->comment) !!}</div>
+                                                            {{$comt->user->lastname.', '.$comt->user->firstname}} says:
+                                                        </div>
+                                                        <div>
+                                                            {!! htmlspecialchars_decode($comt->comment) !!}
+                                                        </div>
                                                         <div style="text-align: right">
                                                             <small>Sent : {{$comt->created_at->diffForHumans()}}
                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                                                    class="fa fa-calendar"></span> {{$comt->commentdate}} &nbsp;
+                                                                    class="fa fa-calendar"></span>
+                                                                {{$comt->commentdate}} &nbsp;
                                                                 <span class="fa fa-clock-o"></span>
                                                                 {{$comt->commenttime}}</small>
                                                         </div>
@@ -94,7 +101,8 @@
                                             </div>
                                         </div>
                                         @empty
-                                        <li class="list-group-item alert alert-warning"><strong>No Comments yet!</strong>
+                                        <li class="list-group-item alert alert-warning"><strong>No Comments
+                                                yet!</strong>
                                         </li>
                                         @endforelse
                                     </div>
@@ -102,21 +110,21 @@
                             </div>
                         </div>
                         <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
+                    </div>
+                    <!-- /.box -->
+                </div>
         </div>
-</div>
 
 
 
-</section>
-<!-- /.Left col -->
-<!-- right col (We are only adding the ID to make the widgets sortable)-->
-{{-- <section class="col-lg-5 connectedSortable"> --}}
+    </section>
+    <!-- /.Left col -->
+    <!-- right col (We are only adding the ID to make the widgets sortable)-->
+    {{-- <section class="col-lg-5 connectedSortable"> --}}
 
 
-{{-- </section> --}}
-<!-- right col -->
+    {{-- </section> --}}
+    <!-- right col -->
 </div>
 <!-- /.row (main row) -->
 

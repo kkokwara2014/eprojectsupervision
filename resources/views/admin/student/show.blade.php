@@ -77,7 +77,7 @@
                                                 registered yet!</strong></h4>
                                         @endif
                                         <h4>Supervisor:
-                                            @if ($project_supervisor->count()>0)
+                                            @if (!empty($project_supervisor['id']))
                                             <span style="color:dodgerblue; font-weight: bolder;">
                                                 {{$project_supervisor->title.' '.$project_supervisor->lastname.', '.$project_supervisor->firstname}}
                                             </span>
