@@ -29,17 +29,20 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12" style="text-align: center">
-                                <img align="middle" src="{{url('user_images',$supervisor->userimage)}}" alt=""
+                                <img style="display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 50%;" src="{{url('user_images',$supervisor->userimage)}}" alt=""
                                     class="img-responsive img-rounded" width="180" height="180">
 
                                 <p>
-                                    <h2>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</h2>
+                                    <h3>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</h3>
                                 </p>
                                 <hr>
                                 <div>Staff Number : {{$supervisor->identitynumber}} </div>
@@ -58,14 +61,14 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
 
                             <div class="col-md-12">
-                                <h2>Allocated Projects</h2>
+                                <h3>Allocated Projects</h3>
                                 <ul class="list-group">
                                     @forelse ($supervisor_projects as $sup_proj)
                                     <a href="{{route('chapter.show',$sup_proj->id)}}">

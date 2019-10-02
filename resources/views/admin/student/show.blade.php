@@ -29,17 +29,20 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-4">
                         <div class="box">
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="{{url('user_images',$student->userimage)}}" alt=""
+                                    <div class="col-md-12" style="text-align: center">
+                                        <img style="display: block;
+                                        margin-left: auto;
+                                        margin-right: auto;
+                                        width: 50%;" src="{{url('user_images',$student->userimage)}}" alt=""
                                             class="img-responsive img-rounded" width="180" height="180">
 
                                         <p>
-                                            <h2>{{$student->title.' '.$student->lastname.' '.$student->firstname}}</h2>
+                                            <h3>{{$student->title.' '.$student->lastname.' '.$student->firstname}}</h3>
                                         </p>
                                         <hr>
                                         <div>Matric. Number : {{$student->identitynumber}} </div>
@@ -51,7 +54,20 @@
                                         </div>
                                         <hr>
                                     </div>
-                                    <div class="col-md-8">
+                                   
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                    <div class="col-md-8">
+                        <div class="box">
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <h3>Project Topic</h3>
 
                                         @if ($student_project!=null)
@@ -86,6 +102,8 @@
                                                         Approved</span>
                                                     @endif
                                                     {{$chapt['title']}}
+
+                                                  
 
                                                 </li>
                                             </a>
