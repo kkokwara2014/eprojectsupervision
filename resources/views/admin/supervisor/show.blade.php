@@ -3,7 +3,22 @@
 
 @section('content')
 {{-- @include('admin.layout.statboard') --}}
-@include('admin.layout.statboardcontainer')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Supervisor Details
+            <small>Supervisor Information</small>
+          </h1>
+          {{-- <ol class="breadcrumb">
+              <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li class="active">Dashboard</li>
+            </ol> --}}
+        </section>
+      
+        <!-- Main content -->
+        <section class="content">
 <!-- Main row -->
 <div class="row">
     <!-- Left col -->
@@ -14,13 +29,13 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-5">
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-4">
-                                <img src="{{url('user_images',$supervisor->userimage)}}" alt=""
+                            <div class="col-md-12" style="text-align: center">
+                                <img align="middle" src="{{url('user_images',$supervisor->userimage)}}" alt=""
                                     class="img-responsive img-rounded" width="180" height="180">
 
                                 <p>
@@ -35,7 +50,21 @@
                                 </div>
                                 <hr>
                             </div>
-                            <div class="col-md-8">
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <div class="col-md-7">
+                <div class="box">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+
+                            <div class="col-md-12">
                                 <h2>Allocated Projects</h2>
                                 <ul class="list-group">
                                     @forelse ($supervisor_projects as $sup_proj)
