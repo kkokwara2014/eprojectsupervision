@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Allocation;
+use App\Project;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
@@ -55,7 +56,13 @@ class AllocationController extends Controller
                 'user_id'    => $inputs['supervisor_id'],
                 'project_id' => $project_id
             ]);
+
+            $allocatedProjects=Project::find($project_id);
+            $allocatedProjects->isallocated='1';
+            $allocatedProjects->save();
         }
+
+
 
         return redirect()->back();
     }

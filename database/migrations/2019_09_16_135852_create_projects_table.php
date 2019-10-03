@@ -20,6 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string('projyear');
             $table->integer('user_id');
             $table->integer('classlevel_id');
+            $table->tinyInteger('isallocated')->default('0');
             $table->timestamps();
         });
     }

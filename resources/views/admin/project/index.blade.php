@@ -195,9 +195,11 @@
                                                 data-placeholder="Select a Project" style="width: 100%;"
                                                 name="project_id[]">
                                                 @foreach ($projforassign as $pfa)
+                                                @if ($pfa->isallocated==0)
                                                 <option value="{{$pfa->id}}">
                                                     {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
                                                 </option>
+                                                @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -206,7 +208,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary">Assign</button>
                                 </div>
                             </div>
                             <!-- /.modal-content -->
