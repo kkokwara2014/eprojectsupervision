@@ -29,7 +29,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">

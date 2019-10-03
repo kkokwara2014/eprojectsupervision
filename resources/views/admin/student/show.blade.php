@@ -73,7 +73,7 @@
                                         @if ($student_project!=null)
                                         <h4>{{$student_project->title}}</h4>
                                         @else
-                                        <p style="background-color: goldenrod" class="badge badge-info"><strong>No Project topic has been
+                                        <p style="background-color: dodgerblue" class="badge badge-info"><strong>No Project topic has been
                                                 registered yet!</strong></p>
                                         @endif
                                         <h4>Supervisor:
@@ -110,7 +110,7 @@
                                             </a>
                                             @endforeach
                                             @else
-                                            <p class="alert alert-warning"><strong>No Chapter yet!</strong></p>
+                                            <p style="background-color: dodgerblue" class="badge badge-info"><strong>No Chapter yet!</strong></p>
                                             @endif
 
                                         </ul>
