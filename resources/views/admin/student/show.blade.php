@@ -77,9 +77,9 @@
                                                 registered yet!</strong></h4>
                                         @endif
                                         <h4>Supervisor:
-                                            @if (!empty($project_supervisor))
+                                            @if (!empty($project_supervisor['user_id']))
                                             <span style="color:dodgerblue; font-weight: bolder;">
-                                                {{$project_supervisor->user['title'].' '.$project_supervisor->user['lastname'].', '.$project_supervisor->user['firstname']}}
+                                                {{$project_supervisor['title'].' '.$project_supervisor['lastname'].', '.$project_supervisor['firstname']}}
                                             </span>
                                             @else
                                             <span class="badge badge-info">Supervisor not assigned yet!</span>
