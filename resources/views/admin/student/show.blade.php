@@ -77,15 +77,16 @@
                                                 registered yet!</strong></h4>
                                         @endif
                                         <h4>Supervisor:
-                                            @if (!empty($project_supervisor))
+                                            @if ($project_supervisor!=null)
+                                            @foreach ($project_supervisor as $projSup)
                                             <span style="color:dodgerblue; font-weight: bolder;">
-                                                @foreach ($project_supervisor as $projSup)
                                                 {{$projSup->user->title.' '.$projSup->user->lastname.', '.$projSup->user->firstname}}
-                                                @endforeach
                                             </span>
+                                            @endforeach
                                             @else
                                             <span class="badge badge-info">Supervisor not assigned yet!</span>
                                             @endif
+
                                         </h4>
 
 
