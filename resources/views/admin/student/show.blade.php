@@ -54,7 +54,7 @@
                                         </div>
                                         <hr>
                                     </div>
-                                   
+
                                 </div>
 
                             </div>
@@ -77,9 +77,11 @@
                                                 registered yet!</strong></h4>
                                         @endif
                                         <h4>Supervisor:
-                                            @if (!empty($project_supervisor['user_id']))
+                                            @if (!empty($project_supervisor))
                                             <span style="color:dodgerblue; font-weight: bolder;">
-                                                {{$project_supervisor['title'].' '.$project_supervisor['lastname'].', '.$project_supervisor['firstname']}}
+                                                @foreach ($project_supervisor as $projSup)
+                                                {{$projSup->user->title.' '.$projSup->user->lastname.', '.$projSup->user->firstname}}
+                                                @endforeach
                                             </span>
                                             @else
                                             <span class="badge badge-info">Supervisor not assigned yet!</span>
@@ -103,7 +105,7 @@
                                                     @endif
                                                     {{$chapt['title']}}
 
-                                                  
+
 
                                                 </li>
                                             </a>
