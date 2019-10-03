@@ -69,8 +69,7 @@ class ProjectController extends Controller
         // $student_project = Project::find($id);
         $project_chapters = Project::find($id);
         $project_allocations = User::find($id)->allocations;
-        // $project_supervisor=Allocation::find($id)->user;
-        $project_supervisor=Project::find($id)->allocations;
+        $project_supervisor=Allocation::where('project_id',$id)->get();
         return view('admin.project.show', array('user' => Auth::user()), compact('project_chapters','project_allocations','project_supervisor'));
     }
 

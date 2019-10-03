@@ -73,24 +73,17 @@
                                         @if ($student_project!=null)
                                         <h4>{{$student_project->title}}</h4>
                                         @else
-                                        <h4 class="alert alert-warning"><strong>No Project topic has been
-                                                registered yet!</strong></h4>
+                                        <p style="background-color: goldenrod" class="badge badge-info"><strong>No Project topic has been
+                                                registered yet!</strong></p>
                                         @endif
                                         <h4>Supervisor:
-
-                                            @foreach ($project_supervisor as $projSup)
-                                            @if ($projSup->user['id']===null)
-                                            <span class="badge badge-info">Supervisor not assigned yet!</span>
-                                            @else
+                                            @forelse ($project_supervisor as $projSup)
                                             <span style="color:dodgerblue; font-weight: bolder;">
-                                                {{$projSup->user->title.' '.$projSup->user->lastname.', '.$projSup->user->firstname}}
-                                            </span>
-                                            @endif
-                                            @endforeach
-
-
-
-
+                                                    {{$projSup->user->title.' '.$projSup->user->lastname.', '.$projSup->user->firstname}}
+                                                </span>
+                                            @empty
+                                            <span style="background-color: firebrick" class="badge badge-info">Supervisor not assigned yet!</span>
+                                            @endforelse
 
                                         </h4>
 

@@ -8,13 +8,16 @@
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
-
-        <br>
         <div class="row">
             <div class="col-md-8">
+                <a href="{{ route('dashboard.index') }}" class="btn btn-primary btn-sm">
+                    Back</a>
+                    <br>
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
+
+
                         <div class="row">
                             <div class="col-md-4">
                                 <img src="{{url('user_images',$user->userimage)}}" alt=""
