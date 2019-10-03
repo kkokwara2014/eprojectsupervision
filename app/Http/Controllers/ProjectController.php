@@ -28,11 +28,11 @@ class ProjectController extends Controller
         return view('admin.project.index', compact('projects', 'projforassign', 'supervisors', 'user', 'classlevels'));
     }
 
-    public function unallocated(){
+    public function allocated(){
         $user = Auth::user();
-        $unallocatedprojects = Project::orderBy('created_at', 'desc')->where('isallocated','1')->get();
+        $allocatedprojects = Project::orderBy('created_at', 'desc')->where('isallocated','1')->get();
 
-        return view('admin.project.allocated', compact('unallocatedprojects', 'user'));
+        return view('admin.project.allocated', compact('allocatedprojects', 'user'));
 
     }
 

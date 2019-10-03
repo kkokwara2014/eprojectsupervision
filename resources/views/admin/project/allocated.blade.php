@@ -11,10 +11,7 @@
             Allocated Projects
             <small>All assigned Projects</small>
         </h1>
-        {{-- <ol class="breadcrumb">
-              <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-              <li class="active">Dashboard</li>
-            </ol> --}}
+        
     </section>
 
     <!-- Main content -->
@@ -28,7 +25,7 @@
                 <br><br>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-10">
 
                         <div class="box">
                             <!-- /.box-header -->
@@ -37,41 +34,35 @@
                                     <thead>
                                         <tr>
                                             <th>Title</th>
-
-
-                                            <th>Details</th>
+                                            {{-- <th>Assigned To</th> --}}
 
                                             <th>Deallocate</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($unallocatedprojects as $project)
+                                        @foreach ($allocatedprojects as $project)
                                         <tr>
                                             <td>{{$project->title}}</td>
 
+                                           
                                             </td>
-                                            <td style="text-align: center">
-                                                <a href="{{ route('project.show',$project->id) }}"><span
-                                                        class="fa fa-eye fa-2x text-primary"></span></a>
-                                            </td>
-                                            <td style="text-align: center"><a
-                                                    href="{{ route('project.edit',$project->id) }}"><span
-                                                        class="fa fa-edit fa-2x text-primary"></span></a></td>
+
                                             <td style="text-align: center">
                                                 <form id="delete-form-{{$project->id}}" style="display: none"
-                                                    action="{{ route('project.destroy',$project->id) }}" method="post">
+                                                    action="{{ route('allocation.destroy',$project->id) }}"
+                                                    method="post">
                                                     {{ csrf_field() }}
                                                     {{method_field('DELETE')}}
                                                 </form>
                                                 <a href="" onclick="
-                                                            if (confirm('Are you sure you want to delete this?')) {
+                                                            if (confirm('Are you sure you want to Deallocation this?')) {
                                                                 event.preventDefault();
                                                             document.getElementById('delete-form-{{$project->id}}').submit();
                                                             } else {
                                                                 event.preventDefault();
                                                             }
-                                                        "><span class="fa fa-trash fa-2x text-danger"></span>
+                                                        "><span class="fa fa-ban fa-2x text-danger"></span>
                                                 </a>
 
                                             </td>
@@ -81,10 +72,9 @@
                                     <tfoot>
                                         <tr>
                                             <th>Title</th>
-                                            <th>By</th>
-                                            <th>Details</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
+                                            {{-- <th>Assigned To</th> --}}
+
+                                            <th>Deallocate</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -95,118 +85,6 @@
                     </div>
                 </div>
 
-
-                {{-- Data input modal area --}}
-                <div class="modal fade" id="modal-default">
-                    <div class="modal-dialog">
-
-                        <form action="{{ route('project.store') }}" method="post">
-                            {{ csrf_field() }}
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Add Project</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="">Project Title <b style="color: red;">*</b></label>
-                                        <input type="text" class="form-control" name="title" placeholder="Project Title"
-                                            autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Case Study</label>
-                                        <input type="text" class="form-control" name="casestudy"
-                                            placeholder="Project Case Study">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Year</label>
-                                        <input type="text" class="form-control" id="datepicker" name="projyear"
-                                            placeholder="Project year">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Level</label>
-                                        <select name="classlevel_id" class="form-control">
-                                            <option selected="disabled">Select Level</option>
-                                            @foreach ($classlevels as $classlevel)
-                                            <option value="{{$classlevel->id}}">{{$classlevel->levelname}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-
-                        </form>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-
-                <!-- /.modal -->
-
-                {{-- Data input modal area --}}
-                <div class="modal fade" id="modal-default-assign">
-                    <div class="modal-dialog">
-
-                        <form action="{{ route('allocation.store') }}" method="post">
-                            {{ csrf_field() }}
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title"><span class="fa fa-exchange"></span> Assign Projects To
-                                        Supervisor</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="">Supervisor <b style="color: red;">*</b> </label>
-
-                                        <select name="supervisor_id" id="" class="form-control">
-                                            <option selected="disabled">Select Supervisor</option>
-                                            @foreach ($supervisors as $supervisor)
-                                            <option value="{{$supervisor->id}}">
-                                                {{$supervisor->title.' '.$supervisor->lastname.', '.$supervisor->firstname}}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label>Project <b style="color: red;">*</b> </label>
-                                            <select class="form-control select2" multiple="multiple"
-                                                data-placeholder="Select a Project" style="width: 100%;"
-                                                name="project_id[]">
-                                                @foreach ($projforassign as $pfa)
-                                                @if ($pfa->isallocated==0)
-                                                <option value="{{$pfa->id}}">
-                                                    {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
-                                                </option>
-                                                @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Assign</button>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-
-                        </form>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
 
             </section>
             <!-- /.Left col -->
