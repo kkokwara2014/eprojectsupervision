@@ -48,12 +48,12 @@
                                 <div>Project Year: {{$project_chapters->projyear}}</div>
 
                                 <div>Supervisor:
-                                    @if (!empty($project_supervisor))
+                                    @if (!empty($project_supervisor['user_id']))
                                     <span style="color:dodgerblue; font-weight: bolder;">
                                         {{$project_supervisor->title.' '.$project_supervisor->lastname.', '.$project_supervisor->firstname}}
                                     </span>
                                     @else
-                                    <span class="alert alert-info">Supervisor not assigned yet!</span>
+                                    <span class="badge badge-info">Supervisor not assigned yet!</span>
                                     @endif
                                 </div>
 
