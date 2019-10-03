@@ -8,8 +8,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Unallocated Projects
-            <small>All Unassigned Projects</small>
+            Allocated Projects
+            <small>All assigned Projects</small>
         </h1>
         {{-- <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -23,18 +23,8 @@
         <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-                    <span class="fa fa-plus"></span> Add Project
-                </button>
 
-                <a href="{{route('chapter.index')}}" class="btn btn-success"><span class="fa fa-eye"></span>
-                    Chapters</a>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default-assign">
-                    <span class="fa fa-exchange"></span> Assign Project
-                </button>
-                {{-- <a href="{{route('assignproject.index')}}" class="btn btn-success"><span
-                    class="fa fa-exchange"></span>
-                Assign Projects</a> --}}
+
                 <br><br>
 
                 <div class="row">
@@ -48,19 +38,18 @@
                                         <tr>
                                             <th>Title</th>
 
-                                            <th>By</th>
+
                                             <th>Details</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
+
+                                            <th>Deallocate</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($projects as $project)
+                                        @foreach ($unallocatedprojects as $project)
                                         <tr>
                                             <td>{{$project->title}}</td>
 
-                                            <td>{{$project->user->lastname.', '.$project->user->firstname.' - '.$project->user->identitynumber}}
                                             </td>
                                             <td style="text-align: center">
                                                 <a href="{{ route('project.show',$project->id) }}"><span

@@ -31,7 +31,8 @@
       <li><a href="{{route('department.index')}}"><i class="fa fa-university"></i> Department</a></li>
       <li><a href="{{route('classlevel.index')}}"><i class="fa fa-th"></i> Class Level</a></li>
       <li><a href="{{route('student.index')}}"><i class="fa fa-users"></i> Students</a></li>
-      <li><a href="{{route('project.index')}}"><i class="fa fa-file-text-o"></i> Projects</a></li>
+      <li><a href="{{route('project.index')}}"><i class="fa fa-file-text-o"></i> Unallocated Projects</a></li>
+      <li><a href="{{route('project.unallocated')}}"><i class="fa fa-exchange"></i> Allocated Projects</a></li>
       {{-- <li><a href="{{route('allocation.index')}}"><i class="fa fa-exchange"></i> Project Allocations</a></li> --}}
       <li><a href="{{route('supervisor.index')}}"><i class="fa fa-graduation-cap"></i> Supervisors</a></li>
       <li><a href="{{route('admin.admins')}}"><i class="fa fa-user-plus"></i> Admins</a></li>

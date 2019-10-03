@@ -20,12 +20,20 @@ class ProjectController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $projects = Project::orderBy('created_at', 'desc')->get();
+        $projects = Project::orderBy('created_at', 'desc')->where('isallocated','0')->get();
         $classlevels = Classlevel::orderBy('created_at', 'asc')->get();
         $supervisors = User::where('role_id', '3')->get();
         $projforassign = Project::orderBy('title', 'asc')->get();
 
         return view('admin.project.index', compact('projects', 'projforassign', 'supervisors', 'user', 'classlevels'));
+    }
+
+    public function unallocated(){
+        $user = Auth::user();
+        $unallocatedprojects = Project::orderBy('created_at', 'desc')->where('isallocated','1')->get();
+
+        return view('admin.project.allocated', compact('unallocatedprojects', 'user'));
+
     }
 
     /**
