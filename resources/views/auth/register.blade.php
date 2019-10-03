@@ -130,9 +130,7 @@
                                     <option value="{{$dept->id}}">{{$dept->name.' - '.$dept->code}}</option>
 
                                     @endforeach
-
                                 </select>
-
 
                                 @error('department_id')
                                 <span class="invalid-feedback" role="alert">
