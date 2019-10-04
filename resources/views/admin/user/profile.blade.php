@@ -10,7 +10,7 @@
     <section class="col-lg-12 connectedSortable">
         <div class="row">
             <div class="col-md-8">
-                <a href="{{ route('dashboard.index') }}" class="btn btn-primary btn-sm">
+                <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">
                     Back</a>
                     <br>
                 <div class="box">
