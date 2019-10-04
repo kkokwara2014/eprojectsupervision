@@ -20,12 +20,29 @@ class StudentController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $students = User::where('role_id', '4')->orderBy('created_at','desc')->get();
+        $students = User::where('role_id', '4')->orderBy('created_at', 'desc')->get();
         $departments = Department::orderBy('name', 'asc')->get();
 
         return view('admin.student.index', compact('user', 'students', 'departments'));
     }
 
+    public function activate($id)
+    {
+        $student = User::find($id);
+        $student->isactive = '1';
+        $student->save();
+
+        return redirect(route('student.index'));
+    }
+    public function deactivate($id)
+    {
+
+        $student = User::find($id);
+        $student->isactive = '0';
+        $student->save();
+
+        return redirect(route('student.index'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -58,9 +75,9 @@ class StudentController extends Controller
         $student = User::find($id);
         $student_project = Project::find($id);
         $project_chapters = Project::find($id);
-        $project_supervisor=Allocation::where('project_id',$id)->get();
-        
-        return view('admin.student.show', array('user' => Auth::user()), compact('student', 'student_project','project_chapters','project_supervisor'));
+        $project_supervisor = Allocation::where('project_id', $id)->get();
+
+        return view('admin.student.show', array('user' => Auth::user()), compact('student', 'student_project', 'project_chapters', 'project_supervisor'));
     }
 
     /**
