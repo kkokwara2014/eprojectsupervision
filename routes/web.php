@@ -45,6 +45,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/department', 'DepartmentController');
     Route::resource('/allocation', 'AllocationController');
     Route::resource('/student', 'StudentController');
+    Route::post('student/{id}/activate', 'StudentController@activate')->name('student.activate');
+    Route::post('student/{id}/deactivate', 'StudentController@deactivate')->name('student.deactivate');
     Route::resource('/admin', 'AdminController');
     Route::get('/admins', 'AdminController@admins')->name('admin.admins');
     Route::post('admins/{id}/activate', 'AdminController@activate')->name('admin.activate');

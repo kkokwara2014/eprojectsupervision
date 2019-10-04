@@ -30,7 +30,7 @@
       <li><a href="{{route('user.profile')}}"><i class="fa fa-picture-o"></i> My Profile</a></li>
       <li><a href="{{route('comment.index')}}"><i class="fa fa-comment-o"></i> Comments</a></li>
 
-      {{-- only for the Admin --}}
+      {{-- only for the Admin and Project Coordinator --}}
       @if (Auth::user()->role->id==1||Auth::user()->role->id==2)
       <li><a href="{{route('department.index')}}"><i class="fa fa-university"></i> Department</a></li>
       <li><a href="{{route('classlevel.index')}}"><i class="fa fa-th"></i> Class Level</a></li>
@@ -38,7 +38,11 @@
 
 
       <li><a href="{{route('student.index')}}"><i class="fa fa-users"></i> Students</a></li>
+
+      {{-- Only Admin and Project Coordinator --}}
+      @if (Auth::user()->role->id==1||Auth::user()->role->id==2)
       <li><a href="{{route('project.index')}}"><i class="fa fa-file-text-o"></i> Unallocated Projects</a></li>
+      @endif
 
       {{-- Only Admin and Project Coordinator --}}
       @if (Auth::user()->role->id==1||Auth::user()->role->id==2)
