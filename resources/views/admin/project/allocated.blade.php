@@ -43,7 +43,7 @@
                                     <tbody>
                                         @foreach ($allocatedprojects as $project)
                                         <tr>
-                                            <td>{{$project->title}}</td>
+                                            <td>{{$project['title']}}</td>
 
                                            
                                             </td>
