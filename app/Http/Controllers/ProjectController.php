@@ -112,6 +112,12 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $projects = Project::where('id', $id)->delete();
+        $allocations = Allocation::where('project_id', $id)->get();
+        if ($allocations!=null) {
+            $allocations = Allocation::where('project_id', $id)->delete();
+        }   
+       
+        return redirect()->back();
     }
 }

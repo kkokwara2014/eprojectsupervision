@@ -19,8 +19,8 @@ class AllocationController extends Controller
     {
         $user = Auth::user();
         $supervisors = User::where('role_id', '3')->get();
-        
-        return view('admin.assignproject.index',compact('supervisors','user'));
+
+        return view('admin.assignproject.index', compact('supervisors', 'user'));
     }
 
     /**
@@ -57,8 +57,8 @@ class AllocationController extends Controller
                 'project_id' => $project_id
             ]);
 
-            $allocatedProjects=Project::find($project_id);
-            $allocatedProjects->isallocated='1';
+            $allocatedProjects = Project::find($project_id);
+            $allocatedProjects->isallocated = '1';
             $allocatedProjects->save();
         }
 
@@ -109,6 +109,13 @@ class AllocationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $allocations = Allocation::where('project_id', $id)->delete();
+        
+        $allocatedProjects = Project::find($id);
+        $allocatedProjects->isallocated = '0';
+        $allocatedProjects->save();
+        
+       
+        return redirect()->back();
     }
 }

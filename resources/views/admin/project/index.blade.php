@@ -32,6 +32,8 @@
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default-assign">
                     <span class="fa fa-exchange"></span> Assign Project
                 </button>
+                <a href="{{route('project.allocated')}}" class="btn btn-success"><span class="fa fa-eye"></span>
+                    Allocated Projects</a>
                 {{-- <a href="{{route('assignproject.index')}}" class="btn btn-success"><span
                     class="fa fa-exchange"></span>
                 Assign Projects</a> --}}
@@ -43,6 +45,7 @@
                         <div class="box">
                             <!-- /.box-header -->
                             <div class="box-body">
+                                @if (count($projects)>0)
                                 <table id="example1" class="table table-bordered table-striped table-responsive">
                                     <thead>
                                         <tr>
@@ -99,6 +102,10 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                    
+                                @else
+                                <p class="alert alert-info">No Unallocated Projects yet!</p>
+                                @endif
                             </div>
                             <!-- /.box-body -->
                         </div>
