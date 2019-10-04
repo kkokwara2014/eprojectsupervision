@@ -37,7 +37,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', 'AdminController@index')->name('dashboard.index');
 
     Route::resource('/project', 'ProjectController');
-    Route::get('/project/allocated', 'ProjectController@allocated')->name('project.allocated');
+    Route::get('/allocated/projects', 'ProjectController@allocated')->name('project.allocated');
     Route::resource('/classlevel', 'ClasslevelController');
     Route::resource('/chapter', 'ChapterController');
     Route::resource('/comment', 'CommentController');

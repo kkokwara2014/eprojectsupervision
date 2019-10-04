@@ -11,7 +11,10 @@
             Allocated Projects
             <small>All assigned Projects</small>
         </h1>
-        
+        {{-- <ol class="breadcrumb">
+              <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li class="active">Dashboard</li>
+            </ol> --}}
     </section>
 
     <!-- Main content -->
@@ -21,11 +24,8 @@
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
 
-
-                <br><br>
-
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
 
                         <div class="box">
                             <!-- /.box-header -->
@@ -34,35 +34,37 @@
                                     <thead>
                                         <tr>
                                             <th>Title</th>
-                                            {{-- <th>Assigned To</th> --}}
+                                            <th>By</th>
+                                            <th>To</th>
 
                                             <th>Deallocate</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($allocatedprojects as $project)
+                                        @foreach ($projects as $project)
                                         <tr>
-                                            <td>{{$project['title']}}</td>
+                                            <td>{{$project->title}}</td>
 
-                                           
+                                            <td>{{$project->user->lastname.', '.$project->user->firstname.' - '.$project->user->identitynumber}}
+                                            </td>
+                                            <td>{{$project->allocations->lastname.', '.$project->allocations->firstname.' - '.$project->allocations->identitynumber}}
                                             </td>
 
-                                            <td style="text-align: center">
+                                            <td >
                                                 <form id="delete-form-{{$project->id}}" style="display: none"
-                                                    action="{{ route('allocation.destroy',$project->id) }}"
-                                                    method="post">
+                                                    action="{{ route('allocation.destroy',$project->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{method_field('DELETE')}}
                                                 </form>
                                                 <a href="" onclick="
-                                                            if (confirm('Are you sure you want to Deallocation this?')) {
+                                                            if (confirm('Are you sure you want to deallocate this?')) {
                                                                 event.preventDefault();
                                                             document.getElementById('delete-form-{{$project->id}}').submit();
                                                             } else {
                                                                 event.preventDefault();
                                                             }
-                                                        "><span class="fa fa-ban fa-2x text-danger"></span>
+                                                        " class="btn btn-warning btn-sm btn-block"><span class="fa fa-retweet fa-2x"></span>
                                                 </a>
 
                                             </td>
@@ -72,7 +74,8 @@
                                     <tfoot>
                                         <tr>
                                             <th>Title</th>
-                                            {{-- <th>Assigned To</th> --}}
+                                            <th>By</th>
+                                            <th>To</th>
 
                                             <th>Deallocate</th>
                                         </tr>
@@ -84,6 +87,7 @@
                         <!-- /.box -->
                     </div>
                 </div>
+
 
 
             </section>

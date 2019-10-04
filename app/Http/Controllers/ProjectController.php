@@ -30,9 +30,9 @@ class ProjectController extends Controller
 
     public function allocated(){
         $user = Auth::user();
-        $allocatedprojects = Project::orderBy('created_at', 'desc')->where('isallocated','1')->get();
+        $projects = Project::orderBy('created_at', 'desc')->where('isallocated','1')->get();
 
-        return view('admin.project.allocated', compact('allocatedprojects', 'user'));
+        return view('admin.project.allocated', compact('projects', 'user'));
 
     }
 
