@@ -48,7 +48,8 @@
                                                     <option selected="disabled">Select Chapter</option>
                                                     @foreach ($chapters as $chapt)
                                                     <option value="{{$chapt->id}}">
-                                                        {{$chapt->title.' - '.($chapt->project->user->lastname.', '.$chapt->project->user->firstname)}}
+
+                                                        {{$chapt->title}}
                                                     </option>
                                                     @endforeach
                                                 </select>
@@ -74,6 +75,10 @@
                                 <div class="row">
                                     <div style="overflow-y: auto; height: 500px;" class="col-md-12">
                                         @forelse ($discussions as $comt)
+
+                                        @if (Auth::user()->id==)
+                                            
+                                        @endif
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="row">

@@ -248,8 +248,8 @@
 <script src="{{asset('admin_assets/dist/js/demo.js')}}"></script>
 <!-- page script -->
 <!-- CK Editor -->
-<script src="//cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script>
-{{-- <script src="{{asset('admin_assets/bower_components/ckeditor/ckeditor.js')}}"></script> --}}
+{{-- <script src="//cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script> --}}
+<script src="{{asset('admin_assets/bower_components/ckeditor/ckeditor.js')}}"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{asset('admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
 
