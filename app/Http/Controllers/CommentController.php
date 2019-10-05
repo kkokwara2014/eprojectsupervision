@@ -19,8 +19,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $discussions = Comment::orderBy('created_at','desc')->get();
-        return view('admin.comment.index', array('user' => Auth::user()),compact('discussions'));
+        $commentFromUser = Comment::find(Auth::user()->id);
+        $discussions = Comment::orderBy('created_at', 'desc')->get();
+        return view('admin.comment.index', array('user' => Auth::user()), compact('discussions','commentFromUser'));
     }
 
     /**
@@ -30,9 +31,10 @@ class CommentController extends Controller
      */
     public function create()
     {
-        $discussions = Comment::orderBy('created_at','desc')->get();
+        $commentFromUser = Comment::find(Auth::user()->id);
+        $discussions = Comment::orderBy('created_at', 'desc')->get();
         $chapters = Chapter::orderBy('created_at', 'asc')->get();
-        return view('admin.comment.create', array('user' => Auth::user()),compact('chapters','discussions'));
+        return view('admin.comment.create', array('user' => Auth::user()), compact('chapters', 'discussions','commentFromUser'));
     }
 
     /**
@@ -43,16 +45,16 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'comment'=>'required|string',
+        $this->validate($request, [
+            'comment' => 'required|string',
         ]);
 
-        $comment=new Comment;
-        $comment->comment=$request->comment;
-        $comment->user_id=auth::user()->id;
-        $comment->chapter_id=$request->chapter_id;
-        $comment->commenttime=date('H:i:s');
-        $comment->commentdate=date('d-m-Y');
+        $comment = new Comment;
+        $comment->comment = $request->comment;
+        $comment->user_id = auth::user()->id;
+        $comment->chapter_id = $request->chapter_id;
+        $comment->commenttime = date('H:i:s');
+        $comment->commentdate = date('d-m-Y');
 
         $comment->save();
 

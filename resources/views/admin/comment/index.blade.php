@@ -36,12 +36,11 @@
                                 <div class="row">
                                     <div class="col-md-12" style="overflow-y: auto; height: 500px;">
 
-                                        @if (Auth::user()->id== (@foreach ($discussions as $comt)
-                                        $comt->user->id
-                                        @endforeach))
+                                       
+                                        
 
                                         @forelse ($discussions as $comt)
-
+                                        @if (Auth::user()->id==$comt->user->id)
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="row">
@@ -66,15 +65,13 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        @endif
                                         @empty
                                         <li class="list-group-item alert alert-warning"><strong>No Comments
                                                 yet!</strong>
                                         </li>
                                         @endforelse
-                                        @else
-
-                                        @endif
+                                       
 
 
 
