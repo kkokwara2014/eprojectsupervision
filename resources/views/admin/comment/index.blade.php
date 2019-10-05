@@ -5,86 +5,103 @@
 {{-- @include('admin.layout.statboard') --}}
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
             All Comments
             <small>Control panel</small>
-          </h1>
-          {{-- <ol class="breadcrumb">
+        </h1>
+        {{-- <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
               <li class="active">Dashboard</li>
             </ol> --}}
-        </section>
-      
-        <!-- Main content -->
-        <section class="content">
-<!-- Main row -->
-<div class="row">
-    <!-- Left col -->
-    <section class="col-lg-11 connectedSortable">
-        
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Main row -->
         <div class="row">
-            <div class="col-md-8">
-                <a href="{{route('comment.create')}}" class="btn btn-primary"><span class="fa fa-comment-o"></span>
-                    Begin Commenting</a>
-                <br><br>
-                <div class="box">
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-12" style="overflow-y: auto; height: 500px;">
-                                @forelse ($discussions as $comt)
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <img src="{{url('user_images',$comt->user->userimage)}}"
-                                                    class="img-circle" width="40" height="40">
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div style="font-weight: bold">
-                                                    {{$comt->user->lastname.', '.$comt->user->firstname}} says:</div>
-                                                <div>{!! htmlspecialchars_decode($comt->comment) !!}</div>
-                                                <div style="text-align: right">
-                                                    <small>Sent : {{$comt->created_at->diffForHumans()}}
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                                            class="fa fa-calendar"></span>
-                                                        {{$comt->commentdate}} &nbsp; <span
-                                                            class="fa fa-clock-o"></span>
-                                                        {{$comt->commenttime}}</small>
+            <!-- Left col -->
+            <section class="col-lg-11 connectedSortable">
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <a href="{{route('comment.create')}}" class="btn btn-primary"><span
+                                class="fa fa-comment-o"></span>
+                            Begin Commenting</a>
+                        <br><br>
+                        <div class="box">
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12" style="overflow-y: auto; height: 500px;">
+
+                                        @if (Auth::user()->id== (@foreach ($discussions as $comt)
+                                        $comt->user->id
+                                        @endforeach))
+
+                                        @forelse ($discussions as $comt)
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <img src="{{url('user_images',$comt->user->userimage)}}"
+                                                            class="img-circle" width="40" height="40">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <div style="font-weight: bold">
+                                                            {{$comt->user->lastname.', '.$comt->user->firstname}} says:
+                                                        </div>
+                                                        <div>{!! htmlspecialchars_decode($comt->comment) !!}</div>
+                                                        <div style="text-align: right">
+                                                            <small>Sent : {{$comt->created_at->diffForHumans()}}
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                                    class="fa fa-calendar"></span>
+                                                                {{$comt->commentdate}} &nbsp; <span
+                                                                    class="fa fa-clock-o"></span>
+                                                                {{$comt->commenttime}}</small>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        @empty
+                                        <li class="list-group-item alert alert-warning"><strong>No Comments
+                                                yet!</strong>
+                                        </li>
+                                        @endforelse
+                                        @else
+
+                                        @endif
+
+
+
+
                                     </div>
                                 </div>
-                                @empty
-                                <li class="list-group-item alert alert-warning"><strong>No Comments yet!</strong>
-                                </li>
-                                @endforelse
-                            </div>
-                        </div>
 
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
                     </div>
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
-            </div>
+
+            </section>
+            <!-- /.Left col -->
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+            {{-- <section class="col-lg-5 connectedSortable"> --}}
+
+
+            {{-- </section> --}}
+            <!-- right col -->
         </div>
+        <!-- /.row (main row) -->
 
     </section>
-    <!-- /.Left col -->
-    <!-- right col (We are only adding the ID to make the widgets sortable)-->
-    {{-- <section class="col-lg-5 connectedSortable"> --}}
-
-
-    {{-- </section> --}}
-    <!-- right col -->
-</div>
-<!-- /.row (main row) -->
-
-</section>
-<!-- /.content -->
+    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

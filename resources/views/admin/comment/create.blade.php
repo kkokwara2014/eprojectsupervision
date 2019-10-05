@@ -76,9 +76,7 @@
                                     <div style="overflow-y: auto; height: 500px;" class="col-md-12">
                                         @forelse ($discussions as $comt)
 
-                                        @if (Auth::user()->id==)
-                                            
-                                        @endif
+                                        @if (Auth::user()->id==$comt->user->id)
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="row">
@@ -105,6 +103,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                         @empty
                                         <li class="list-group-item alert alert-warning"><strong>No Comments
                                                 yet!</strong>
