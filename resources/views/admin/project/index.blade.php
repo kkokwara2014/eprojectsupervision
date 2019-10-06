@@ -205,9 +205,9 @@
                                         <div class="form-group">
                                             <label>Project <b style="color: red;">*</b> </label>
                                             <select class="form-control select2" multiple="multiple"
-                                                data-placeholder="Select a Project" style="width: 100%;"
+                                                data-placeholder="Select Project" style="width: 100%;"
                                                 name="project_id[]">
-                                                <option selected="disabled">Select Projects</option>
+                                              
                                                 @forelse ($projforassign as $pfa)
                                                 <option value="{{$pfa->id}}">
                                                     {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
@@ -217,14 +217,6 @@
                                                     No Projects available
                                                 </option>
                                                 @endforelse
-
-                                                {{-- @foreach ($projforassign as $pfa)
-                                                @if ($pfa->isallocated==0)
-                                                <option value="{{$pfa->id}}">
-                                                {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
-                                                </option>
-                                                @endif --}}
-                                                {{-- @endforeach --}}
                                             </select>
                                         </div>
                                     </div>
