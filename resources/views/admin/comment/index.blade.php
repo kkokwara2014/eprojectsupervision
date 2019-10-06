@@ -36,11 +36,11 @@
                                 <div class="row">
                                     <div class="col-md-12" style="overflow-y: auto; height: 500px;">
 
-                                       
-                                        
+
+
 
                                         @forelse ($discussions as $comt)
-                                        @if (Auth::user()->id==$comt->user->id)
+                                        @if (Auth::user()->id==$comt->user->id||Auth::user()->role->id==1)
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="row">
@@ -71,10 +71,6 @@
                                                 yet!</strong>
                                         </li>
                                         @endforelse
-                                       
-
-
-
 
                                     </div>
                                 </div>

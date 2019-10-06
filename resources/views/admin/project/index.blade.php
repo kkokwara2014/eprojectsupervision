@@ -71,11 +71,11 @@
                                             </td>
 
                                             <td style="text-align: center">
-                                                {{-- @if ($project->user->id==Auth::user()->id) --}}
+                                                @if ($project->user->id==Auth::user()->id)
                                                 <a href="{{ route('project.edit',$project->id) }}"><span
                                                         class="fa fa-edit fa-2x text-primary"></span>
                                                 </a>
-                                                {{-- @endif --}}
+                                                @endif
                                             </td>
 
                                             <td style="text-align: center">
