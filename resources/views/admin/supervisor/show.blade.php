@@ -76,7 +76,7 @@
                                     {{-- </a> --}}
                                     @empty
                                     <li class="list-group-item alert alert-warning"><strong>No Project has been
-                                            allocated yet!</strong>
+                                            allocated to you!</strong>
                                     </li>
                                     @endforelse
                                 </ul>

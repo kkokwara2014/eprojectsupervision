@@ -91,28 +91,25 @@
                                         <hr>
                                         <h3>Chapters</h3>
                                         <ul class="list-group">
-                                            @if ($project_chapters!=null)
-                                            @foreach ($project_chapters->chapters as $chapt)
+
+                                            @forelse ($project_chapters as $chapt)
                                             <a href="{{route('comment.create')}}">
-                                                <li class="list-group-item">
-                                                    @if ($chapt['isapproved']==1)
-                                                    <span style="background-color: seagreen"
-                                                        class="badge pull-right">Approved</span>
-                                                    @else
-                                                    <span style="background-color:crimson" class="badge pull-right">Not
-                                                        Approved</span>
-                                                    @endif
-                                                    {{$chapt['title']}}
-
-
-
-                                                </li>
-                                            </a>
-                                            @endforeach
-                                            @else
+                                                    <li class="list-group-item">
+                                                        @if ($chapt['isapproved']==1)
+                                                        <span style="background-color: seagreen"
+                                                            class="badge pull-right">Approved</span>
+                                                        @else
+                                                        <span style="background-color:crimson" class="badge pull-right">Not
+                                                            Approved</span>
+                                                        @endif
+                                                        {{$chapt['title']}}
+    
+                                                    </li>
+                                                </a>
+                                            @empty
                                             <p style="background-color: dodgerblue" class="badge badge-info"><strong>No Chapter yet!</strong></p>
-                                            @endif
-
+                                            @endforelse
+                                            
                                         </ul>
                                     </div>
                                 </div>

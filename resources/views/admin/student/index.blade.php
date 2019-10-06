@@ -50,9 +50,17 @@
                                             <th>Phone</th>
                                             <th>View Details</th>
                                             <th>Status</th>
+                                            @if (Auth::user()->role->id==1)
                                             <th>Action</th>
+
+                                            @endif
+
                                             <th>Edit</th>
+
+                                            @if (Auth::user()->role->id==1)
                                             <th>Delete</th>
+                                            @endif
+
 
 
                                         </tr>
@@ -79,6 +87,7 @@
                                                 @endif
 
                                             </td>
+                                            @if (Auth::user()->role->id==1)
                                             <td>
                                                 @if ($student->isactive==1)
 
@@ -118,12 +127,22 @@
 
                                                 @endif
                                             </td>
+                                            @endif
 
-                                            <td style="text-align: center"><a
-                                                    href="{{ route('student.edit',$student->id) }}"><span
-                                                        class="fa fa-edit fa-2x text-primary"></span></a></td>
 
+                                            
                                             <td style="text-align: center">
+                                                    @if (Auth::user()->id==$student->id)
+                                                <a
+                                                    href="{{ route('student.edit',$student->id) }}"><span
+                                                        class="fa fa-edit fa-2x text-primary"></span></a>
+                                                        @endif
+                                            </td>
+
+
+                                            @if (Auth::user()->role->id==1)
+                                            <td style="text-align: center">
+
                                                 <form id="delete-form-{{$student->id}}" style="display: none"
                                                     action="{{ route('student.destroy',$student->id) }}" method="post">
                                                     {{ csrf_field() }}
@@ -140,6 +159,7 @@
                                                 </a>
 
                                             </td>
+                                            @endif
                                         </tr>
                                         @elseif((Auth::user()->role->id==1))
                                         <tr>
@@ -161,7 +181,10 @@
                                                 @endif
 
                                             </td>
+                                            @if (Auth::user()->role->id==1)
+
                                             <td>
+
                                                 @if ($student->isactive==1)
 
                                                 <form id="delete-form-{{$student->id}}" style="display: none"
@@ -171,14 +194,13 @@
 
                                                 </form>
                                                 <a href="" onclick="
-                                                                                if (confirm('Are you sure you want to Deactivate this?')) {
+                                                       if (confirm('Are you sure you want to Deactivate this?')) {
                                                                                     event.preventDefault();
-                                                                                document.getElementById('delete-form-{{$student->id}}').submit();
-                                                                                } else {
-                                                                                    event.preventDefault();
-                                                                                }
-                                                                            "
-                                                    class="btn btn-danger btn-sm btn-block">Deactivate
+                                                           document.getElementById('delete-form-{{$student->id}}').submit();
+                                                           } else {
+                                                           event.preventDefault();
+                                                          }
+                                                         " class="btn btn-danger btn-sm btn-block">Deactivate
                                                 </a>
                                                 @else
 
@@ -199,18 +221,29 @@
                                                 </a>
 
                                                 @endif
-                                            </td>
 
-                                            <td style="text-align: center"><a
-                                                    href="{{ route('student.edit',$student->id) }}"><span
-                                                        class="fa fa-edit fa-2x text-primary"></span></a></td>
+                                            </td>
+                                            @endif
+
 
                                             <td style="text-align: center">
+                                                @if (Auth::user()->id==$student->id)
+
+                                                <a href="{{ route('student.edit',$student->id) }}"><span
+                                                        class="fa fa-edit fa-2x text-primary"></span></a>
+
+                                                @endif
+                                            </td>
+
+
+                                            <td style="text-align: center">
+
                                                 <form id="delete-form-{{$student->id}}" style="display: none"
                                                     action="{{ route('student.destroy',$student->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{method_field('DELETE')}}
                                                 </form>
+                                                @if (Auth::user()->role->id==1)
                                                 <a href="" onclick="
                                                                     if (confirm('Are you sure you want to delete this?')) {
                                                                         event.preventDefault();
@@ -221,6 +254,7 @@
                                                                 "><span class="fa fa-trash fa-2x text-danger"></span>
                                                 </a>
 
+                                                @endif
                                             </td>
                                         </tr>
                                         @endif
@@ -235,9 +269,21 @@
                                             <th>Phone</th>
                                             <th>View Details</th>
                                             <th>Status</th>
+
+                                            @if (Auth::user()->role->id==1)
                                             <th>Action</th>
+
+                                            @endif
+
+
+
                                             <th>Edit</th>
+
+
+                                            @if (Auth::user()->role->id==1)
                                             <th>Delete</th>
+                                            @endif
+
                                         </tr>
                                     </tfoot>
                                 </table>

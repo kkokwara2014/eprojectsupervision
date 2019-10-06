@@ -69,9 +69,15 @@
                                                 <a href="{{ route('project.show',$project->id) }}"><span
                                                         class="fa fa-eye fa-2x text-primary"></span></a>
                                             </td>
-                                            <td style="text-align: center"><a
-                                                    href="{{ route('project.edit',$project->id) }}"><span
-                                                        class="fa fa-edit fa-2x text-primary"></span></a></td>
+
+                                            <td style="text-align: center">
+                                                @if ($project->user->id==Auth::user()->id)
+                                                <a href="{{ route('project.edit',$project->id) }}"><span
+                                                        class="fa fa-edit fa-2x text-primary"></span>
+                                                </a>
+                                                @endif
+                                            </td>
+
                                             <td style="text-align: center">
                                                 <form id="delete-form-{{$project->id}}" style="display: none"
                                                     action="{{ route('project.destroy',$project->id) }}" method="post">
@@ -102,7 +108,7 @@
                                         </tr>
                                     </tfoot>
                                 </table>
-                                    
+
                                 @else
                                 <p class="alert alert-info">No Unallocated Projects yet!</p>
                                 @endif
