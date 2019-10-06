@@ -207,13 +207,24 @@
                                             <select class="form-control select2" multiple="multiple"
                                                 data-placeholder="Select a Project" style="width: 100%;"
                                                 name="project_id[]">
-                                                @foreach ($projforassign as $pfa)
-                                                @if ($pfa->isallocated==0)
+                                                <option selected="disabled">Select Projects</option>
+                                                @forelse ($projforassign as $pfa)
                                                 <option value="{{$pfa->id}}">
                                                     {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
                                                 </option>
-                                                @endif
-                                                @endforeach
+                                                @empty
+                                                <option>
+                                                    No Projects available
+                                                </option>
+                                                @endforelse
+
+                                                {{-- @foreach ($projforassign as $pfa)
+                                                @if ($pfa->isallocated==0)
+                                                <option value="{{$pfa->id}}">
+                                                {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
+                                                </option>
+                                                @endif --}}
+                                                {{-- @endforeach --}}
                                             </select>
                                         </div>
                                     </div>

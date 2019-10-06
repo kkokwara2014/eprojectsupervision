@@ -33,7 +33,6 @@ class ProjectController extends Controller
         $projects = Project::orderBy('created_at', 'desc')->where('isallocated','1')->get();
 
         return view('admin.project.allocated', compact('projects', 'user'));
-
     }
 
     /**
