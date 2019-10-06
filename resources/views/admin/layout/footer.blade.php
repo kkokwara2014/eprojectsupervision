@@ -203,18 +203,31 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
+{{-- <script src="{{asset('admin_assets/bower_components/jquery/dist/jquery.min.js')}}"></script> --}}
+<!-- jQuery UI 1.11.4 -->
+{{-- <script src="{{asset('admin_assets/bower_components/jquery-ui/jquery-ui.min.js')}}"></script> --}}
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+{{-- <script> --}}
+  {{-- $.widget.bridge('uibutton', $.ui.button); --}}
+{{-- </script> --}}
+<!-- Bootstrap 3.3.7 -->
+{{-- <script src="{{asset('admin_assets/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script> --}}
+
+<!-- Select2 -->
+{{-- <script src="{{asset('admin_assets/bower_components/select2/dist/js/select2.full.min.js')}}"></script> --}}
+
+<!-- jQuery 3 -->
 <script src="{{asset('admin_assets/bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{asset('admin_assets/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset('admin_assets/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('admin_assets/bower_components/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{asset('admin_assets/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-
-<!-- Select2 -->
-<script src="{{asset('admin_assets/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 <!-- DataTables -->
 <script src="{{asset('admin_assets/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin_assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>

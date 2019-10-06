@@ -71,11 +71,11 @@
                                             </td>
 
                                             <td style="text-align: center">
-                                                @if ($project->user->id==Auth::user()->id)
+                                                {{-- @if ($project->user->id==Auth::user()->id) --}}
                                                 <a href="{{ route('project.edit',$project->id) }}"><span
                                                         class="fa fa-edit fa-2x text-primary"></span>
                                                 </a>
-                                                @endif
+                                                {{-- @endif --}}
                                             </td>
 
                                             <td style="text-align: center">
@@ -174,7 +174,7 @@
 
                 <!-- /.modal -->
 
-                {{-- Data input modal area --}}
+                {{-- Data input modal area for project allocation --}}
                 <div class="modal fade" id="modal-default-assign">
                     <div class="modal-dialog">
 
@@ -202,24 +202,33 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="form-group">
-                                            <label>Project <b style="color: red;">*</b> </label>
-                                            <select class="form-control select2" multiple="multiple"
+                                        <label>Project <b style="color: red;">*</b> </label>
+                                        <select class="form-control select2" multiple="multiple"
+                                            data-placeholder="Select a State" style="width: 100%;">
+                                            <option>Alabama</option>
+                                            <option>Alaska</option>
+                                            <option>California</option>
+                                            <option>Delaware</option>
+                                            <option>Tennessee</option>
+                                            <option>Texas</option>
+                                            <option>Washington</option>
+                                        </select>
+                                        {{-- <select class="form-control select2" multiple="multiple"
                                                 data-placeholder="Select Project" style="width: 100%;"
                                                 name="project_id[]">
                                               
                                                 @forelse ($projforassign as $pfa)
                                                 <option value="{{$pfa->id}}">
-                                                    {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
-                                                </option>
-                                                @empty
-                                                <option>
-                                                    No Projects available
-                                                </option>
-                                                @endforelse
-                                            </select>
-                                        </div>
+                                        {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
+                                        </option>
+                                        @empty
+                                        <option>
+                                            No Projects available
+                                        </option>
+                                        @endforelse
+                                        </select> --}}
                                     </div>
+
 
                                 </div>
                                 <div class="modal-footer">
