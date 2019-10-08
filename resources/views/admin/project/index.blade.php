@@ -34,9 +34,7 @@
                 </button>
                 <a href="{{route('project.allocated')}}" class="btn btn-success"><span class="fa fa-eye"></span>
                     Allocated Projects</a>
-                {{-- <a href="{{route('assignproject.index')}}" class="btn btn-success"><span
-                    class="fa fa-exchange"></span>
-                Assign Projects</a> --}}
+
                 <br><br>
 
                 <div class="row">
@@ -203,30 +201,16 @@
 
                                     <div class="form-group">
                                         <label>Project <b style="color: red;">*</b> </label>
+
                                         <select class="form-control select2" multiple="multiple"
-                                            data-placeholder="Select a State" style="width: 100%;">
-                                            <option>Alabama</option>
-                                            <option>Alaska</option>
-                                            <option>California</option>
-                                            <option>Delaware</option>
-                                            <option>Tennessee</option>
-                                            <option>Texas</option>
-                                            <option>Washington</option>
+                                            data-placeholder="Select Project" style="width: 100%;" name="project_id[]">
+
+                                            @foreach ($projforassign as $pfa)
+                                            <option value="{{$pfa->id}}">
+                                                {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
+                                            </option>
+                                            @endforeach
                                         </select>
-                                        {{-- <select class="form-control select2" multiple="multiple"
-                                                data-placeholder="Select Project" style="width: 100%;"
-                                                name="project_id[]">
-                                              
-                                                @forelse ($projforassign as $pfa)
-                                                <option value="{{$pfa->id}}">
-                                        {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
-                                        </option>
-                                        @empty
-                                        <option>
-                                            No Projects available
-                                        </option>
-                                        @endforelse
-                                        </select> --}}
                                     </div>
 
 
