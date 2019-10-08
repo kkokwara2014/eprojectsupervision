@@ -217,9 +217,7 @@
 <!-- DataTables -->
 <script src="{{asset('admin_assets/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin_assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-<!-- Morris.js charts -->
-<script src="{{asset('admin_assets/bower_components/raphael/raphael.min.js')}}"></script>
-<script src="{{asset('admin_assets/bower_components/morris.js/morris.min.js')}}"></script>
+
 <!-- Sparkline -->
 <script src="{{asset('admin_assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
 <!-- jvectormap -->
@@ -252,6 +250,9 @@
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{asset('admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
 
+<!-- Morris.js charts -->
+<script src="{{asset('admin_assets/bower_components/raphael/raphael.min.js')}}"></script>
+<script src="{{asset('admin_assets/bower_components/morris.js/morris.min.js')}}"></script>
 <script>
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
