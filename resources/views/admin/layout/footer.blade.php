@@ -202,6 +202,10 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- Morris.js charts -->
+<script src="{{asset('admin_assets/bower_components/raphael/raphael.min.js')}}"></script>
+<script src="{{asset('admin_assets/bower_components/morris.js/morris.min.js')}}"></script>
+
 <!-- jQuery 3 -->
 <script src="{{asset('admin_assets/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -250,9 +254,7 @@
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{asset('admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
 
-<!-- Morris.js charts -->
-<script src="{{asset('admin_assets/bower_components/raphael/raphael.min.js')}}"></script>
-<script src="{{asset('admin_assets/bower_components/morris.js/morris.min.js')}}"></script>
+
 <script>
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
