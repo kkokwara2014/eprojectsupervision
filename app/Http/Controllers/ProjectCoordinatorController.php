@@ -94,9 +94,9 @@ class ProjectCoordinatorController extends Controller
      */
     public function edit($id)
     {
-        $projectcoordinator = User::where('id', $id)->first();
+        $projectcoordinators = User::where('id', $id)->first();
 
-        return view('admin.projectcoord.edit', array('user' => Auth::user()), compact('projectcoordinator'));
+        return view('admin.projectcoord.edit', array('user' => Auth::user()), compact('projectcoordinators'));
     }
 
     /**

@@ -14,18 +14,30 @@
         <br><br>
 
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-7">
 
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('supervisor.update',$supervisors->id) }}" method="post">
+                        <form action="{{ route('projectcoordinator.update',$projectcoordinators->id) }}" method="post">
                             {{ csrf_field() }}
                             {{method_field('PUT')}}
 
                             <div>
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" name="name" value="{{$supervisors->name}}">
+                                <label for="name">Last Name</label>
+                                <input type="text" class="form-control" name="lastname" value="{{$projectcoordinators->lastname}}">
+                            </div>
+                            <div>
+                                <label for="name">First Name</label>
+                                <input type="text" class="form-control" name="firstname" value="{{$projectcoordinators->firstname}}">
+                            </div>
+                            <div>
+                                <label for="name">Othernames</label>
+                                <input type="text" class="form-control" name="othername" value="{{$projectcoordinators->othername}}">
+                            </div>
+                            <div>
+                                <label for="name">Identity Number</label>
+                                <input type="text" class="form-control" name="identitynumber" value="{{$projectcoordinators->identitynumber}}">
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Update</button>
