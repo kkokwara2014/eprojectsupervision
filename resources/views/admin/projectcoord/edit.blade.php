@@ -8,8 +8,8 @@
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
-        <a href="{{ route('supervisor.index') }}" class="btn btn-success">
-           <span class="fa fa-eye"></span> All Supervisors
+        <a href="{{ route('projectcoordinator.index') }}" class="btn btn-success">
+           <span class="fa fa-eye"></span> All Project Coordinators
         </a>
         <br><br>
 

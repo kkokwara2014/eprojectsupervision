@@ -82,7 +82,7 @@ class ProjectCoordinatorController extends Controller
     public function show($id)
     {
         $projectcoordinator = User::find($id);
-        
+
         return view('admin.projectcoord.show', array('user' => Auth::user()), compact('projectcoordinator'));
     }
 
@@ -94,7 +94,9 @@ class ProjectCoordinatorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $projectcoordinator = User::where('id', $id)->first();
+
+        return view('admin.projectcoord.edit', array('user' => Auth::user()), compact('projectcoordinator'));
     }
 
     /**
@@ -106,7 +108,36 @@ class ProjectCoordinatorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'lastname' => 'required|string',
+            'firstname' => 'required|string',
+            'identitynumber' => 'required|string|unique:users',
+            'gender' => 'required|string',
+            'phone' => 'required|integer',
+            'department_id' => 'required',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required',
+            'password' => 'required|string|min:6|confirmed',
+
+        ]);
+
+        $user = User::find($id);
+
+        $user->lastname = $request->lastname;
+        $user->firstname = $request->firstname;
+        $user->othername = $request->othername;
+        $user->identitynumber = $request->identitynumber;
+        $user->gender = $request->gender;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = bcrypt($request->password);
+        $user->department_id = $request->department_id;
+        $user->role_id = $request->role_id;
+        $user->isactive = $request->isactive;
+
+        $user->save();
+
+        return redirect(route('projectcoordinator.index'));
     }
 
     /**
@@ -117,6 +148,8 @@ class ProjectCoordinatorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $projectcoordinators = User::where('id', $id)->delete();
+
+        return back();
     }
 }
