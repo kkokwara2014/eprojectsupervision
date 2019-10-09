@@ -26,90 +26,94 @@
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                     <span class="fa fa-plus"></span> Add Project Coordinator
                 </button>
-
-                <a href="{{route('chapter.index')}}" class="btn btn-success"><span class="fa fa-eye"></span>
-                    Chapters</a>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default-assign">
-                    <span class="fa fa-exchange"></span> Assign Project
-                </button>
-                <a href="{{route('project.allocated')}}" class="btn btn-success"><span class="fa fa-eye"></span>
-                    Allocated Projects</a>
-
                 <br><br>
 
                 <div class="row">
                     <div class="col-md-12">
 
+                        {{-- for messages --}}
+                        {{-- @if (session('success'))
+                <p class="alert alert-success">{{ session('success') }}</p>
+                        @endif --}}
+
                         <div class="box">
                             <!-- /.box-header -->
                             <div class="box-body">
-                                @if (count($projects)>0)
-                                <table id="example1" class="table table-bordered table-striped table-responsive">
+                                <table id="example1" class="table table-responsive table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Surname</th>
+                                            <th>First Name</th>
+                                            <th>Identity Number</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>View Details</th>
 
-                                            <th>By</th>
-                                            <th>Details</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
+
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($projects as $project)
-                                        <tr>
-                                            <td>{{$project->title}}</td>
+                                        @foreach ($projectcoordinators as $projectcoordinator)
 
-                                            <td>{{$project->user->lastname.', '.$project->user->firstname.' - '.$project->user->identitynumber}}
-                                            </td>
+                                        <tr>
+
+                                            <td>{{$projectcoordinator->lastname}}</td>
+                                            <td>{{$projectcoordinator->firstname}}</td>
+                                            <td>{{$projectcoordinator->identitynumber}}</td>
+
+                                            <td>{{$projectcoordinator->email}}</td>
+                                            <td>{{$projectcoordinator->phone}}</td>
                                             <td style="text-align: center">
-                                                <a href="{{ route('project.show',$project->id) }}"><span
+                                                <a href="{{ route('projectcoordinator.show',$projectcoordinator->id) }}"><span
                                                         class="fa fa-eye fa-2x text-primary"></span></a>
                                             </td>
 
                                             <td style="text-align: center">
-                                                @if ($project->user->id==Auth::user()->id)
-                                                <a href="{{ route('project.edit',$project->id) }}"><span
-                                                        class="fa fa-edit fa-2x text-primary"></span>
-                                                </a>
-                                                @endif
+                                               
+                                                <a href="{{ route('projectcoordinator.edit',$projectcoordinator->id) }}"><span
+                                                        class="fa fa-edit fa-2x text-primary"></span></a>
+                                              
                                             </td>
 
                                             <td style="text-align: center">
-                                                <form id="delete-form-{{$project->id}}" style="display: none"
-                                                    action="{{ route('project.destroy',$project->id) }}" method="post">
+                                                <form id="delete-form-{{$projectcoordinator->id}}" style="display: none"
+                                                    action="{{ route('projectcoordinator.destroy',$projectcoordinator->id) }}"
+                                                    method="post">
                                                     {{ csrf_field() }}
                                                     {{method_field('DELETE')}}
                                                 </form>
                                                 <a href="" onclick="
-                                                            if (confirm('Are you sure you want to delete this?')) {
-                                                                event.preventDefault();
-                                                            document.getElementById('delete-form-{{$project->id}}').submit();
-                                                            } else {
-                                                                event.preventDefault();
-                                                            }
-                                                        "><span class="fa fa-trash fa-2x text-danger"></span>
+                                                                if (confirm('Are you sure you want to delete this?')) {
+                                                                    event.preventDefault();
+                                                                document.getElementById('delete-form-{{$projectcoordinator->id}}').submit();
+                                                                } else {
+                                                                    event.preventDefault();
+                                                                }
+                                                            "><span class="fa fa-trash fa-2x text-danger"></span>
                                                 </a>
 
                                             </td>
                                         </tr>
+
+
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Title</th>
-                                            <th>By</th>
-                                            <th>Details</th>
+                                            <th>Surname</th>
+                                            <th>First Name</th>
+                                            <th>Identity Number</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>View Details</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </tfoot>
                                 </table>
-
-                                @else
-                                <p class="alert alert-info">No Unallocated Projects yet!</p>
-                                @endif
                             </div>
                             <!-- /.box-body -->
                         </div>
@@ -122,41 +126,151 @@
                 <div class="modal fade" id="modal-default">
                     <div class="modal-dialog">
 
-                        <form action="{{ route('project.store') }}" method="post">
+                        <form action="{{ route('projectcoordinator.store') }}" method="post">
                             {{ csrf_field() }}
+
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Add Project</h4>
+                                    <h4 class="modal-title"><span class="fa fa-user"></span> Add Project Coordinator
+                                    </h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="">Project Title <b style="color: red;">*</b></label>
-                                        <input type="text" class="form-control" name="title" placeholder="Project Title"
-                                            autofocus>
+                                        <input id="lastname" type="text"
+                                            class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}"
+                                            name="lastname" value="{{ old('lastname') }}" required autofocus
+                                            placeholder="Last Name">
+
+                                        @if ($errors->has('lastname'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('lastname') }}</strong>
+                                        </span>
+                                        @endif
+
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Case Study</label>
-                                        <input type="text" class="form-control" name="casestudy"
-                                            placeholder="Project Case Study">
+                                        <input id="firstname" type="text"
+                                            class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}"
+                                            name="firstname" value="{{ old('firstname') }}" required autofocus
+                                            placeholder="First Name">
+
+                                        @if ($errors->has('firstname'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('firstname') }}</strong>
+                                        </span>
+                                        @endif
+
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Year</label>
-                                        <input type="text" class="form-control" id="datepicker" name="projyear"
-                                            placeholder="Project year">
+                                        <input id="othername" type="text"
+                                            class="form-control{{ $errors->has('othername') ? ' is-invalid' : '' }}"
+                                            name="othername" value="{{ old('othername') }}" autofocus
+                                            placeholder="Othername(s)">
+
+                                        @if ($errors->has('othername'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('othername') }}</strong>
+                                        </span>
+                                        @endif
+
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Level</label>
-                                        <select name="classlevel_id" class="form-control">
-                                            <option selected="disabled">Select Level</option>
-                                            @foreach ($classlevels as $classlevel)
-                                            <option value="{{$classlevel->id}}">{{$classlevel->levelname}}</option>
-                                            @endforeach
-                                        </select>
+                                        <input id="identitynumber" type="text"
+                                            class="form-control{{ $errors->has('identitynumber') ? ' is-invalid' : '' }}"
+                                            name="identitynumber" value="{{ old('identitynumber') }}" required autofocus
+                                            placeholder="Staff Number e.g SS-755" maxlength="8">
+
+                                        @if ($errors->has('identitynumber'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('identitynumber') }}</strong>
+                                        </span>
+                                        @endif
+
                                     </div>
 
-                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+                                    <div class="form-group">
+                                        <input id="email" type="email"
+                                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                            name="email" value="{{ old('email') }}" required autofocus
+                                            placeholder="Email">
+
+                                        @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="phone" type="tel"
+                                            class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+                                            name="phone" value="{{ old('phone') }}" required placeholder="Phone"
+                                            maxlength="11">
+
+                                        @if ($errors->has('phone'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('phone') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <select name="gender"
+                                            class="form-control @error('gender') is-invalid @enderror">
+                                            <option selected="disabled">Select Gender</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+
+                                        @if ($errors->has('gender'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('gender') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control @error('department_id') is-invalid @enderror"
+                                            name="department_id" value="{{ old('department_id') }}" id="department_id">
+
+                                            <option selected="disabled">Select Department</option>
+                                            @foreach ($departments as $department)
+                                            <option value="{{$department->id}}">
+                                                {{$department->name.' - '.$department->code}}
+                                            </option>
+                                            @endforeach
+
+                                        </select>
+
+                                        @if ($errors->has('department_id'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('department_id') }}</strong>
+                                        </span>
+                                        @endif
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <input id="password" type="password"
+                                            class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                            name="password" required placeholder="Password">
+
+                                        @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input id="password-confirm" type="password" class="form-control"
+                                            name="password_confirmation" required placeholder="Repeat Password">
+                                    </div>
+
+                                    <input type="hidden" name="role_id" value="2">
+                                    <input type="hidden" name="isactive" value="1">
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -169,64 +283,8 @@
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
-
                 <!-- /.modal -->
 
-                {{-- Data input modal area for project allocation --}}
-                <div class="modal fade" id="modal-default-assign">
-                    <div class="modal-dialog">
-
-                        <form action="{{ route('allocation.store') }}" method="post">
-                            {{ csrf_field() }}
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title"><span class="fa fa-exchange"></span> Assign Projects To
-                                        Supervisor</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="">Supervisor <b style="color: red;">*</b> </label>
-
-                                        <select name="supervisor_id" id="" class="form-control">
-                                            <option selected="disabled">Select Supervisor</option>
-                                            @foreach ($supervisors as $supervisor)
-                                            <option value="{{$supervisor->id}}">
-                                                {{$supervisor->title.' '.$supervisor->lastname.', '.$supervisor->firstname}}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Project <b style="color: red;">*</b> </label>
-
-                                        <select class="form-control select2" multiple="multiple"
-                                            data-placeholder="Select Project" style="width: 100%;" name="project_id[]">
-
-                                            @foreach ($projforassign as $pfa)
-                                            <option value="{{$pfa->id}}">
-                                                {{$pfa->title.' - '.$pfa->user->lastname.', '.$pfa->user->firstname.' - '.$pfa->user->identitynumber}}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Assign</button>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-
-                        </form>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
 
             </section>
             <!-- /.Left col -->

@@ -166,7 +166,7 @@
                                     <div class="form-group">
                                         <input id="othername" type="text"
                                             class="form-control{{ $errors->has('othername') ? ' is-invalid' : '' }}"
-                                            name="othername" value="{{ old('othername') }}" required autofocus
+                                            name="othername" value="{{ old('othername') }}" autofocus
                                             placeholder="Othername(s)">
 
                                         @if ($errors->has('othername'))

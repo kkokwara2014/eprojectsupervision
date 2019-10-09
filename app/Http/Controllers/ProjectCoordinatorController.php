@@ -81,9 +81,9 @@ class ProjectCoordinatorController extends Controller
      */
     public function show($id)
     {
-        $supervisor = User::find($id);
-        $supervisor_projects = User::find($id)->allocations;
-        return view('admin.projectcoord.show', array('user' => Auth::user()), compact('supervisor', 'supervisor_projects'));
+        $projectcoordinator = User::find($id);
+        
+        return view('admin.projectcoord.show', array('user' => Auth::user()), compact('projectcoordinator'));
     }
 
     /**
