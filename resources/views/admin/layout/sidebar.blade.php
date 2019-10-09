@@ -53,6 +53,10 @@
       @if (Auth::user()->role->id==1 || Auth::user()->role->id==2||Auth::user()->role->id==3)
       <li><a href="{{route('supervisor.index')}}"><i class="fa fa-graduation-cap"></i> Supervisors</a></li>
       @endif
+      {{-- Only Admin and Project Coordinator --}}
+      @if (Auth::user()->role->id==1 || Auth::user()->role->id==2)
+      <li><a href="{{route('projectcoordinator.index')}}"><i class="fa fa-user"></i> Project Coordinators</a></li>
+      @endif
 
       {{-- Only for Admin --}}
       @if (Auth::user()->role->id==1)
