@@ -87,9 +87,7 @@
                                     </li>
                                     {{-- </a> --}}
                                     @empty
-                                    <li class="list-group-item alert alert-warning"><strong>No Chapter
-                                            yet!</strong>
-                                    </li>
+                                    <p style="background-color: dodgerblue" class="badge badge-info"><strong>No Chapter yet!</strong></p>
                                     @endforelse
                                 </ul>
                             </div>
