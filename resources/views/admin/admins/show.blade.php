@@ -34,8 +34,11 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-12">
-                                <img src="{{url('user_images',$admin->userimage)}}" alt=""
+                            <div class="col-md-12" style="text-align: center">
+                                <img style="display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 50%;" src="{{url('user_images',$admin->userimage)}}" alt=""
                                     class="img-responsive img-rounded" width="180" height="180">
                                 <p>
                                     <h2>{{$admin->title.' '.$admin->lastname.' '.$admin->firstname}}</h2>

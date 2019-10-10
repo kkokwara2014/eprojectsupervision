@@ -39,7 +39,7 @@
                                 margin-left: auto;
                                 margin-right: auto;
                                 width: 50%;" src="{{url('user_images',$supervisor->userimage)}}" alt=""
-                                    class="img-responsive img-rounded" width="180" height="180">
+                                    class="img-responsive img-circle" width="180" height="180">
 
                                 <p>
                                     <h3>{{$supervisor->title.' '.$supervisor->lastname.' '.$supervisor->firstname}}</h3>
