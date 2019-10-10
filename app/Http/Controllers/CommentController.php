@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 use App\Chapter;
 use App\Comment;
+use App\Project;
 use Auth;
 
 class CommentController extends Controller

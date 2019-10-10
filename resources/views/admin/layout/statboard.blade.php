@@ -71,7 +71,7 @@
             <p>Project Coordinator</p>
           </div>
           <div class="icon">
-            <i class="fa fa-graduation-cap"></i>
+            <i class="fa fa-user"></i>
           </div>
           <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>

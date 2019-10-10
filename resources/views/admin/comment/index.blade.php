@@ -36,9 +36,23 @@
                                 <div class="row">
                                     <div class="col-md-12" style="overflow-y: auto; height: 500px;">
 
+                                        {{-- @foreach ($project_supervisor as $projsup)
+
+                                        @if ($projsup->user->id)
+                                        @foreach ($project as $proj)
+                                        @if ($proj->user->id)
+
+                                        
+
+
+                                        @endif
+                                        @endforeach
+                                        @endif
+                                        @endforeach --}}
 
                                         @forelse ($discussions as $comt)
                                         @if (Auth::user()->id==$comt->user->id||Auth::user()->role->id==1)
+
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="row">
@@ -63,6 +77,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         @endif
                                         @empty
                                         <li class="list-group-item alert alert-warning"><strong>No Comments
