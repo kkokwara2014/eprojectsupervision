@@ -11,7 +11,7 @@
             Student Detail
             <small>Student Information</small>
         </h1>
-        
+
     </section>
 
     <!-- Main content -->
@@ -59,7 +59,7 @@
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
-                    {{-- <div class="col-md-8">
+                    <div class="col-md-8">
                         <div class="box">
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -67,19 +67,22 @@
                                     <div class="col-md-12">
                                         <h3>Project Topic</h3>
 
-                                        @if ($student_project!=null)
-                                        <h4>{{$student_project->title}}</h4>
-                                        @else
-                                        <p style="background-color: dodgerblue" class="badge badge-info"><strong>No Project topic has been
+                                        @forelse ($student_project as $studproj)
+                                        <h4>{{$studproj->title}}</h4>
+                                        @empty
+                                        <p style="background-color: dodgerblue" class="badge badge-info"><strong>No
+                                                Project topic has been
                                                 registered yet!</strong></p>
-                                        @endif
+                                        @endforelse
+
                                         <h4>Supervisor:
                                             @forelse ($project_supervisor as $projSup)
                                             <span style="color:dodgerblue; font-weight: bolder;">
-                                                    {{$projSup->user->title.' '.$projSup->user->lastname.', '.$projSup->user->firstname}}
-                                                </span>
+                                                {{$projSup->user->title.' '.$projSup->user->lastname.', '.$projSup->user->firstname}}
+                                            </span>
                                             @empty
-                                            <span style="background-color: firebrick" class="badge badge-info">Supervisor not assigned yet!</span>
+                                            <span style="background-color: firebrick"
+                                                class="badge badge-info">Supervisor not assigned yet!</span>
                                             @endforelse
 
                                         </h4>
@@ -91,22 +94,23 @@
 
                                             @forelse ($project_chapters as $chapt)
                                             <a href="{{route('comment.create')}}">
-                                                    <li class="list-group-item">
-                                                        @if ($chapt['isapproved']==1)
-                                                        <span style="background-color: seagreen"
-                                                            class="badge pull-right">Approved</span>
-                                                        @else
-                                                        <span style="background-color:crimson" class="badge pull-right">Not
-                                                            Approved</span>
-                                                        @endif
-                                                        {{$chapt['title']}}
-    
-                                                    </li>
-                                                </a>
+                                                <li class="list-group-item">
+                                                    @if ($chapt['isapproved']==1)
+                                                    <span style="background-color: seagreen"
+                                                        class="badge pull-right">Approved</span>
+                                                    @else
+                                                    <span style="background-color:crimson" class="badge pull-right">Not
+                                                        Approved</span>
+                                                    @endif
+                                                    {{$chapt['title']}}
+
+                                                </li>
+                                            </a>
                                             @empty
-                                            <p style="background-color: dodgerblue" class="badge badge-info"><strong>No Chapter yet!</strong></p>
+                                            <p style="background-color: dodgerblue" class="badge badge-info"><strong>No
+                                                    Chapter yet!</strong></p>
                                             @endforelse
-                                            
+
                                         </ul>
                                     </div>
                                 </div>
@@ -114,7 +118,7 @@
                             </div>
                         </div>
                         <!-- /.box-body -->
-                    </div> --}}
+                    </div>
                     <!-- /.box -->
                 </div>
         </div>

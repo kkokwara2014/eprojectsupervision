@@ -74,7 +74,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = User::find($id);
-        $student_project = Project::find($id);
+        $student_project = Project::where('user_id',$id)->get();
         $project_chapters = Chapter::where('project_id',$id)->get();
         $project_supervisor = Allocation::where('project_id', $id)->get();
 
