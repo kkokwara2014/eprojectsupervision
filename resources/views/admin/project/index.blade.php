@@ -66,7 +66,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($projects as $project)
-                                        @if ($project->user->id==Auth::user()->id)
+                                        @if ($project->user->id==Auth::user()->id||Auth::user()->role->id==1||Auth::user()->role->id==2)
                                         <tr>
                                             <td>{{$project->title}}</td>
                                             <td>{{$project->user->lastname.', '.$project->user->firstname.' - '.$project->user->identitynumber}}

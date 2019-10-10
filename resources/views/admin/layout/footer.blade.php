@@ -231,6 +231,11 @@
 <script src="{{asset('admin_assets/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('admin_assets/dist/js/demo.js')}}"></script>
+
+<!-- CK Editor -->
+<script src="{{asset('admin_assets/bower_components/ckeditor/ckeditor.js')}}"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{{asset('admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
 <!-- Page script -->
 <script>
   $(function () {
@@ -297,6 +302,12 @@
     $('.timepicker').timepicker({
       showInputs: false
     })
+
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1')
+    //bootstrap WYSIHTML5 - text editor
+    $('.textarea').wysihtml5()
   })
 </script>
 
