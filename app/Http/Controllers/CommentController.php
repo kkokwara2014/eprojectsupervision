@@ -19,9 +19,10 @@ class CommentController extends Controller
      */
     public function index()
     {
-       
+        $project_supervisor=Allocation::where('user_id',Auth::user()->id)->get();
+        $projects = Project::orderBy('title', 'asc')->get();
         $discussions = Comment::orderBy('created_at', 'desc')->get();
-        return view('admin.comment.index', array('user' => Auth::user()), compact('discussions'));
+        return view('admin.comment.index', array('user' => Auth::user()), compact('discussions','project_supervisor','projects'));
     }
 
     /**

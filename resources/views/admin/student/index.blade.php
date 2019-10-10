@@ -67,7 +67,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($students as $student)
-                                        @if ((Auth::user()->id==$student->id))
+                                        @if ((Auth::user()->id==$student->id||Auth::user()->role->id==2||Auth::user()->role->id==1))
                                         <tr>
                                             <td>{{$student->lastname}}</td>
                                             <td>{{$student->firstname}}</td>

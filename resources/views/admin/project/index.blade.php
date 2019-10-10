@@ -23,17 +23,25 @@
         <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
+                @if (Auth::user()->role->id==4)
+
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                     <span class="fa fa-plus"></span> Add Project
                 </button>
 
                 <a href="{{route('chapter.index')}}" class="btn btn-success"><span class="fa fa-eye"></span>
-                    Chapters</a>
+                    Chapters
+                </a>
+                @endif
+
+
+                @if (Auth::user()->role->id==2)
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default-assign">
                     <span class="fa fa-exchange"></span> Assign Project
                 </button>
                 <a href="{{route('project.allocated')}}" class="btn btn-success"><span class="fa fa-eye"></span>
                     Allocated Projects</a>
+                @endif
 
                 <br><br>
 
@@ -44,11 +52,11 @@
                             <!-- /.box-header -->
                             <div class="box-body">
                                 @if (count($projects)>0)
+
                                 <table id="example1" class="table table-bordered table-striped table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Title</th>
-
                                             <th>By</th>
                                             <th>Details</th>
                                             <th>Edit</th>
@@ -58,9 +66,9 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($projects as $project)
+                                        @if ($project->user->id==Auth::user()->id)
                                         <tr>
                                             <td>{{$project->title}}</td>
-
                                             <td>{{$project->user->lastname.', '.$project->user->firstname.' - '.$project->user->identitynumber}}
                                             </td>
                                             <td style="text-align: center">
@@ -94,6 +102,7 @@
 
                                             </td>
                                         </tr>
+                                        @endif
                                         @endforeach
                                     </tbody>
                                     <tfoot>

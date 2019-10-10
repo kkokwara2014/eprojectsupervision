@@ -39,10 +39,10 @@
 
       <li><a href="{{route('student.index')}}"><i class="fa fa-users"></i> Students</a></li>
 
-      {{-- Only Admin and Project Coordinator --}}
-      @if (Auth::user()->role->id==1||Auth::user()->role->id==2)
+      
+      
       <li><a href="{{route('project.index')}}"><i class="fa fa-file-text-o"></i> Unallocated Projects</a></li>
-      @endif
+      
 
       {{-- Only Admin and Project Coordinator --}}
       @if (Auth::user()->role->id==1||Auth::user()->role->id==2)

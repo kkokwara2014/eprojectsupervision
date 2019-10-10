@@ -20,12 +20,14 @@ class AdminController extends Controller
     {
         $user = Auth::user();
 
-        $allProjects=Project::count();
         $allAdmins=User::where('role_id', '1')->count();
+        $allProjectCoordinators=User::where('role_id', '2')->count();
         $allSupervisors=User::where('role_id', '3')->count();
         $allStudents=User::where('role_id', '4')->count();
+        $allAllocatedProjects=Project::where('isallocated','1')->count();
+        $allUnallocatedProjects=Project::where('isallocated','0')->count();
 
-        return view('admin.index', compact('user','allProjects','allAdmins','allSupervisors','allStudents'));
+        return view('admin.index', compact('user','allAdmins','allProjectCoordinators','allSupervisors','allStudents','allAllocatedProjects','allUnallocatedProjects'));
     }
 
     public function admins()
