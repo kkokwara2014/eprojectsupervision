@@ -54,18 +54,16 @@
 
                                             <th>Edit</th>
 
-                                            @if (Auth::user()->role->id==1)
-                                            <th>Delete</th>
-
-                                            @endif
-
+@if (Auth::user()->role->id==1)
+    
+<th>Delete</th>
+@endif
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($supervisors as $supervisor)
-                                        @if
-                                        ((Auth::user()->id==$supervisor->id||Auth::user()->role->id==2||Auth::user()->role->id==1))
+                                        @if((Auth::user()->id==$supervisor->id||Auth::user()->role->id==2||Auth::user()->role->id==1))
 
                                         <tr>
 
@@ -82,32 +80,35 @@
 
                                             <td style="text-align: center">
 
+
                                                 <a href="{{ route('supervisor.edit',$supervisor->id) }}"><span
                                                         class="fa fa-edit fa-2x text-primary"></span></a>
 
                                             </td>
 
-                                            @if (Auth::user()->role->id==1)
-                                            <td style="text-align: center">
-                                                <form id="delete-form-{{$supervisor->id}}" style="display: none"
-                                                    action="{{ route('supervisor.destroy',$supervisor->id) }}"
-                                                    method="post">
-                                                    {{ csrf_field() }}
-                                                    {{method_field('DELETE')}}
-                                                </form>
-                                                <a href="" onclick="
-                                                                if (confirm('Are you sure you want to delete this?')) {
-                                                                    event.preventDefault();
-                                                                document.getElementById('delete-form-{{$supervisor->id}}').submit();
-                                                                } else {
-                                                                    event.preventDefault();
-                                                                }
-                                                            "><span class="fa fa-trash fa-2x text-danger"></span>
-                                                </a>
+@if (Auth::user()->role->id==1)
+    
+<td style="text-align: center">
+    <form id="delete-form-{{$supervisor->id}}" style="display: none"
+        action="{{ route('supervisor.destroy',$supervisor->id) }}"
+        method="post">
+        {{ csrf_field() }}
+        {{method_field('DELETE')}}
+    </form>
+    <a href="" onclick="
+                    if (confirm('Are you sure you want to delete this?')) {
+                        event.preventDefault();
+                    document.getElementById('delete-form-{{$supervisor->id}}').submit();
+                    } else {
+                        event.preventDefault();
+                    }
+                "><span class="fa fa-trash fa-2x text-danger"></span>
+    </a>
 
-                                            </td>
+</td>
+@endif
 
-                                            @endif
+
                                         </tr>
 
                                         @endif
@@ -123,9 +124,11 @@
                                             <th>View Details</th>
                                             <th>Edit</th>
 
-                                            @if (Auth::user()->role->id==1)
-                                            <th>Delete</th>
-                                            @endif
+@if (Auth::user()->role->id==1)
+    
+<th>Delete</th>
+@endif
+
                                         </tr>
                                     </tfoot>
                                 </table>
