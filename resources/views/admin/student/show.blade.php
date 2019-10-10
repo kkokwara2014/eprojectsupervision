@@ -59,7 +59,7 @@
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
-                    <div class="col-md-8">
+                    {{-- <div class="col-md-8">
                         <div class="box">
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <!-- /.box-body -->
-                    </div>
+                    </div> --}}
                     <!-- /.box -->
                 </div>
         </div>

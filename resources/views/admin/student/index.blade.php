@@ -26,7 +26,14 @@
                 {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
             <span class="fa fa-plus"></span> Add Supervisor
         </button> --}}
-                {{-- <br><br> --}}
+
+        @if (Auth::user()->role->id==4)
+        <a href="{{route('project.index')}}" class="btn btn-success">
+            <span class="fa fa-eye"></span> My Project
+        </a>
+            
+        @endif
+                <br><br>
 
                 <div class="row">
                     <div class="col-md-12">
