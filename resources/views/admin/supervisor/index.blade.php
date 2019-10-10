@@ -23,10 +23,13 @@
         <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
+
+                @if (Auth::user()->role->id==2)
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                     <span class="fa fa-plus"></span> Add Supervisor
                 </button>
-                <br><br>
+                @endif
+                <br>
 
                 <div class="row">
                     <div class="col-md-12">
@@ -50,13 +53,19 @@
                                             <th>View Details</th>
 
                                             <th>Edit</th>
+
+                                            @if (Auth::user()->role->id==1)
                                             <th>Delete</th>
+
+                                            @endif
 
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($supervisors as $supervisor)
+                                        @if
+                                        ((Auth::user()->id==$supervisor->id||Auth::user()->role->id==2||Auth::user()->role->id==1))
 
                                         <tr>
 
@@ -72,12 +81,13 @@
                                             </td>
 
                                             <td style="text-align: center">
-                                               
+
                                                 <a href="{{ route('supervisor.edit',$supervisor->id) }}"><span
                                                         class="fa fa-edit fa-2x text-primary"></span></a>
-                                              
+
                                             </td>
 
+                                            @if (Auth::user()->role->id==1)
                                             <td style="text-align: center">
                                                 <form id="delete-form-{{$supervisor->id}}" style="display: none"
                                                     action="{{ route('supervisor.destroy',$supervisor->id) }}"
@@ -96,9 +106,11 @@
                                                 </a>
 
                                             </td>
+
+                                            @endif
                                         </tr>
 
-
+                                        @endif
                                         @endforeach
                                     </tbody>
                                     <tfoot>
@@ -110,7 +122,10 @@
                                             <th>Phone</th>
                                             <th>View Details</th>
                                             <th>Edit</th>
+
+                                            @if (Auth::user()->role->id==1)
                                             <th>Delete</th>
+                                            @endif
                                         </tr>
                                     </tfoot>
                                 </table>

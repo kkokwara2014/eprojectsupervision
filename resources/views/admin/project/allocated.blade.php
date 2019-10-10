@@ -24,8 +24,11 @@
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
                 <p>
+                    @if (Auth::user()->role->id==2||Auth::user()->role->id==1)
+                        
                     <a href="{{route('project.index')}}" class="btn btn-success"><span class="fa fa-eye"></span>
                         Unallocated Projects</a>
+                    @endif
                 </p>
                 <div class="row">
                     <div class="col-md-12">
@@ -40,18 +43,24 @@
                                             <th>Title</th>
                                             <th>By</th>
 
+                                            @if (Auth::user()->role->id==2)
                                             <th>Deallocate</th>
+                                                
+                                            @endif
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($projects as $project)
+                                        @if($project->user->id==Auth::user()->id||Auth::user()->role->id==1||Auth::user()->role->id==2)
                                         <tr>
                                             <td>{{$project->title}}</td>
 
                                             <td>{{$project->user->lastname.', '.$project->user->firstname.' - '.$project->user->identitynumber}}
                                             </td>
 
+                                            @if (Auth::user()->role->id==2)
+                                                
                                             <td>
                                                 <form id="delete-form-{{$project->id}}" style="display: none"
                                                     action="{{ route('allocation.destroy',$project->id) }}"
@@ -71,7 +80,9 @@
                                                 </a>
 
                                             </td>
+                                            @endif
                                         </tr>
+                                        @endif
                                         @endforeach
                                     </tbody>
                                     <tfoot>
@@ -79,7 +90,10 @@
                                             <th>Title</th>
                                             <th>By</th>
 
+                                            @if (Auth::user()->role->id==2)
+                                                
                                             <th>Deallocate</th>
+                                            @endif
                                         </tr>
                                     </tfoot>
                                 </table>

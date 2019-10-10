@@ -75,7 +75,7 @@
                                                 registered yet!</strong></p>
                                         @endforelse
 
-                                        <h4>Supervisor:
+                                        {{-- <h4>Supervisor:
                                             @forelse ($project_supervisor as $projSup)
                                             <span style="color:dodgerblue; font-weight: bolder;">
                                                 {{$projSup->user->title.' '.$projSup->user->lastname.', '.$projSup->user->firstname}}
@@ -85,7 +85,7 @@
                                                 class="badge badge-info">Supervisor not assigned yet!</span>
                                             @endforelse
 
-                                        </h4>
+                                        </h4> --}}
 
 
                                         <hr>
