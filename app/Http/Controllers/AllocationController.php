@@ -7,6 +7,7 @@ use App\Project;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AllocationController extends Controller
 {
@@ -110,12 +111,12 @@ class AllocationController extends Controller
     public function destroy($id)
     {
         $allocations = Allocation::where('project_id', $id)->delete();
-        
+
         $allocatedProjects = Project::find($id);
         $allocatedProjects->isallocated = '0';
         $allocatedProjects->save();
-        
-       
+
+
         return redirect()->back();
     }
 }
